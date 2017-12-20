@@ -1,18 +1,18 @@
-"use strict";
 import express from 'express';
+import morgan from 'morgan';
+import router from './src/routes';
 
-let app = express();
+const app = express();
+app.disable('x-powered-by');
 
-app.use('/', (req, res) => {
-  res.json(
-    [{
-      id: 1,
-      username: '123'
-    }, {
-      id: 2,
-      username: "sample2"
-    }]
-  );
+// logger
+app.use(morgan('dev'));
+
+app.use('/', router);
+
+// Catch 404 and forward to error handler
+app.use((req, res) => {
+  res.status(404).json({ status: '404' });
 });
 
 app.listen(5000, () => {
