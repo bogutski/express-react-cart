@@ -1,15 +1,9 @@
 {
   "env": {
-    "browser": true,
     "es6": true,
-    "commonjs": true,
     "node": true
   },
-  "extends": "eslint:recommended",
-  "parser": "babel-eslint",
-  "parserOptions": {
-    "sourceType": "module"
-  },
+  "extends": "airbnb-base",
   "rules": {
     "no-invalid-this": 2,
     "no-console": 0,
