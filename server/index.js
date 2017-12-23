@@ -2,11 +2,12 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import router from './src/routes/routes';
+import productRouter from './src/routes/routes';
 
 const app = express();
 app.disable('x-powered-by');
 
+mongoose.Promise = global.Promise; // fix deprecated problem in mongoose
 mongoose.connect(
   `mongodb://siteograf:${
     process.env.MONGO_ATLAS_PWD
@@ -38,7 +39,7 @@ app.use((req, res, next) => { // eslint-disable-line consistent-return
   next();
 });
 
-app.use('/', router);
+app.use('/product', productRouter);
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
