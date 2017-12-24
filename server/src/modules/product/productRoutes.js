@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import mongoose from 'mongoose';
-import Product from '../models/product';
+import Product from './productModel';
 
 const router = Router();
 
@@ -60,23 +60,21 @@ router.get('/:productId', (req, res) => {
     });
 });
 
-router.patch('/:productId', (req, res, next) => {
+exports.products_update_product = (req, res, next) => {
   const id = req.params.productId;
-
-  const updateObject = {
-    name: req.body.name,
-    price: req.body.price,
-  };
-
-  console.log(id);
-  console.log(req.body);
-  console.log(updateObject);
-
-  // Product.update({ _id: id }, {
-  //   $set: updateObject,
-  // }).exec()
-  //   .then(() => res.status(200).json({ message: 'Product updated' }))
-  //   .catch(err => res.status(500).json({ error: err }));
-});
+  Product.update({ _id: id }, { $set: req.body })
+    .exec()
+    .then(() => {
+      res.status(200).json({
+        message: 'Product updated',
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500).json({
+        error: err,
+      });
+    });
+};
 
 export default router;

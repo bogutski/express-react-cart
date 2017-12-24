@@ -2,14 +2,17 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import productRouter from './routes/routes';
+import productRouter from './modules/product/productRoutes';
 
 const app = express();
+
+// ===== DISABLE EXPRESS SIGNATURE ======
 app.disable('x-powered-by');
 
+// ===== DATABASE ======
 mongoose.Promise = global.Promise; // fix deprecated problem in mongoose
 mongoose.connect(
-  `mongodb://siteograf:${
+  `mongodb://siteograf-:${
     process.env.MONGO_ATLAS_PWD
   }@reactshop-shard-00-00-wjryo.mongodb.net:27017,
   reactshop-shard-00-01-wjryo.mongodb.net:27017,
@@ -18,14 +21,18 @@ mongoose.connect(
     useMongoClient: true,
   },
 );
+mongoose.connection.on('error', () => {
+  throw new Error('Unable to connect to database');
+});
 
-
-// logger
+// ===== LOGGER =====
 app.use(morgan('dev'));
 
+// ===== PARSE RESPONSE =====
 app.use(bodyParser.urlencoded({ extended: false })); // support encoded bodies
 app.use(bodyParser.json()); // support json encoded bodies
 
+// ===== CORS =====
 app.use((req, res, next) => { // eslint-disable-line consistent-return
   res.header('Access-Control-Allow-Origin', '*');
   res.header(
@@ -39,16 +46,13 @@ app.use((req, res, next) => { // eslint-disable-line consistent-return
   next();
 });
 
+// ===== ROUTING =====
 app.use('/products', productRouter);
 
-// Catch 404 and forward to error handler
-app.use((req, res, next) => {
-  const error = new Error('Not found');
-  error.status = 404;
-  next(error);
-});
+// ===== ERROR HANDLING =====
+app.use((req, res, next) => res.status(404).json({ error: 'API not found' })); // eslint-disable-line no-unused-vars
 
-app.use((error, req, res) => {
+app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(error.status || 500);
   res.json({
     error: {
@@ -57,6 +61,7 @@ app.use((error, req, res) => {
   });
 });
 
+// ===== PORT =====
 app.listen(5000, () => {
   console.log('Example app listening on port 5000');
 });
