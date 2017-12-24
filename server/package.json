@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,bin --copy-files",
-    "dev": "nodemon bin/dev",
-    "start": "npm run build && nodemon bin/prod"
+    "clean": "rimraf dist/",
+    "build": "npm run clear && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,bin --copy-files",
+    "dev": "nodemon --exec DEBUG=node* node_modules/babel-cli/bin/babel-node.js src",
+    "start": "npm run build && node dist"
   },
   "repository": {
     "type": "git",

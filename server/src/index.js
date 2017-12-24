@@ -2,7 +2,7 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import productRouter from './src/routes/routes';
+import productRouter from './routes/routes';
 
 const app = express();
 app.disable('x-powered-by');
@@ -39,7 +39,7 @@ app.use((req, res, next) => { // eslint-disable-line consistent-return
   next();
 });
 
-app.use('/product', productRouter);
+app.use('/products', productRouter);
 
 // Catch 404 and forward to error handler
 app.use((req, res, next) => {
