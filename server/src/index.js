@@ -12,7 +12,7 @@ app.disable('x-powered-by');
 // ===== DATABASE ======
 mongoose.Promise = global.Promise; // fix deprecated problem in mongoose
 mongoose.connect(
-  `mongodb://siteograf-:${
+  `mongodb://siteograf:${
     process.env.MONGO_ATLAS_PWD
   }@reactshop-shard-00-00-wjryo.mongodb.net:27017,
   reactshop-shard-00-01-wjryo.mongodb.net:27017,
