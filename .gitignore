@@ -1,5 +1,6 @@
 .idea
-/server/node_modules/
-/server/dist/*
-/client/node_modules/
-/server/uploads/*
+server/node_modules/
+server/dist/*
+client/node_modules/
+server/uploads/*
+server/yarn.lock
