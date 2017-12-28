@@ -1,5 +1,5 @@
 {
   "env": {
-    "MONGO_ATLAS_PWD": ""
+    "MONGO_ATLAS_PWD": "siteograf"
   }
 }

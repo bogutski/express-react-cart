@@ -2,3 +2,4 @@
 /server/node_modules/
 /server/dist/*
 /client/node_modules/
+/server/uploads/*

@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import Product from './productModel';
 
-const productGetAll = (req, res, next) => {
+export const productGetAll = (req, res, next) => {
   Product.find()
     .select('-__v')
     .exec()
@@ -16,19 +16,20 @@ const productGetAll = (req, res, next) => {
     });
 };
 
-const productCreate = (req, res, next) => {
+export const productCreate = (req, res, next) => {
   const product = new Product({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     price: req.body.price,
+    image: req.file.path,
   });
+
   product
     .save()
     .then((result) => {
       console.log(result);
       res.status(201).json({
-        message: 'Handling POST requests to /products',
-        createdProduct: result,
+        message: 'Product created',
       });
     })
     .catch((err) => {
@@ -39,7 +40,7 @@ const productCreate = (req, res, next) => {
     });
 };
 
-const productGetById = (req, res, next) => {
+export const productGetById = (req, res, next) => {
   const id = req.params.productId;
   Product.findById(id)
     .select('-__v')
@@ -57,14 +58,20 @@ const productGetById = (req, res, next) => {
     });
 };
 
-const productUpdateById = (req, res, next) => {
+export const productUpdateById = (req, res, next) => {
   const id = req.params.productId;
   Product.update({ _id: id }, { $set: req.body })
     .exec()
-    .then(() => {
-      res.status(200).json({
-        message: 'Product updated',
-      });
+    .then((doc) => {
+      if (doc.n) {
+        res.status(200).json({
+          message: 'Product updated',
+        });
+      } else {
+        res.status(400).json({
+          message: 'Product not found',
+        });
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -74,14 +81,20 @@ const productUpdateById = (req, res, next) => {
     });
 };
 
-const productDeleteById = (req, res, next) => {
+export const productDeleteById = (req, res, next) => {
   const id = req.params.productId;
   Product.remove({ _id: id })
     .exec()
-    .then(() => {
-      res.status(200).json({
-        message: 'Product deleted',
-      });
+    .then((doc) => {
+      if (doc.result.n) {
+        res.status(200).json({
+          message: 'Product deleted',
+        });
+      } else {
+        res.status(400).json({
+          message: 'Product not found',
+        });
+      }
     })
     .catch((err) => {
       console.log(err);
@@ -91,4 +104,3 @@ const productDeleteById = (req, res, next) => {
     });
 };
 
-export { productGetAll, productCreate, productGetById, productUpdateById, productDeleteById };
