@@ -105,7 +105,7 @@ export const userLogin = (req, res, next) => {
 };
 
 export const userGetById = (req, res, next) => {
-  const id = req.params.productId;
+  const id = req.params.userId;
   User.findById(id)
     .select('-__v')
     .exec()
@@ -122,8 +122,8 @@ export const userGetById = (req, res, next) => {
     });
 };
 
-export const productUpdateById = (req, res, next) => {
-  const id = req.params.productId;
+export const userUpdateById = (req, res, next) => {
+  const id = req.params.userId;
   User.update({ _id: id }, { $set: req.body })
     .exec()
     .then((doc) => {
@@ -145,8 +145,8 @@ export const productUpdateById = (req, res, next) => {
     });
 };
 
-export const productDeleteById = (req, res, next) => {
-  const id = req.params.productId;
+export const userDeleteById = (req, res, next) => {
+  const id = req.params.userId;
   User.remove({ _id: id })
     .exec()
     .then((doc) => {

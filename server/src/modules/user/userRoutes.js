@@ -1,20 +1,23 @@
 import { Router } from 'express';
-
+import userCheckAuth from './userCheckAuth';
 import {
   userGetAll,
   userCreate,
   userLogin,
+  userGetById,
+  userDeleteById,
 } from './userControllers';
+
 
 const router = Router();
 
 router.get('/', userGetAll);
 router.post('/', userCreate);
 router.post('/login', userLogin);
+router.get('/:userId', userCheckAuth, userGetById);
+router.delete('/:userId', userCheckAuth, userDeleteById);
 
 // Not active
-// router.get('/:userId', userGetById);
 // router.patch('/:userId', userUpdateById);
-// router.delete('/:userId', userDeleteById);
 
 export default router;

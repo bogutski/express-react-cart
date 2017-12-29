@@ -1,0 +1,369 @@
+{
+  "info": {
+    "name": "ER-cart",
+    "_postman_id": "6fae9221-3904-a569-965d-6e3238cf121d",
+    "description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "PRODUCT",
+      "description": "",
+      "item": [
+        {
+          "name": "All products",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "name",
+                "value": "jon",
+                "disabled": true
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\":\"New Prod II\",\n  \"price\": 9.20\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products"
+              ]
+            },
+            "description": "index"
+          },
+          "response": []
+        },
+        {
+          "name": "Get Product by id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Super Cars 2\",\n    \"price\": 10\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/products/5a4465a37b6f217bb522d500",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products",
+                "5a4465a37b6f217bb522d500"
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Create product",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "U23-",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "price",
+                  "value": "22",
+                  "description": "",
+                  "type": "text"
+                },
+                {
+                  "key": "image",
+                  "value": "",
+                  "description": "",
+                  "type": "file"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:5000/products",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products"
+              ]
+            },
+            "description": "index"
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product by id",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:5000/products/5a3dde2529f3e70df6e71900",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products",
+                "5a3dde2529f3e70df6e71900"
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product by id",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:5000/products/5a3ea45726c7bf17e4c320cd",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "products",
+                "5a3ea45726c7bf17e4c320cd"
+              ]
+            },
+            "description": ""
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "USER",
+      "description": "",
+      "item": [
+        {
+          "name": "All Users",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:5000/user",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "user"
+              ]
+            },
+            "description": "Create User"
+          },
+          "response": []
+        },
+        {
+          "name": "Get User by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:5000/user/5a468e2e420a121fe86a4a4a",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "user",
+                "5a468e2e420a121fe86a4a4a"
+              ]
+            },
+            "description": "Create User"
+          },
+          "response": []
+        },
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"email\": \"test2@test.com\",\n\t\"password\": \"pass\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/user",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "user"
+              ]
+            },
+            "description": "Create User"
+          },
+          "response": []
+        },
+        {
+          "name": "User Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "id": "234a0b1c-0db4-41b0-aec8-f1147fec440f",
+                "type": "text/javascript",
+                "exec": [
+                  "var data = pm.response.json();",
+                  "pm.environment.set(\"_token\", data.token);"
+                ]
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"email\": \"test2@test.com\",\n\t\"password\": \"pass\"\n}"
+            },
+            "url": {
+              "raw": "http://localhost:5000/user/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "user",
+                "login"
+              ]
+            },
+            "description": "Create User"
+          },
+          "response": []
+        },
+        {
+          "name": "Delete User",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{_token}}"
+              }
+            ],
+            "body": {},
+            "url": {
+              "raw": "http://localhost:5000/user/5a45eb39cca02415c5ebd103",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "5000",
+              "path": [
+                "user",
+                "5a45eb39cca02415c5ebd103"
+              ]
+            },
+            "description": "Create User"
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "97b165ba-2006-4ee2-af22-bd5ac4c9cbc2",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "2ae7b495-8b6c-4a5f-9421-09339df1026b",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ]
+}
