@@ -3,13 +3,14 @@ import { Router } from 'express';
 import {
   userGetAll,
   userCreate,
+  userLogin,
 } from './userControllers';
 
 const router = Router();
 
 router.get('/', userGetAll);
 router.post('/', userCreate);
-// router.post('/', userLogin);
+router.post('/login', userLogin);
 
 // Not active
 // router.get('/:userId', userGetById);

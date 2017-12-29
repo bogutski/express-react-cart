@@ -1,5 +1,6 @@
 {
   "env": {
-    "MONGO_ATLAS_PWD": "siteograf"
+    "MONGO_ATLAS_PWD": "siteograf",
+    "JWT_KEY": "secretKey"
   }
 }
