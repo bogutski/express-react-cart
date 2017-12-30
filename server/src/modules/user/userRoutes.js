@@ -8,7 +8,6 @@ import {
   userDeleteById,
 } from './userControllers';
 
-
 const router = Router();
 
 router.get('/', userGetAll);

@@ -4,3 +4,6 @@ server/dist/*
 client/node_modules/
 server/uploads/*
 server/yarn.lock
+/client/package-lock.json
+/client/yarn.lock
+/client/src/styles/*.css
