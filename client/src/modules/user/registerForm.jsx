@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Form, FormGroup, Input, Label, Button } from 'reactstrap';
-import { reduxForm, Field } from 'redux-form';
-
+import { Button, Form } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
+import { TextField } from './../form/form';
+import { minLength2, required } from './../form/validators';
 
 class UserRegisterForm extends Component {
   constructor(props) {
@@ -16,46 +17,31 @@ class UserRegisterForm extends Component {
     console.log('submit');
   }
 
-  input({ input, meta, label }) {
-    return (
-      <div>
-        <pre>{JSON.stringify(meta, 0, 2)}</pre>
-        <pre>{JSON.stringify(input, 0, 2)}</pre>
-        <Label for="exampleEmail">Email</Label>
-        {label}
-        <input {...input} />
-      </div>
-    );
-  }
-
   render() {
     return (
       <Form onSubmit={this.formSubmit}>
-        <FormGroup>
-          <Field name="email" label="Email" component={this.input} type="text" />
-          <Field name="password" component="input" type="password" />
+        <Field
+          name="email"
+          type="text"
+          label="Email"
+          component={TextField}
+          descr="Description here"
+          validate={[minLength2, required]}
+        />
 
-        </FormGroup>
-        <FormGroup>
-          <Label for="examplePassword">Password</Label>
-          <Input
-            type="password"
-            name="password"
-            id="examplePassword"
-            placeholder="password placeholder"
-          />
-        </FormGroup>
+        <Field name="password" component={TextField} type="password"/>
+
         <Button type="submit">Submit</Button>
       </Form>
     );
   }
 }
 
-const mapStateToProps = state => ({ });
+const mapStateToProps = state => ({});
 
-const mapDispatchToProps = dispatch => ({ });
+const mapDispatchToProps = dispatch => ({});
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  reduxForm({ form: 'userRegister' }),
+  reduxForm({form: 'userRegister'}),
 )(UserRegisterForm);
