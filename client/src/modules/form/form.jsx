@@ -9,15 +9,17 @@ export const TextField = ({
     <div className={[
       'form-group',
       meta.invalid && meta.touched ? 'has-warning' : null,
+      meta.valid && meta.touched ? 'has-success' : null,
     ].join(' ')}
     >
-      {label && <label htmlFor={input.name}>{label}</label>}
+      {label && <label className="col-form-label" htmlFor={input.name}>{label}</label>}
 
       <input
         {...input}
         className={[
           'form-control',
-          !meta.valid && meta.touched ? 'form-control-warning' : null,
+          meta.invalid && meta.touched ? 'form-control-warning' : null,
+          meta.valid && meta.touched ? 'form-control-success' : null,
         ].join(' ')}
       />
 

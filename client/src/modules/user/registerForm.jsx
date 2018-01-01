@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from './../form/form';
-import { minLength2, required } from './../form/validators';
+import { minLength2, required, email } from './../form/validators';
 
 class UserRegisterForm extends Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class UserRegisterForm extends Component {
           label="Email"
           component={TextField}
           descr="Description here"
-          validate={[minLength2, required]}
+          validate={[required, email]}
         />
 
         <Field name="password" component={TextField} type="password"/>
