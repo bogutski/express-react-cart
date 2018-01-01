@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from './../form/form';
-import { minLength2, required, email } from './../form/validators';
+import { minLength5, required, email } from './../form/validators';
 
 class UserRegisterForm extends Component {
   constructor(props) {
@@ -23,13 +23,18 @@ class UserRegisterForm extends Component {
         <Field
           name="email"
           type="text"
-          label="Email"
+          placeholder="Email"
           component={TextField}
-          descr="Description here"
           validate={[required, email]}
         />
 
-        <Field name="password" component={TextField} type="password"/>
+        <Field
+          placeholder="Password"
+          name="password"
+          component={TextField}
+          type="password"
+          validate={[required, minLength5]}
+        />
 
         <Button type="submit">Submit</Button>
       </Form>
@@ -43,5 +48,5 @@ const mapDispatchToProps = dispatch => ({});
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  reduxForm({form: 'userRegister'}),
+  reduxForm({ form: 'userRegister' }),
 )(UserRegisterForm);

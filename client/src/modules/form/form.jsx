@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const TextField = ({
-  input, meta, label, descr,
+  input, meta, label, placeholder, descr,
 }) => (
   <div>
     {/* <pre>{JSON.stringify(meta, 0, 2)}</pre> */}
@@ -16,6 +16,7 @@ export const TextField = ({
 
       <input
         {...input}
+        placeholder={placeholder}
         className={[
           'form-control',
           meta.invalid && meta.touched ? 'form-control-warning' : null,
