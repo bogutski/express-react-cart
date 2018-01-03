@@ -11,10 +11,7 @@ export const userGetAll = (req, res, next) => {
       res.status(200).json(docs);
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
+      res.status(500).json({ message: { text: err, type: 'error' } });
     });
 };
 
@@ -23,16 +20,13 @@ export const userCreate = (req, res, next) => {
     .exec()
     .then((doc) => {
       if (doc.length > 0) {
-        res.status(201).json({
-          message: { text: 'Mail exist', type: 'error' },
-        });
+        /* eslint no-throw-literal: 0 */
+        throw 'Mail exist';
       }
 
-      bcrypt.hash(req.body.password, 10, (err, hash) => {
-        if (err) {
-          return res.status(500).json({
-            error: err,
-          });
+      bcrypt.hash(req.body.password, 10, (bcryptError, hash) => {
+        if (bcryptError) {
+          return res.status(500).json({ message: { text: bcryptError, type: 'error' } });
         }
 
         const user = new User({
@@ -44,18 +38,23 @@ export const userCreate = (req, res, next) => {
         user
           .save()
           .then((result) => {
-            console.log(result);
             res.status(201).json({
               message: { text: 'User created', type: 'success' },
             });
           })
-          .catch((err) => {
-            console.log(err);
+          .catch((userError) => {
             res.status(500).json({
-              error: err,
+              message: { text: userError, type: 'error' },
             });
           });
       });
+    })
+    .catch((error) => {
+      if (error === 'Mail exist') {
+        res.status(409).json({
+          message: { text: 'Mail exist', type: 'error' },
+        });
+      }
     });
 };
 
@@ -99,8 +98,7 @@ export const userLogin = (req, res, next) => {
       });
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({ error: err });
+      res.status(500).json({ message: { text: err, type: 'error' } });
     });
 };
 
@@ -117,8 +115,7 @@ export const userGetById = (req, res, next) => {
       }
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({ error: err });
+      res.status(500).json({ message: { text: err, type: 'error' } });
     });
 };
 
@@ -138,10 +135,7 @@ export const userUpdateById = (req, res, next) => {
       }
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
+      res.status(500).json({ message: { text: err, type: 'error' } });
     });
 };
 
@@ -161,9 +155,6 @@ export const userDeleteById = (req, res, next) => {
       }
     })
     .catch((err) => {
-      console.log(err);
-      res.status(500).json({
-        error: err,
-      });
+      res.status(500).json({ message: { text: err, type: 'error' } });
     });
 };
