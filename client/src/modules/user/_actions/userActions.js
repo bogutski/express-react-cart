@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Notifications from 'react-notification-system-redux';
 
-import post from './wrap';
+import post from '../../httpRequest/httpMethods';
 
 export function registerUser(email, password) {
   return dispatch =>
