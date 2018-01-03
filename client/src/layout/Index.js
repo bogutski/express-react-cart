@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Col, Container, Row } from 'reactstrap';
-
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import UserRegisterForm from './../modules/user/registerForm';
+import Alert from './../modules/alert/alert';
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +16,7 @@ class App extends Component {
   render() {
     return (
       <Container>
+        <Alert />
         <Row>
           <Col sm="12">
             <Header />

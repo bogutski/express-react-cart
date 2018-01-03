@@ -24,7 +24,7 @@ export const userCreate = (req, res, next) => {
     .then((doc) => {
       if (doc.length > 0) {
         res.status(201).json({
-          message: 'Mail exist',
+          message: { text: 'Mail exist', type: 'error' },
         });
       }
 
@@ -46,7 +46,7 @@ export const userCreate = (req, res, next) => {
           .then((result) => {
             console.log(result);
             res.status(201).json({
-              message: 'User created',
+              message: { text: 'User created', type: 'success' },
             });
           })
           .catch((err) => {
@@ -65,14 +65,14 @@ export const userLogin = (req, res, next) => {
     .then((user) => {
       if (!user.length) {
         res.status(401).json({
-          message: 'Auth failed. Email',
+          message: { text: 'Auth failed. Email', type: 'error' },
         });
       }
 
       bcrypt.compare(req.body.password, user[0].password, (err, result) => {
         if (err) {
           res.status(401).json({
-            message: 'Auth failed. Error',
+            message: { text: 'Auth failed. Email', type: 'error' },
           });
         }
 
@@ -88,13 +88,13 @@ export const userLogin = (req, res, next) => {
             },
           );
           return res.status(200).json({
-            message: 'Auth success',
+            message: { text: 'Auth success', type: 'success' },
             token,
           });
         }
 
         res.status(401).json({
-          message: 'Auth failed',
+          message: { text: 'Auth failed', type: 'error' },
         });
       });
     })
@@ -113,7 +113,7 @@ export const userGetById = (req, res, next) => {
       if (doc) {
         res.status(200).json(doc);
       } else {
-        res.status(404).json({ message: 'No user for provided id' });
+        res.status(404).json({ message: { text: 'No user for provided id', type: 'error' } });
       }
     })
     .catch((err) => {
@@ -129,11 +129,11 @@ export const userUpdateById = (req, res, next) => {
     .then((doc) => {
       if (doc.n) {
         res.status(200).json({
-          message: 'User updated',
+          message: { text: 'User updated', type: 'success' },
         });
       } else {
         res.status(400).json({
-          message: 'User not found',
+          message: { text: 'User not found', type: 'error' },
         });
       }
     })
@@ -152,11 +152,11 @@ export const userDeleteById = (req, res, next) => {
     .then((doc) => {
       if (doc.result.n) {
         res.status(200).json({
-          message: 'User deleted',
+          message: { text: 'User deleted', type: 'success' },
         });
       } else {
         res.status(400).json({
-          message: 'User not found',
+          message: { text: 'User not found', type: 'error' },
         });
       }
     })
@@ -167,4 +167,3 @@ export const userDeleteById = (req, res, next) => {
       });
     });
 };
-

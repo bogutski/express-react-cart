@@ -23,7 +23,6 @@ class UserRegisterForm extends Component {
   }
 
   render() {
-    console.log(this.props.userRegisterForm);
     return (
       <Form onSubmit={this.formSubmit}>
         <h3>User Register</h3>
