@@ -5,7 +5,7 @@ import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from './../form/form';
 import { email as validEmail, minLength5, required } from './../form/validators';
-import { registerUser } from './_actions/userActions';
+import { userRegister } from './_actions/userActions';
 
 class UserRegisterForm extends Component {
   constructor(props) {
@@ -19,7 +19,7 @@ class UserRegisterForm extends Component {
 
     const email = this.props.userRegisterForm.values.email;
     const password = this.props.userRegisterForm.values.password;
-    this.props.registerUser(email, password);
+    this.props.userRegister(email, password);
   }
 
   render() {
@@ -59,7 +59,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  registerUser: (email, password) => dispatch(registerUser(email, password)),
+  userRegister: (email, password) => dispatch(userRegister(email, password)),
 });
 
 

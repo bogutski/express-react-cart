@@ -3,7 +3,7 @@ import Notifications from 'react-notification-system-redux';
 
 import post from '../../httpRequest/httpMethods';
 
-export function registerUser(email, password) {
+export function userRegister(email, password) {
   return dispatch =>
     post(
       '/user',
@@ -38,26 +38,10 @@ export function getAllUsers() {
       });
 }
 
-export function registerUser2(email, password) {
+export function userLogin(email, password) {
   return dispatch =>
-    axios.post(
-      '/user',
+    post(
+      '/user/login',
       { email, password },
-    )
-      .then((res) => {
-        dispatch({
-          type: 'USER_REGISTER',
-          payload: res.data,
-        });
-        return res;
-      })
-      .then((res) => {
-        console.log(res);
-        dispatch(Notifications.success({ title: res.data.message.text }));
-      })
-      .catch((error) => {
-        if (error.response) {
-          dispatch(Notifications.error({ title: error.response.data.message.text }));
-        }
-      });
+    );
 }

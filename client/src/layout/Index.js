@@ -4,7 +4,8 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import UserRegisterForm from './../modules/user/registerForm';
+import UserRegisterForm from '../modules/user/userRegisterForm';
+import UserLoginForm from '../modules/user/userLoginForm';
 import Alert from './../modules/alert/alert';
 
 class App extends Component {
@@ -26,6 +27,8 @@ class App extends Component {
             <div className="content">
               <div className="col">
                 <UserRegisterForm />
+                <hr />
+                <UserLoginForm />
               </div>
             </div>
           </Col>
