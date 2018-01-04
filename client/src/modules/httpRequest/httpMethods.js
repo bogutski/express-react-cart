@@ -2,8 +2,13 @@ import axios from 'axios';
 import Notifications from 'react-notification-system-redux';
 import store from '../../redux/store';
 
-export function post(URL, data) {
-  return axios.post(URL, data)
+export function post(url, data) {
+  return axios({
+    method: 'post',
+    url,
+    data: { data },
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  })
     .then((res) => {
       store.dispatch(Notifications.removeAll()); // Removes all notifications
       store.dispatch(Notifications.success({
@@ -23,8 +28,12 @@ export function post(URL, data) {
     });
 }
 
-export function get(URL) {
-  return axios.get(URL)
+export function get(url) {
+  return axios({
+    method: 'get',
+    url,
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+  })
     .then(res => res)
     .catch((error) => {
       if (error.response) {

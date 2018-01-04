@@ -89,6 +89,7 @@ export const userLogin = (req, res, next) => {
           return res.status(200).json({
             message: { text: 'Auth success', type: 'success' },
             token,
+            userId: user[0]._id,
           });
         }
 
@@ -105,7 +106,7 @@ export const userLogin = (req, res, next) => {
 export const userGetById = (req, res, next) => {
   const id = req.params.userId;
   User.findById(id)
-    .select('-__v')
+    .select('-__v -password')
     .exec()
     .then((doc) => {
       if (doc) {

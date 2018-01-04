@@ -10,7 +10,7 @@ import {
 
 const router = Router();
 
-router.get('/', userGetAll);
+router.get('/', userCheckAuth, userGetAll);
 router.post('/', userCreate);
 router.post('/login', userLogin);
 router.get('/:userId', userCheckAuth, userGetById);

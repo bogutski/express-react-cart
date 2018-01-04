@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { get, post } from '../../httpRequest/httpMethods';
 
 export function userRegister(email, password) {
@@ -25,10 +26,26 @@ export function getAllUsers() {
       });
 }
 
+export function getUserById(userId) {
+  return dispatch =>
+    get(`/user/${userId}`)
+      .then((res) => {
+        dispatch({
+          type: 'USER_INFO',
+          payload: res.data,
+        });
+      });
+}
+
 export function userLogin(email, password) {
   return dispatch =>
-    post(
+    axios.post(
       '/user/login',
       { email, password },
-    );
+    )
+      .then((res) => {
+        console.log(res.data);
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('userId', res.data.userId);
+      });
 }
