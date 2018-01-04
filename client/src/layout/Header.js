@@ -1,8 +1,9 @@
 import React from 'react';
+import MainMenu from './MainMenu';
 
 const Header = () => (
   <div className="">
-    Header
+    <MainMenu />
   </div>
 );
 

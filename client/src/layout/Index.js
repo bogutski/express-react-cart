@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Col, Container, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import { Route, Switch } from 'react-router';
 import Header from './Header';
 import Footer from './Footer';
 import UserRegisterForm from '../modules/user/userRegisterForm';
@@ -26,15 +27,15 @@ class App extends Component {
           <Col>
             <div className="content">
               <div className="col">
-                <UserRegisterForm />
-                <hr />
-                <UserLoginForm />
+                <Switch>
+                  <Route exact path="/user/register" component={UserRegisterForm} />
+                  <Route path="/user/login" component={UserLoginForm} />
+                </Switch>
               </div>
             </div>
           </Col>
 
         </Row>
-
 
         <Footer />
 

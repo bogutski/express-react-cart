@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from './../form/form';
-import { email as validEmail, minLength5, required } from './../form/validators';
+import { email as validEmail, required } from './../form/validators';
 import { userLogin } from './_actions/userActions';
 
 class UserLoginForm extends Component {
