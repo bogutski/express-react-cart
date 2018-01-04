@@ -11,7 +11,7 @@ const userCheckAuth = (req, res, next) => {
   } catch (error) {
     console.log(error);
     return res.status(401).json({
-      message: 'Auth failed',
+      message: { text: 'Auth failed', type: 'error' },
     });
   }
 };

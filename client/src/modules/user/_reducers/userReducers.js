@@ -4,16 +4,15 @@ const initialState = {
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-  case 'USER_LIST':
-    return {
-      ...state,
-      userList: action.payload,
-    };
+    case 'USER_LIST':
+      return {
+        ...state,
+        userList: action.payload,
+      };
 
-  default:
-    return state;
+    default:
+      return state;
   }
 };
-
 
 export default user;

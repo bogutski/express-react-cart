@@ -23,16 +23,9 @@ export function post(URL, data) {
     });
 }
 
-export function get(URL, data) {
-  return axios.het(URL, data)
-    .then((res) => {
-      store.dispatch(Notifications.removeAll()); // Removes all notifications
-      store.dispatch(Notifications.success({
-        title: res.data.message.text,
-        autoDismiss: 0,
-      }));
-      return res;
-    })
+export function get(URL) {
+  return axios.get(URL)
+    .then(res => res)
     .catch((error) => {
       if (error.response) {
         store.dispatch(Notifications.error({

@@ -5,9 +5,10 @@ import { withRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import Header from './Header';
 import Footer from './Footer';
+import Alert from './../modules/alert/alert';
 import UserRegisterForm from '../modules/user/userRegisterForm';
 import UserLoginForm from '../modules/user/userLoginForm';
-import Alert from './../modules/alert/alert';
+import UserList from './../modules/user/userList';
 
 class App extends Component {
   constructor(props) {
@@ -30,6 +31,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/user/register" component={UserRegisterForm} />
                   <Route path="/user/login" component={UserLoginForm} />
+                  <Route path="/user/list" component={UserList} />
                 </Switch>
               </div>
             </div>

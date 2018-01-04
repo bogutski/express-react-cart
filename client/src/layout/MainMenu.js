@@ -8,6 +8,9 @@ class MainMenu extends Component {
     return (
       <Nav className="nav justify-content-end">
         <NavItem>
+          <Link to="/user/list" className="nav-link">List</Link>
+        </NavItem>
+        <NavItem>
           <Link to="/user/register" className="nav-link">Register</Link>
         </NavItem>
         <NavItem>

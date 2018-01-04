@@ -7,7 +7,6 @@ export function userRegister(email, password) {
       { email, password },
     )
       .then((res) => {
-        console.log(res);
         dispatch({
           type: 'USER_REGISTER',
           payload: res.data,
@@ -17,7 +16,7 @@ export function userRegister(email, password) {
 
 export function getAllUsers() {
   return dispatch =>
-    get('user')
+    get('/user')
       .then((res) => {
         dispatch({
           type: 'USER_LIST',
