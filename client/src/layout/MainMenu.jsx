@@ -10,11 +10,17 @@ class MainMenu extends Component {
         <NavItem>
           <Link to="/user/list" className="nav-link">List</Link>
         </NavItem>
+
         <NavItem>
           <Link to="/user/register" className="nav-link">Register</Link>
         </NavItem>
+
         <NavItem>
           <Link to="/user/login" className="nav-link">Login</Link>
+        </NavItem>
+
+        <NavItem>
+          <Link to="/user/logout" className="nav-link">Logout</Link>
         </NavItem>
       </Nav>
     );
