@@ -1,32 +1,15 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import UserMenu from './../modules/user/userMenu';
 
 class MainMenu extends Component {
   render() {
     return (
-      <Nav className="nav justify-content-end">
-        <NavItem>
-          <Link to="/user/list" className="nav-link">List</Link>
-        </NavItem>
-
-        <NavItem>
-          <Link to="/user/register" className="nav-link">Register</Link>
-        </NavItem>
-
-        <NavItem>
-          <Link to="/user/login" className="nav-link">Login</Link>
-        </NavItem>
-
-        <NavItem>
-          <Link to="/user/logout" className="nav-link">Logout</Link>
-        </NavItem>
-      </Nav>
+      <div>
+        {/* Catalog menu */}
+        <UserMenu />
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({});
-
-export default connect(mapStateToProps)(MainMenu);
+export default MainMenu;

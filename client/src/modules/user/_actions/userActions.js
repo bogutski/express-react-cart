@@ -1,11 +1,15 @@
 import axios from 'axios';
 import { get, post } from '../../httpRequest/httpMethods';
+import { push } from 'react-router-redux';
 
 export function userRegister(email, password) {
   return dispatch =>
     post(
       '/user',
-      { email, password },
+      {
+        email,
+        password,
+      },
     )
       .then((res) => {
         dispatch({
@@ -41,11 +45,27 @@ export function userLogin(email, password) {
   return dispatch =>
     axios.post(
       '/user/login',
-      { email, password },
+      {
+        email,
+        password,
+      },
     )
       .then((res) => {
-        console.log(res.data);
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('userId', res.data.userId);
+        return res;
+      })
+      .then((res) => {
+        dispatch(getUserById(res.data.userId));
       });
+}
+
+export function userLogout() {
+  return (dispatch) => {
+    dispatch({
+      type: 'USER_LOGOUT',
+    });
+    dispatch(push('/'));
+    localStorage.clear();
+  };
 }

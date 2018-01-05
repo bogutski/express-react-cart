@@ -3,17 +3,25 @@ import { Col, Container, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
+import _ from 'lodash';
 import Header from './Header';
 import Footer from './Footer';
 import Alert from './../modules/alert/alert';
 import UserRegisterForm from '../modules/user/userRegisterForm';
 import UserLoginForm from '../modules/user/userLoginForm';
 import UserList from './../modules/user/userList';
+import { getUserById } from '../modules/user/_actions/userActions';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+  }
+
+  componentDidMount() {
+    if (_.isEmpty(this.props.userInfo)) {
+      this.props.getUserById(localStorage.getItem('userId'));
+    }
   }
 
   render() {
@@ -29,9 +37,10 @@ class App extends Component {
             <div className="content">
               <div className="col">
                 <Switch>
+                  <Route exact path="/" component={UserRegisterForm} />
+                  <Route exact path="/user/list" component={UserList} />
+                  <Route exact path="/user/login" component={UserLoginForm} />
                   <Route exact path="/user/register" component={UserRegisterForm} />
-                  <Route path="/user/login" component={UserLoginForm} />
-                  <Route path="/user/list" component={UserList} />
                 </Switch>
               </div>
             </div>
@@ -46,6 +55,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  userInfo: state.user.userInfo,
+});
 
-export default withRouter(connect(mapStateToProps)(App));
+const mapDispatchToProps = dispatch => ({
+  getUserById: userId => dispatch(getUserById(userId)),
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

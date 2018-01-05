@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactTable from 'react-table';
 import { getAllUsers } from './_actions/userActions';
+import { withRouter } from 'react-router-dom';
 
 class UserList extends Component {
   componentDidMount() {
@@ -42,4 +43,4 @@ const mapDispatchToProps = dispatch => ({
   getAllUsers: () => dispatch(getAllUsers()),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UserList);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserList));

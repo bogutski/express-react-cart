@@ -1,19 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import _ from 'lodash';
 import { getUserById } from './_actions/userActions';
 
 class UseShortInfo extends Component {
-  componentDidMount() {
-    if (_.isEmpty(this.props.userInfo)) {
-      this.props.getUserById(localStorage.getItem('userId'));
-    }
-  }
-
   render() {
     return (
       <div>
-        {this.props.userInfo.email}
+        {this.props.userInfo && this.props.userInfo.email}
       </div>
     );
   }
