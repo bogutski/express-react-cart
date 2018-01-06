@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { get, post } from '../../httpRequest/httpMethods';
 import { push } from 'react-router-redux';
+import { get, post } from '../../httpRequest/httpMethods';
 
 export function userRegister(email, password) {
   return dispatch =>
@@ -62,10 +62,10 @@ export function userLogin(email, password) {
 
 export function userLogout() {
   return (dispatch) => {
+    dispatch(push('/'));
     dispatch({
       type: 'USER_LOGOUT',
     });
-    dispatch(push('/'));
     localStorage.clear();
   };
 }

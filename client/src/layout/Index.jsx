@@ -10,6 +10,8 @@ import Alert from './../modules/alert/alert';
 import UserRegisterForm from '../modules/user/userRegisterForm';
 import UserLoginForm from '../modules/user/userLoginForm';
 import UserList from './../modules/user/userList';
+import Home from './../modules/home/home';
+import Catalog from './../modules/catalog/catalog';
 import { getUserById } from '../modules/user/_actions/userActions';
 
 class App extends Component {
@@ -19,7 +21,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    if (_.isEmpty(this.props.userInfo)) {
+    if (_.isEmpty(this.props.userInfo) && !_.isEmpty(localStorage.getItem('userId'))) {
       this.props.getUserById(localStorage.getItem('userId'));
     }
   }
@@ -37,7 +39,8 @@ class App extends Component {
             <div className="content">
               <div className="col">
                 <Switch>
-                  <Route exact path="/" component={UserRegisterForm} />
+                  <Route exact path="/" component={Home} />
+                  <Route exact path="/catalog" component={Catalog} />
                   <Route exact path="/user/list" component={UserList} />
                   <Route exact path="/user/login" component={UserLoginForm} />
                   <Route exact path="/user/register" component={UserRegisterForm} />

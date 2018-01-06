@@ -16,11 +16,7 @@ const reactRouterRedux = routerMiddleware(history);
 
 const store = createStore(
   reducer,
-  composeWithDevTools(
-    applyMiddleware(thunk),
-    applyMiddleware(logger),
-    applyMiddleware(reactRouterRedux),
-  ),
+  composeWithDevTools(applyMiddleware(thunk, logger, reactRouterRedux)),
 );
 
 export default store;

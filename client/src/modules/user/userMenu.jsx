@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import _ from 'lodash';
 import { userLogout } from './_actions/userActions';
 
@@ -9,6 +9,13 @@ class UserMenu extends Component {
   render() {
     return (
       <Nav className="nav justify-content-end">
+        <NavItem>
+          <Link to="/" className="nav-link">Home</Link>
+        </NavItem>
+
+        <NavItem>
+          <Link to="/catalog" className="nav-link">Catalog</Link>
+        </NavItem>
 
         {!_.isEmpty(this.props.userInfo) &&
         <NavItem>
@@ -45,4 +52,5 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   userLogout: () => dispatch(userLogout()),
 });
-export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserMenu));

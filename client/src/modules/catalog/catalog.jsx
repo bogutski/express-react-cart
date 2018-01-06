@@ -1,22 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 
-class UseShortInfo extends Component {
+class Catalog extends Component {
   render() {
     return (
       <div>
-        {this.props.userInfo && this.props.userInfo.email}
+        Catalog
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  userInfo: state.user.userInfo,
-});
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => ({
   // getUserById: userId => dispatch(getUserById(userId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(UseShortInfo);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Catalog));
