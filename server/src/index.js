@@ -48,7 +48,7 @@ app.use((req, res, next) => { // eslint-disable-line consistent-return
 });
 
 // ===== ROUTING =====
-app.use('/products', productRouter);
+app.use('/product', productRouter);
 app.use('/user', userRouter);
 
 // ===== ERROR HANDLING =====
