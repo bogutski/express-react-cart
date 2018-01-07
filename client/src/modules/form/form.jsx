@@ -19,12 +19,12 @@ export const TextField = ({
         placeholder={placeholder}
         className={[
           'form-control',
-          meta.invalid && meta.touched ? 'form-control-warning' : null,
-          meta.valid && meta.touched ? 'form-control-success' : null,
+          meta.invalid && meta.touched ? 'is-invalid' : null,
+          meta.valid && meta.touched ? 'is-valid' : null,
         ].join(' ')}
       />
 
-      {meta.invalid && meta.touched && <div className="form-control-feedback">{meta.error}</div>}
+      {meta.invalid && meta.touched && <div className="invalid-feedback">{meta.error}</div>}
 
       <small className="form-text text-muted">{descr}</small>
 
