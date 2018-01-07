@@ -32,9 +32,8 @@ class App extends Component {
       <Container>
         <Alert />
         <Row>
-          <Col sm="12">
-            <Header />
-          </Col>
+
+          <Header />
 
           <Col>
             <div className="content">

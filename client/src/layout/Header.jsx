@@ -1,12 +1,11 @@
 import React from 'react';
-import MainMenu from './MainMenu';
-import UseShortInfo from './../modules/user/userShortInfo';
+import { Col } from 'reactstrap';
+import MainMenu from '../modules/navigation/mainMenu';
 
 const Header = () => (
-  <div className="">
+  <Col sm="12">
     <MainMenu />
-    <UseShortInfo />
-  </div>
+  </Col>
 );
 
 export default Header;
