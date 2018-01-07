@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
+import _ from 'lodash';
 import { TextField } from './../form/form';
 import { email as validEmail, required } from './../form/validators';
 import { userLogin } from './_actions/userActions';
@@ -22,7 +23,7 @@ class UserLoginForm extends Component {
     this.props.userLogin(email, password);
   }
 
-  render() {
+  form() {
     return (
       <Form onSubmit={this.formSubmit}>
         <h3>User Login</h3>
@@ -46,17 +47,35 @@ class UserLoginForm extends Component {
         <Button
           type="submit"
           color="primary"
-          disabled={this.props.userRegisterForm && {}.hasOwnProperty.call(this.props.userRegisterForm, 'syncErrors')}
+          disabled={this.props.userLoginForm && {}.hasOwnProperty.call(this.props.userLoginForm, 'syncErrors')}
           value="Register"
         >Login
         </Button>
       </Form>
     );
   }
+
+  insteadForm() {
+    return (
+      <span>User already logged</span>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {_.isEmpty(this.props.userInfo)
+          ? this.form()
+          : this.insteadForm()
+        }
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
   userLoginForm: state.form.userLogin,
+  userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = dispatch => ({

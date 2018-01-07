@@ -2,12 +2,17 @@ import axios from 'axios';
 import Notifications from 'react-notification-system-redux';
 import store from '../../redux/store';
 
+const headers = {
+  Authorization: `Bearer ${localStorage.getItem('token')}`,
+  // 'Content-Type': 'multipart/form-data',
+};
+
 export function post(url, data) {
   return axios({
     method: 'post',
     url,
-    data: { data },
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    data,
+    headers,
   })
     .then((res) => {
       store.dispatch(Notifications.removeAll()); // Removes all notifications
@@ -32,7 +37,7 @@ export function get(url) {
   return axios({
     method: 'get',
     url,
-    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    headers,
   })
     .then(res => res)
     .catch((error) => {

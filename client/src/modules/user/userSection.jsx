@@ -10,7 +10,7 @@ class UserSection extends Component {
     return (
       <Collapse isOpen={this.props.isOpen} navbar>
         <Nav className="ml-auto" navbar>
-          <UncontrolledDropdown nav inNavbar>
+          <UncontrolledDropdown nav>
 
             <DropdownToggle nav caret>
               {this.props.userInfo.email}

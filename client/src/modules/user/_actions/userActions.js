@@ -1,4 +1,3 @@
-import axios from 'axios';
 import { push } from 'react-router-redux';
 import { get, post } from '../../httpRequest/httpMethods';
 
@@ -43,7 +42,7 @@ export function getUserById(userId) {
 
 export function userLogin(email, password) {
   return dispatch =>
-    axios.post(
+    post(
       '/user/login',
       {
         email,

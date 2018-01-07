@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
+import _ from 'lodash';
 import { TextField } from './../form/form';
 import { email as validEmail, minLength5, required } from './../form/validators';
 import { userRegister } from './_actions/userActions';
@@ -22,7 +23,7 @@ class UserRegisterForm extends Component {
     this.props.userRegister(email, password);
   }
 
-  render() {
+  form() {
     return (
       <Form onSubmit={this.formSubmit}>
         <h3>User Register</h3>
@@ -52,10 +53,28 @@ class UserRegisterForm extends Component {
       </Form>
     );
   }
+
+  insteadForm() {
+    return (
+      <span>User already registered</span>
+    );
+  }
+
+  render() {
+    return (
+      <div>
+        {_.isEmpty(this.props.userInfo)
+          ? this.form()
+          : this.insteadForm()
+        }
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
   userRegisterForm: state.form.userRegister,
+  userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = dispatch => ({
