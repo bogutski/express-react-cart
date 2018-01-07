@@ -20,6 +20,9 @@ class UserSection extends Component {
               <DropdownItem onClick={() => this.props.userLogout()}>
                 Logout
               </DropdownItem>
+
+              <Link to="/user/list" className="dropdown-item">User list</Link>
+
             </DropdownMenu>
 
           </UncontrolledDropdown>
@@ -31,10 +34,6 @@ class UserSection extends Component {
   unauthMenu() {
     return (
       <Nav className="ml-auto" navbar>
-        <NavItem>
-          <Link to="/user/list" className="nav-link">User list</Link>
-        </NavItem>
-
         <NavItem>
           <Link to="/user/register" className="nav-link">Register</Link>
         </NavItem>
