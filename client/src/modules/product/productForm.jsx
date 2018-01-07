@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Button, Form } from 'reactstrap';
+import { Button, Form, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from './../form/form';
 import { required, number } from './../form/validators';
@@ -17,7 +17,7 @@ class ProductCreateForm extends Component {
     e.preventDefault();
 
     const product = {
-      title: this.props.productForm.values.title,
+      name: this.props.productForm.values.name,
       price: this.props.productForm.values.price,
     };
 
@@ -29,9 +29,9 @@ class ProductCreateForm extends Component {
       <Form onSubmit={this.formSubmit}>
         <h3>Product Create</h3>
         <Field
-          name="title"
+          name="name"
           type="text"
-          placeholder="Title"
+          placeholder="Product name"
           component={TextField}
           validate={[required]}
         />
@@ -43,6 +43,9 @@ class ProductCreateForm extends Component {
           component={TextField}
           validate={[required, number]}
         />
+
+        <Label for="exampleFile">File</Label>
+        <Input type="file" name="file" id="exampleFile" />
 
         <Button
           type="submit"
@@ -56,7 +59,7 @@ class ProductCreateForm extends Component {
 }
 
 const mapStateToProps = state => ({
-  productForm: state.form.productCreate,
+  productForm: state.form.product,
 });
 
 const mapDispatchToProps = dispatch => ({

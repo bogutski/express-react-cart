@@ -8,25 +8,36 @@ import { withRouter } from 'react-router-dom';
 class ProductList extends Component {
   componentDidMount() {
     if (_.isEmpty(this.props.userList)) {
-      // this.props.getAllUsers();
+      this.props.getAllProducts();
     }
   }
 
   columns() {
-    return [{
-      Header: 'Id',
-      accessor: '_id', // String-based value accessors!
-    }, {
-      Header: 'Email',
-      accessor: 'email',
-    }];
+    return [
+      {
+        Header: 'Id',
+        accessor: '_id', // String-based value accessors!
+      },
+      {
+        Header: 'Name',
+        accessor: 'name',
+      },
+      {
+        Header: 'Price',
+        accessor: 'price',
+      },
+      {
+        Header: 'Image',
+        accessor: 'image',
+      },
+    ];
   }
 
   render() {
     return (
       <div>
         <ReactTable
-          data={this.props.userList}
+          data={this.props.productList}
           columns={this.columns()}
           minRows={0}
         />
@@ -36,11 +47,11 @@ class ProductList extends Component {
 }
 
 const mapStateToProps = state => ({
-  // userList: state.user.userList,
+  productList: state.product.productList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  // getAllUsers: () => dispatch(getAllUsers()),
+  getAllProducts: () => dispatch(getAllProducts()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductList));
