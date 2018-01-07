@@ -46,7 +46,10 @@ export const productCreate = (req, res, next) => {
       console.log(err);
       res.status(500)
         .json({
-          error: err,
+          message: {
+            text: err,
+            type: 'error',
+          },
         });
     });
 };
