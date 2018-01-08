@@ -15,6 +15,7 @@ import Catalog from './../modules/catalog/catalogIndex';
 import Product from './../modules/product/productIndex';
 import { getUserById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
+import VocabularEditForm from '../modules/vocabular/vocabularEditForm';
 
 class App extends Component {
   constructor(props) {
@@ -42,7 +43,10 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route exact path="/catalog" component={Catalog} />
+
                   <Route exact path="/vocabular" component={Vocabular} />
+                  <Route exact path="/vocabular/:id" component={VocabularEditForm} />
+
                   <Route exact path="/product" component={Product} />
                   <Route exact path="/user/list" component={UserList} />
                   <Route exact path="/user/login" component={UserLoginForm} />

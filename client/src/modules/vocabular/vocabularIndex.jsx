@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import VocabularCreateForm from './vocabularForm';
+import VocabularCreateForm from './vocabularCreateForm';
 import VocabularList from './vocabularList';
 
 class Vocabular extends Component {

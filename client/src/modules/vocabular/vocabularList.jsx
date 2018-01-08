@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactTable from 'react-table';
+import { withRouter, Link } from 'react-router-dom';
 import { getAllVocabulars } from './_actions/vocabularActions';
-import { withRouter } from 'react-router-dom';
 
 class VocabularList extends Component {
   componentDidMount() {
@@ -21,6 +21,11 @@ class VocabularList extends Component {
       {
         Header: 'Name',
         accessor: 'name',
+      },
+      {
+        Header: 'Actions',
+        id: 'act',
+        accessor: el => <Link to={`/vocabular/${el._id}`}>Edit</Link>,
       },
     ];
   }
