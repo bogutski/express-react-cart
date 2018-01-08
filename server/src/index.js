@@ -2,8 +2,9 @@ import express from 'express';
 import morgan from 'morgan';
 import bodyParser from 'body-parser';
 import mongoose from 'mongoose';
-import productRouter from './modules/product/productRoutes';
 import userRouter from './modules/user/userRoutes';
+import productRouter from './modules/product/productRoutes';
+import vocabularRouter from './modules/vocabular/vocabularRoutes';
 
 const app = express();
 
@@ -48,8 +49,9 @@ app.use((req, res, next) => { // eslint-disable-line consistent-return
 });
 
 // ===== ROUTING =====
-app.use('/product', productRouter);
 app.use('/user', userRouter);
+app.use('/product', productRouter);
+app.use('/vocabular', vocabularRouter);
 
 // ===== ERROR HANDLING =====
 app.use((req, res, next) => res.status(404).json({

@@ -11,9 +11,10 @@ import UserRegisterForm from '../modules/user/userRegisterForm';
 import UserLoginForm from '../modules/user/userLoginForm';
 import UserList from './../modules/user/userList';
 import Home from './../modules/home/home';
-import Catalog from './../modules/catalog/catalog';
+import Catalog from './../modules/catalog/catalogIndex';
 import Product from './../modules/product/productIndex';
 import { getUserById } from '../modules/user/_actions/userActions';
+import Vocabular from '../modules/vocabular/vocabularIndex';
 
 class App extends Component {
   constructor(props) {
@@ -41,6 +42,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route exact path="/catalog" component={Catalog} />
+                  <Route exact path="/vocabular" component={Vocabular} />
                   <Route exact path="/product" component={Product} />
                   <Route exact path="/user/list" component={UserList} />
                   <Route exact path="/user/login" component={UserLoginForm} />

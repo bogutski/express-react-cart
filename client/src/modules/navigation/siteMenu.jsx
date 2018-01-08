@@ -15,6 +15,10 @@ class SiteMenu extends Component {
         </NavItem>
 
         <NavItem>
+          <Link to="/vocabular" className="nav-link">Vocaburars</Link>
+        </NavItem>
+
+        <NavItem>
           <Link to="/product" className="nav-link">Products</Link>
         </NavItem>
       </Nav>
