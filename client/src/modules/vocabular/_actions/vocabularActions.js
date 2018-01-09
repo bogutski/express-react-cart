@@ -1,3 +1,4 @@
+import { reset } from 'redux-form';
 import { get, post } from '../../httpRequest/httpMethods';
 
 export function vocabularCreate(vocabular) {
@@ -42,5 +43,13 @@ export function vocabularAddTermToChild(path, term) {
 }
 
 export function vocabularAddTermToRoot(term) {
+  console.log(term);
+  return (dispatch) => {
+    dispatch({
+      type: 'VOCABULAR_TERM_ADD_TO_ROOT',
+      payload: term,
+    });
 
+    dispatch(reset('term'));
+  };
 }

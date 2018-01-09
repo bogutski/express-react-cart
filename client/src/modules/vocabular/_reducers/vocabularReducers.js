@@ -41,6 +41,14 @@ const vocabular = (state = initialState, action) => {
         vocabularTree: action.payload,
       };
 
+    case 'VOCABULAR_TERM_ADD_TO_ROOT':
+      console.log(state.vocabularTree);
+
+      return {
+        ...state,
+        vocabularTree: state.vocabularTree.concat(action.payload),
+      };
+
     default:
       return state;
   }

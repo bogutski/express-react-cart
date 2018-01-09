@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 import { Button, Form } from 'reactstrap';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
-import { vocabularCreate } from '../_actions/vocabularActions';
+import { vocabularAddTermToRoot } from '../_actions/vocabularActions';
 
 class VocabularTermForm extends Component {
   constructor(props) {
@@ -16,11 +16,11 @@ class VocabularTermForm extends Component {
   formSubmit(e) {
     e.preventDefault();
 
-    // const vocabular = {
-    //   name: this.props.termForm.values.name,
-    // };
-    //
-    // this.props.vocabularCreate(vocabular);
+    const term = {
+      name: this.props.termForm.values.name,
+    };
+
+    this.props.vocabularAddTermToRoot(term);
   }
 
   render() {
@@ -39,7 +39,7 @@ class VocabularTermForm extends Component {
           type="submit"
           color="primary"
           disabled={this.props.termForm && {}.hasOwnProperty.call(this.props.termForm, 'syncErrors')}
-        >Save
+        >Add to root
         </Button>
       </Form>
     );
@@ -48,11 +48,11 @@ class VocabularTermForm extends Component {
 
 
 const mapStateToProps = state => ({
-  termForm: state.form.vocabular,
+  termForm: state.form.term,
 });
 
 const mapDispatchToProps = dispatch => ({
-  vocabularCreate: vocabular => dispatch(vocabularCreate(vocabular)),
+  vocabularAddTermToRoot: vocabular => dispatch(vocabularAddTermToRoot(vocabular)),
 });
 
 
