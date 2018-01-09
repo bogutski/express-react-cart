@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { reduxForm, Field } from 'redux-form';
-import { Button, Form } from 'reactstrap';
+import { Field, reduxForm } from 'redux-form';
+import { Button, Col, Form, Row } from 'reactstrap';
 import VocabularTree from './vocabularTree';
+import VocabularTermForm from './vocabularTermForm';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
 import { vocabularCreate } from '../_actions/vocabularActions';
@@ -27,27 +28,36 @@ class VocabularEditForm extends Component {
 
   render() {
     return (
-      <Form onSubmit={this.formSubmit}>
-        <h5>Vocabular Edit</h5>
-        <Field
-          name="name"
-          type="text"
-          placeholder="Vocabular name"
-          component={TextField}
-          validate={[required]}
-        />
+      <Row>
+        <Col md="12">
+          <h5>Vocabular Edit</h5>
 
-        <button onClick={() => this.addTerm()}>Add new term</button>
+          <Form onSubmit={this.formSubmit}>
+            <Field
+              name="name"
+              type="text"
+              placeholder="Vocabular name"
+              component={TextField}
+              validate={[required]}
+            />
 
-        <VocabularTree />
+            <Button
+              type="submit"
+              color="primary"
+              disabled={this.props.vocabularForm && {}.hasOwnProperty.call(this.props.vocabularForm, 'syncErrors')}
+            >Save
+            </Button>
+          </Form>
+        </Col>
 
-        <Button
-          type="submit"
-          color="primary"
-          disabled={this.props.vocabularForm && {}.hasOwnProperty.call(this.props.vocabularForm, 'syncErrors')}
-        >Save
-        </Button>
-      </Form>
+        <Col md="6">
+          <VocabularTree />
+        </Col>
+
+        <Col md="6">
+          <VocabularTermForm />
+        </Col>
+      </Row>
     );
   }
 }

@@ -30,6 +30,13 @@ export function getVocabularById(vocabularId) {
       });
 }
 
+export function vocabularSetTreeData(treeData) {
+  return dispatch => dispatch({
+    type: 'VOCABULAR_TREE',
+    payload: treeData,
+  });
+}
+
 export function vocabularAddTermToChild(path, term) {
 
 }
