@@ -15,7 +15,7 @@ import Catalog from './../modules/catalog/catalogIndex';
 import Product from './../modules/product/productIndex';
 import { getUserById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
-import VocabularEditForm from '../modules/vocabular/vocabularEditForm';
+import VocabularEditForm from '../modules/vocabular/form/vocabularForm';
 
 class App extends Component {
   constructor(props) {

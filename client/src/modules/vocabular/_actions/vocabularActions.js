@@ -29,3 +29,11 @@ export function getVocabularById(vocabularId) {
         });
       });
 }
+
+export function vocabularAddTermToChild(path, term) {
+
+}
+
+export function vocabularAddTermToRoot(term) {
+
+}

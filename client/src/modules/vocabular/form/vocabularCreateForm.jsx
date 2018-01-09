@@ -3,9 +3,9 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import { TextField } from './../form/form';
-import { required } from './../form/validators';
-import { vocabularCreate } from './_actions/vocabularActions';
+import { TextField } from '../../form/form';
+import { required } from '../../form/validators';
+import { vocabularCreate } from '../_actions/vocabularActions';
 
 class VocabularCreateForm extends Component {
   constructor(props) {
