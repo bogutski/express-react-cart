@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SortableTree from 'react-sortable-tree';
-import { vocabularAddTermToChild, vocabularSetTreeData } from '../_actions/vocabularActions';
+import { vocabularAddTermToChild, vocabularSetTreeData, vocabularDeleteTerm } from '../_actions/vocabularActions';
 
 class VocabularTree extends Component {
   render() {
@@ -10,13 +10,17 @@ class VocabularTree extends Component {
         <SortableTree
           treeData={this.props.vocabularTree}
           onChange={treeData => this.props.vocabularSetTreeData(treeData)}
-          generateNodeProps={({ node, path }) => ({
-            title: node.name,
-            buttons: [
-              <button> Add Child </button>,
-              <button> Remove </button>,
-            ],
-          })}
+          generateNodeProps={({ node, path }) => {
+            console.log(node, path);
+            return {
+              title: node.name,
+              buttons: [
+                <button> Add Child </button>,
+                <button onClick={() => this.props.vocabularDeleteTerm(path)}> Remove </button>,
+              ],
+            };
+          }
+          }
         />
       </div>
     );
@@ -29,6 +33,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   vocabularSetTreeData: treeData => dispatch(vocabularSetTreeData(treeData)),
+  vocabularDeleteTerm: path => dispatch(vocabularDeleteTerm(path)),
   vocabularAddTermToChild: childPath => dispatch(vocabularAddTermToChild(childPath)),
 });
 

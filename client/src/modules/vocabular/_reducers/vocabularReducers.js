@@ -1,13 +1,14 @@
+import { removeNodeAtPath } from 'react-sortable-tree';
+
 const tempVocTree = [
   { name: 'Cords' },
   {
     name: 'Boxes',
     price: 1230,
     children: [
-      {
-        name: 'Plastic boxes',
-      },
-      { name: 'Wood boxes' }],
+      { name: 'Plastic boxes' },
+      { name: 'Wood boxes' },
+    ],
   },
   {
     name: 'Cables',
@@ -42,12 +43,23 @@ const vocabular = (state = initialState, action) => {
       };
 
     case 'VOCABULAR_TERM_ADD_TO_ROOT':
-      console.log(state.vocabularTree);
-
       return {
         ...state,
         vocabularTree: state.vocabularTree.concat(action.payload),
       };
+
+    case 'VOCABULAR_TERM_DELETE': {
+      const vocabularTree = removeNodeAtPath({
+        treeData: state.vocabularTree,
+        path: action.payload,
+        getNodeKey: ({ treeIndex }) => treeIndex,
+      });
+
+      return {
+        ...state,
+        vocabularTree,
+      };
+    }
 
     default:
       return state;

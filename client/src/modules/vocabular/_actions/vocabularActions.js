@@ -32,10 +32,11 @@ export function getVocabularById(vocabularId) {
 }
 
 export function vocabularSetTreeData(treeData) {
-  return dispatch => dispatch({
-    type: 'VOCABULAR_TREE',
-    payload: treeData,
-  });
+  return dispatch =>
+    dispatch({
+      type: 'VOCABULAR_TREE',
+      payload: treeData,
+    });
 }
 
 export function vocabularAddTermToChild(path, term) {
@@ -43,13 +44,22 @@ export function vocabularAddTermToChild(path, term) {
 }
 
 export function vocabularAddTermToRoot(term) {
-  console.log(term);
   return (dispatch) => {
     dispatch({
       type: 'VOCABULAR_TERM_ADD_TO_ROOT',
       payload: term,
     });
 
-    dispatch(reset('term'));
+    dispatch(reset('term')); // Clear form
   };
+}
+
+export function vocabularDeleteTerm(path) {
+  console.log(path);
+
+  return dispatch =>
+    dispatch({
+      type: 'VOCABULAR_TERM_DELETE',
+      payload: path,
+    });
 }
