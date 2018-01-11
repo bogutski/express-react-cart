@@ -1,4 +1,4 @@
-import { reset } from 'redux-form';
+import { initialize, reset } from 'redux-form';
 import { get, post } from '../../httpRequest/httpMethods';
 
 export function vocabularCreate(vocabular) {
@@ -39,8 +39,34 @@ export function vocabularSetTreeData(treeData) {
     });
 }
 
-export function vocabularAddTermToChild(path, term) {
+export function vocabularGetTermToEditForm(node, path) {
+  return (dispatch) => {
+    dispatch(initialize('term', { name: node.name })); // Clear form
 
+    dispatch({
+      type: 'VOCABULAR_TERM_TO_EDIT_FORM',
+      payload: {
+        name: node.name,
+        params: node.params,
+        path,
+      },
+    });
+  };
+}
+
+export function vocabularUpdateTerm(node, path) {
+  return (dispatch) => {
+    dispatch({
+      type: 'VOCABULAR_TERM_UPDATE',
+      payload: {
+        name: node.name,
+        params: node.params,
+        path,
+      },
+    });
+
+    dispatch(reset('term')); // Clear form
+  };
 }
 
 export function vocabularAddTermToRoot(term) {
@@ -55,8 +81,6 @@ export function vocabularAddTermToRoot(term) {
 }
 
 export function vocabularDeleteTerm(path) {
-  console.log(path);
-
   return dispatch =>
     dispatch({
       type: 'VOCABULAR_TERM_DELETE',

@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SortableTree from 'react-sortable-tree';
-import { vocabularAddTermToChild, vocabularSetTreeData, vocabularDeleteTerm } from '../_actions/vocabularActions';
+import {
+  vocabularDeleteTerm,
+  vocabularGetTermToEditForm,
+  vocabularSetTreeData,
+} from '../_actions/vocabularActions';
 
 class VocabularTree extends Component {
   render() {
@@ -15,8 +19,8 @@ class VocabularTree extends Component {
             return {
               title: node.name,
               buttons: [
-                <button> Add Child </button>,
-                <button onClick={() => this.props.vocabularDeleteTerm(path)}> Remove </button>,
+                <button onClick={() => this.props.vocabularGetTermToEditForm(node, path)}>Edit</button>,
+                <button onClick={() => this.props.vocabularDeleteTerm(path)}>Remove</button>,
               ],
             };
           }
@@ -34,7 +38,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   vocabularSetTreeData: treeData => dispatch(vocabularSetTreeData(treeData)),
   vocabularDeleteTerm: path => dispatch(vocabularDeleteTerm(path)),
-  vocabularAddTermToChild: childPath => dispatch(vocabularAddTermToChild(childPath)),
+  vocabularGetTermToEditForm: (node, path) => dispatch(vocabularGetTermToEditForm(node, path)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VocabularTree);

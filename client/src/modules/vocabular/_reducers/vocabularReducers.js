@@ -1,10 +1,10 @@
-import { removeNodeAtPath } from 'react-sortable-tree';
+import { changeNodeAtPath, removeNodeAtPath } from 'react-sortable-tree';
 
 const tempVocTree = [
   { name: 'Cords' },
   {
     name: 'Boxes',
-    price: 1230,
+    params: [{ price: 123 }],
     children: [
       { name: 'Plastic boxes' },
       { name: 'Wood boxes' },
@@ -20,6 +20,7 @@ const initialState = {
   vocabularList: [], // Vocabularies list
   vocabularInfo: {}, // Current vocabular info
   vocabularTree: tempVocTree, // Current vocabular tree of terms
+  editedTerm: {}, // Currently edited term, name, params, path
 };
 
 const vocabular = (state = initialState, action) => {
@@ -53,6 +54,34 @@ const vocabular = (state = initialState, action) => {
         treeData: state.vocabularTree,
         path: action.payload,
         getNodeKey: ({ treeIndex }) => treeIndex,
+      });
+
+      return {
+        ...state,
+        vocabularTree,
+      };
+    }
+
+    case 'VOCABULAR_TERM_TO_EDIT_FORM': {
+      return {
+        ...state,
+        editedTerm: action.payload,
+      };
+    }
+
+    case 'VOCABULAR_TERM_UPDATE': {
+      return {
+        ...state,
+        // editedTerm: action.payload,
+      };
+    }
+
+    case 'VOCABULAR_TERM_EDIT': {
+      const vocabularTree = changeNodeAtPath({
+        treeData: state.vocabularTree,
+        path: action.payload,
+        getNodeKey: ({ treeIndex }) => treeIndex,
+        //  newNode: { ...node, name },
       });
 
       return {

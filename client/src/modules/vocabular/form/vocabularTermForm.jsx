@@ -3,9 +3,10 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Form } from 'reactstrap';
+import _ from 'lodash';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
-import { vocabularAddTermToRoot } from '../_actions/vocabularActions';
+import { vocabularAddTermToRoot, vocabularUpdateTerm } from '../_actions/vocabularActions';
 
 class VocabularTermForm extends Component {
   constructor(props) {
@@ -20,7 +21,11 @@ class VocabularTermForm extends Component {
       name: this.props.termForm.values.name,
     };
 
-    this.props.vocabularAddTermToRoot(term);
+    if (_.isEmpty(this.props.editedTerm)) {
+      this.props.vocabularAddTermToRoot(term);
+    } else {
+      this.props.vocabularUpdateTerm(term, this.props.editedTerm.path);
+    }
   }
 
   render() {
@@ -39,8 +44,25 @@ class VocabularTermForm extends Component {
           type="submit"
           color="primary"
           disabled={this.props.termForm && {}.hasOwnProperty.call(this.props.termForm, 'syncErrors')}
-        >Add to root
+        >
+          {_.isEmpty(this.props.editedTerm)
+            ? 'Add to root'
+            : 'Save'
+          }
         </Button>
+
+        {!_.isEmpty(this.props.editedTerm) ?
+          <Button
+            type="button"
+            color="secondary"
+          >Cancel
+          </Button>
+          : null}
+
+        <hr />
+
+        {JSON.stringify(this.props.editedTerm, 0, 2)}
+
       </Form>
     );
   }
@@ -49,10 +71,12 @@ class VocabularTermForm extends Component {
 
 const mapStateToProps = state => ({
   termForm: state.form.term,
+  editedTerm: state.vocabular.editedTerm,
 });
 
 const mapDispatchToProps = dispatch => ({
-  vocabularAddTermToRoot: vocabular => dispatch(vocabularAddTermToRoot(vocabular)),
+  vocabularAddTermToRoot: term => dispatch(vocabularAddTermToRoot(term)),
+  vocabularUpdateTerm: (term, path) => dispatch(vocabularUpdateTerm(term, path)),
 });
 
 
