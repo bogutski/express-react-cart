@@ -39,28 +39,30 @@ export function vocabularSetTreeData(treeData) {
     });
 }
 
-export function vocabularGetTermToEditForm(node, path) {
+export function vocabularTermToEditForm(node, path) {
   return (dispatch) => {
     dispatch(initialize('term', { name: node.name })); // Clear form
 
     dispatch({
       type: 'VOCABULAR_TERM_TO_EDIT_FORM',
       payload: {
-        name: node.name,
-        params: node.params,
+        node,
         path,
       },
     });
   };
 }
 
-export function vocabularUpdateTerm(node, path) {
+export function vocabularUpdateTerm(node, term, path) {
+  console.log(node);
   return (dispatch) => {
     dispatch({
       type: 'VOCABULAR_TERM_UPDATE',
       payload: {
-        name: node.name,
-        params: node.params,
+        // name: node.name,
+        // params: node.params,
+        node,
+        term,
         path,
       },
     });

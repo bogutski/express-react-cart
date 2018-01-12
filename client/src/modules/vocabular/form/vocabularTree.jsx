@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import SortableTree from 'react-sortable-tree';
 import {
   vocabularDeleteTerm,
-  vocabularGetTermToEditForm,
+  vocabularTermToEditForm,
   vocabularSetTreeData,
 } from '../_actions/vocabularActions';
 
@@ -14,16 +14,19 @@ class VocabularTree extends Component {
         <SortableTree
           treeData={this.props.vocabularTree}
           onChange={treeData => this.props.vocabularSetTreeData(treeData)}
-          generateNodeProps={({ node, path }) => {
-            console.log(node, path);
-            return {
-              title: node.name,
-              buttons: [
-                <button onClick={() => this.props.vocabularGetTermToEditForm(node, path)}>Edit</button>,
-                <button onClick={() => this.props.vocabularDeleteTerm(path)}>Remove</button>,
-              ],
-            };
-          }
+          generateNodeProps={({ node, path }) => ({
+            title: node.name,
+            buttons: [
+              <button
+                onClick={() => this.props.vocabularTermToEditForm(node, path)}
+              >Edit
+              </button>,
+              <button
+                onClick={() => this.props.vocabularDeleteTerm(path)}
+              >Remove
+              </button>,
+            ],
+          })
           }
         />
       </div>
@@ -38,7 +41,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   vocabularSetTreeData: treeData => dispatch(vocabularSetTreeData(treeData)),
   vocabularDeleteTerm: path => dispatch(vocabularDeleteTerm(path)),
-  vocabularGetTermToEditForm: (node, path) => dispatch(vocabularGetTermToEditForm(node, path)),
+  vocabularTermToEditForm: (node, path) => dispatch(vocabularTermToEditForm(node, path)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(VocabularTree);

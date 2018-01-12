@@ -70,18 +70,14 @@ const vocabular = (state = initialState, action) => {
     }
 
     case 'VOCABULAR_TERM_UPDATE': {
-      return {
-        ...state,
-        // editedTerm: action.payload,
-      };
-    }
+      const node = action.payload.node.node;
+      const term = action.payload.term;
 
-    case 'VOCABULAR_TERM_EDIT': {
       const vocabularTree = changeNodeAtPath({
         treeData: state.vocabularTree,
-        path: action.payload,
+        path: action.payload.path,
         getNodeKey: ({ treeIndex }) => treeIndex,
-        //  newNode: { ...node, name },
+        newNode: { ...node, ...term },
       });
 
       return {

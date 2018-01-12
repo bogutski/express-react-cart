@@ -17,6 +17,8 @@ class VocabularTermForm extends Component {
   formSubmit(e) {
     e.preventDefault();
 
+    const node = this.props.editedTerm;
+
     const term = {
       name: this.props.termForm.values.name,
     };
@@ -24,7 +26,7 @@ class VocabularTermForm extends Component {
     if (_.isEmpty(this.props.editedTerm)) {
       this.props.vocabularAddTermToRoot(term);
     } else {
-      this.props.vocabularUpdateTerm(term, this.props.editedTerm.path);
+      this.props.vocabularUpdateTerm(node, term, this.props.editedTerm.path);
     }
   }
 
@@ -60,8 +62,9 @@ class VocabularTermForm extends Component {
           : null}
 
         <hr />
-
-        {JSON.stringify(this.props.editedTerm, 0, 2)}
+        <pre>
+          {JSON.stringify(this.props.editedTerm, 0, 2)}
+        </pre>
 
       </Form>
     );
@@ -76,7 +79,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   vocabularAddTermToRoot: term => dispatch(vocabularAddTermToRoot(term)),
-  vocabularUpdateTerm: (term, path) => dispatch(vocabularUpdateTerm(term, path)),
+  vocabularUpdateTerm: (node, term, path) => dispatch(vocabularUpdateTerm(node, term, path)),
 });
 
 
