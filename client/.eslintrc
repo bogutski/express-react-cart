@@ -75,6 +75,14 @@
     "semi": [
       "error",
       "always"
+    ],
+    "no-underscore-dangle": [
+      "error",
+      {
+        "allow": [
+          "_id"
+        ]
+      }
     ]
   }
 }

@@ -33,6 +33,32 @@ export function post(url, data) {
     });
 }
 
+export function patch(url, data) {
+  return axios({
+    method: 'patch',
+    url,
+    data,
+    headers,
+  })
+    .then((res) => {
+      store.dispatch(Notifications.removeAll()); // Removes all notifications
+      store.dispatch(Notifications.success({
+        title: res.data.message.text,
+        autoDismiss: 0,
+      }));
+      return res;
+    })
+    .catch((error) => {
+      if (error.response) {
+        store.dispatch(Notifications.error({
+          title: error.response.data.message.text,
+          autoDismiss: 0,
+        }));
+      }
+      return error;
+    });
+}
+
 export function get(url) {
   return axios({
     method: 'get',

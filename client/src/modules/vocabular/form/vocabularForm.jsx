@@ -7,7 +7,7 @@ import VocabularTree from './vocabularTree';
 import VocabularTermForm from './vocabularTermForm';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
-import { vocabularCreate } from '../_actions/vocabularActions';
+import { vocabularCreate, vocabularUpdate } from '../_actions/vocabularActions';
 
 class VocabularEditForm extends Component {
   constructor(props) {
@@ -18,11 +18,17 @@ class VocabularEditForm extends Component {
   formSubmit(e) {
     e.preventDefault();
 
-    // const vocabular = {
-    //   name: this.props.vocabularForm.values.name,
-    // };
-    //
-    // this.props.vocabularCreate(vocabular);
+    const vocabularId = this.props.match.params.id;
+    const data = {
+      name: this.props.vocabularForm.values.name,
+      terms: this.props.vocabularTree,
+    };
+
+    if (vocabularId) {
+      this.props.vocabularUpdate(vocabularId, data);
+    } else {
+      this.props.vocabularCreate(data);
+    }
   }
 
 
@@ -65,10 +71,12 @@ class VocabularEditForm extends Component {
 
 const mapStateToProps = state => ({
   vocabularForm: state.form.vocabular,
+  vocabularTree: state.vocabular.vocabularTree,
 });
 
 const mapDispatchToProps = dispatch => ({
   vocabularCreate: vocabular => dispatch(vocabularCreate(vocabular)),
+  vocabularUpdate: (vocabularId, data) => dispatch(vocabularUpdate(vocabularId, data)),
 });
 
 
