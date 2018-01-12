@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import SortableTree from 'react-sortable-tree';
+import { Button, ButtonGroup } from 'reactstrap';
 import {
   vocabularDeleteTerm,
-  vocabularTermToEditForm,
   vocabularSetTreeData,
+  vocabularTermToEditForm,
 } from '../_actions/vocabularActions';
 
 class VocabularTree extends Component {
@@ -17,14 +18,20 @@ class VocabularTree extends Component {
           generateNodeProps={({ node, path }) => ({
             title: node.name,
             buttons: [
-              <button
-                onClick={() => this.props.vocabularTermToEditForm(node, path)}
-              >Edit
-              </button>,
-              <button
-                onClick={() => this.props.vocabularDeleteTerm(path)}
-              >Remove
-              </button>,
+              <ButtonGroup size="sm">
+                <Button
+                  color="primary"
+                  outline
+                  onClick={() => this.props.vocabularTermToEditForm(node, path)}
+                >Edit
+                </Button>
+                <Button
+                  color="danger"
+                  outline
+                  onClick={() => this.props.vocabularDeleteTerm(path)}
+                >Remove
+                </Button>
+              </ButtonGroup>,
             ],
           })
           }

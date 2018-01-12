@@ -41,30 +41,33 @@ class VocabularTermForm extends Component {
           component={TextField}
           validate={[required]}
         />
+        <div>
 
-        <Button
-          type="submit"
-          color="primary"
-          disabled={this.props.termForm && {}.hasOwnProperty.call(this.props.termForm, 'syncErrors')}
-        >
-          {_.isEmpty(this.props.editedTerm)
-            ? 'Add to root'
-            : 'Save'
-          }
-        </Button>
-
-        {!_.isEmpty(this.props.editedTerm) ?
           <Button
-            type="button"
-            color="secondary"
-          >Cancel
+            type="submit"
+            color="primary"
+            disabled={this.props.termForm && {}.hasOwnProperty.call(this.props.termForm, 'syncErrors')}
+          >{_.isEmpty(this.props.editedTerm) ? 'Add to root' : 'Save' }
           </Button>
-          : null}
 
+          {' '}
+
+          {!_.isEmpty(this.props.editedTerm) ?
+            <Button
+              type="button"
+              outline
+              color="secondary"
+            >Cancel
+            </Button>
+            : null}
+        </div>
+
+        {/*
         <hr />
         <pre>
           {JSON.stringify(this.props.editedTerm, 0, 2)}
         </pre>
+        */}
 
       </Form>
     );
