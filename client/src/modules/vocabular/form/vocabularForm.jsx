@@ -7,7 +7,7 @@ import VocabularTree from './vocabularTree';
 import VocabularTermForm from './vocabularTermForm';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
-import { vocabularCreate, vocabularUpdate } from '../_actions/vocabularActions';
+import { vocabularCreate, vocabularUpdate, getVocabularById } from '../_actions/vocabularActions';
 
 class VocabularEditForm extends Component {
   constructor(props) {
@@ -28,6 +28,14 @@ class VocabularEditForm extends Component {
       this.props.vocabularUpdate(vocabularId, data);
     } else {
       this.props.vocabularCreate(data);
+    }
+  }
+
+  componentDidMount() {
+    const vocabularId = this.props.match.params.id;
+
+    if (vocabularId) {
+      this.props.getVocabularById(vocabularId);
     }
   }
 
@@ -75,6 +83,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getVocabularById: vocabularId => dispatch(getVocabularById(vocabularId)),
   vocabularCreate: vocabular => dispatch(vocabularCreate(vocabular)),
   vocabularUpdate: (vocabularId, data) => dispatch(vocabularUpdate(vocabularId, data)),
 });

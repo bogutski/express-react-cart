@@ -28,23 +28,21 @@ export function getAllVocabulars() {
       });
 }
 
-export function getVocabularById(vocabularId) {
-  return dispatch =>
-    get(`/vocabular/${vocabularId}`)
-      .then((res) => {
-        dispatch({
-          type: 'VOCABULAR_INFO',
-          payload: res.data,
-        });
-      });
-}
-
 export function vocabularSetTreeData(treeData) {
   return dispatch =>
     dispatch({
       type: 'VOCABULAR_TREE',
       payload: treeData,
     });
+}
+
+export function getVocabularById(vocabularId) {
+  return dispatch =>
+    get(`/vocabular/${vocabularId}`)
+      .then((res) => {
+        dispatch(initialize('vocabular', { ...res.data })); // Fill form name
+        dispatch(vocabularSetTreeData(res.data.terms || []));
+      });
 }
 
 export function vocabularTermToEditForm(node, path) {

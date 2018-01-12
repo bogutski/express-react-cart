@@ -1,4 +1,5 @@
 import { changeNodeAtPath, removeNodeAtPath } from 'react-sortable-tree';
+import _ from 'lodash';
 
 const tempVocTree = [
   { name: 'Cords' },
@@ -19,7 +20,7 @@ const tempVocTree = [
 const initialState = {
   vocabularList: [], // Vocabularies list
   vocabularInfo: {}, // Current vocabular info
-  vocabularTree: tempVocTree, // Current vocabular tree of terms
+  vocabularTree: [], // Current vocabular tree of terms
   editedTerm: {}, // Currently edited term, name, params, path
 };
 
@@ -29,12 +30,6 @@ const vocabular = (state = initialState, action) => {
       return {
         ...state,
         vocabularList: action.payload,
-      };
-
-    case 'VOCABULAR_INFO':
-      return {
-        ...state,
-        vocabularInfo: action.payload,
       };
 
     case 'VOCABULAR_TREE':
