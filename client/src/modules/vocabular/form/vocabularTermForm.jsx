@@ -6,12 +6,13 @@ import { Button, Form } from 'reactstrap';
 import _ from 'lodash';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
-import { vocabularAddTermToRoot, vocabularUpdateTerm } from '../_actions/vocabularActions';
+import { vocabularAddTermToRoot, vocabularUpdateTerm, cancelEditTerm } from '../_actions/vocabularActions';
 
 class VocabularTermForm extends Component {
   constructor(props) {
     super(props);
     this.formSubmit = this.formSubmit.bind(this);
+    this.cancelEditTerm = this.cancelEditTerm.bind(this);
   }
 
   formSubmit(e) {
@@ -20,7 +21,7 @@ class VocabularTermForm extends Component {
     const node = this.props.editedTerm;
 
     const term = {
-      name: this.props.termForm.values.name,
+      ...this.props.termForm.values,
     };
 
     if (_.isEmpty(this.props.editedTerm)) {
@@ -28,6 +29,10 @@ class VocabularTermForm extends Component {
     } else {
       this.props.vocabularUpdateTerm(node, term, this.props.editedTerm.path);
     }
+  }
+
+  cancelEditTerm() {
+    this.props.cancelEditTerm();
   }
 
   render() {
@@ -57,6 +62,7 @@ class VocabularTermForm extends Component {
               type="button"
               outline
               color="secondary"
+              onClick={() => this.props.cancelEditTerm()}
             >Cancel
             </Button>
             : null}
@@ -83,6 +89,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   vocabularAddTermToRoot: term => dispatch(vocabularAddTermToRoot(term)),
   vocabularUpdateTerm: (node, term, path) => dispatch(vocabularUpdateTerm(node, term, path)),
+  cancelEditTerm: () => dispatch(cancelEditTerm()),
 });
 
 

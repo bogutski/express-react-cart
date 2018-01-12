@@ -49,6 +49,12 @@ const vocabular = (state = initialState, action) => {
         vocabularTree: state.vocabularTree.concat(action.payload),
       };
 
+    case 'VOCABULAR_TERM_CANCEL_EDIT':
+      return {
+        ...state,
+        editedTerm: initialState.editedTerm,
+      };
+
     case 'VOCABULAR_TERM_DELETE': {
       const vocabularTree = removeNodeAtPath({
         treeData: state.vocabularTree,
