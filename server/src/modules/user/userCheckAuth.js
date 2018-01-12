@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import message from './../messages/messages';
 
 const userCheckAuth = (req, res, next) => {
   try {
@@ -10,9 +11,7 @@ const userCheckAuth = (req, res, next) => {
     next();
   } catch (error) {
     console.log(error);
-    return res.status(401).json({
-      message: { text: 'Auth failed', type: 'error' },
-    });
+    return res.status(401).json(message.error('Auth failed'));
   }
 };
 

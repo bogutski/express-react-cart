@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import Product from './productModel';
+import message from './../messages/messages';
 
 export const productGetAll = (req, res, next) => {
   Product.find()
@@ -12,12 +13,7 @@ export const productGetAll = (req, res, next) => {
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({
-          message: {
-            text: err,
-            type: 'error',
-          },
-        });
+        .json(message.error(err));
     });
 };
 
@@ -35,22 +31,12 @@ export const productCreate = (req, res, next) => {
     .then((result) => {
       console.log(result);
       res.status(201)
-        .json({
-          message: {
-            text: 'Product created',
-            type: 'success',
-          },
-        });
+        .json(message.success('Product created'));
     })
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({
-          message: {
-            text: err,
-            type: 'error',
-          },
-        });
+        .json(message.error(err));
     });
 };
 
@@ -65,12 +51,7 @@ export const productGetById = (req, res, next) => {
           .json(doc);
       } else {
         res.status(404)
-          .json({
-            message: {
-              text: 'No product for provided id',
-              type: 'error',
-            },
-          });
+          .json(message.error('No product for provided id'));
       }
     })
     .catch((err) => {
@@ -87,31 +68,16 @@ export const productUpdateById = (req, res, next) => {
     .then((doc) => {
       if (doc.n) {
         res.status(200)
-          .json({
-            message: {
-              text: 'Product updated',
-              type: 'success',
-            },
-          });
+          .json(message.success('Product updated'));
       } else {
         res.status(400)
-          .json({
-            message: {
-              text: 'Product not found',
-              type: 'error',
-            },
-          });
+          .json(message.error('Product not found'));
       }
     })
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({
-          message: {
-            text: err,
-            type: 'error',
-          },
-        });
+        .json(message.error(err));
     });
 };
 
@@ -122,31 +88,15 @@ export const productDeleteById = (req, res, next) => {
     .then((doc) => {
       if (doc.result.n) {
         res.status(200)
-          .json({
-            message: {
-              text: 'Product deleted',
-              type: 'success',
-            },
-          });
+          .json(message.success('Product deleted'));
       } else {
         res.status(400)
-          .json({
-            message: {
-              text: 'Product not found',
-              type: 'error',
-            },
-          });
+          .json(message.error('Product not found'));
       }
     })
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({
-          message: {
-            text: err,
-            type: 'error',
-          },
-        });
+        .json(message.error(err));
     });
 };
-

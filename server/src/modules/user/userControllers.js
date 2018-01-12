@@ -2,6 +2,7 @@ import mongoose from 'mongoose';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import User from './userModel';
+import message from './../messages/messages';
 
 export const userGetAll = (req, res, next) => {
   User.find()
@@ -11,7 +12,7 @@ export const userGetAll = (req, res, next) => {
       res.status(200).json(docs);
     })
     .catch((err) => {
-      res.status(500).json({ message: { text: err, type: 'error' } });
+      res.status(500).json(message.error(err));
     });
 };
 
@@ -26,7 +27,7 @@ export const userCreate = (req, res, next) => {
 
       bcrypt.hash(req.body.password, 10, (bcryptError, hash) => {
         if (bcryptError) {
-          return res.status(500).json({ message: { text: bcryptError, type: 'error' } });
+          return res.status(500).json(message.error(bcryptError));
         }
 
         const user = new User({
@@ -38,22 +39,16 @@ export const userCreate = (req, res, next) => {
         user
           .save()
           .then((result) => {
-            res.status(201).json({
-              message: { text: 'User created', type: 'success' },
-            });
+            res.status(201).json(message.success('User created'));
           })
           .catch((userError) => {
-            res.status(500).json({
-              message: { text: userError, type: 'error' },
-            });
+            res.status(500).json(message.error(userError));
           });
       });
     })
     .catch((error) => {
       if (error === 'Mail exist') {
-        res.status(409).json({
-          message: { text: 'Mail exist', type: 'error' },
-        });
+        res.status(409).json(message.error('Mail exist'));
       }
     });
 };
@@ -63,16 +58,12 @@ export const userLogin = (req, res, next) => {
     .exec()
     .then((user) => {
       if (!user.length) {
-        res.status(401).json({
-          message: { text: 'Auth failed. Email', type: 'error' },
-        });
+        res.status(401).json(message.error('Auth failed. Email'));
       }
 
       bcrypt.compare(req.body.password, user[0].password, (err, result) => {
         if (err) {
-          res.status(401).json({
-            message: { text: 'Auth failed. Email', type: 'error' },
-          });
+          res.status(401).json(message.error('Auth failed. Email'));
         }
 
         if (result) {
@@ -93,13 +84,11 @@ export const userLogin = (req, res, next) => {
           });
         }
 
-        res.status(401).json({
-          message: { text: 'Auth failed', type: 'error' },
-        });
+        res.status(401).json(message.error('Auth failed'));
       });
     })
     .catch((err) => {
-      res.status(500).json({ message: { text: err, type: 'error' } });
+      res.status(500).json(message.error(err));
     });
 };
 
@@ -112,11 +101,11 @@ export const userGetById = (req, res, next) => {
       if (doc) {
         res.status(200).json(doc);
       } else {
-        res.status(404).json({ message: { text: 'No user for provided id', type: 'error' } });
+        res.status(404).json(message.error('No user for provided id'));
       }
     })
     .catch((err) => {
-      res.status(500).json({ message: { text: err, type: 'error' } });
+      res.status(500).json(message.error(err));
     });
 };
 
@@ -126,17 +115,13 @@ export const userUpdateById = (req, res, next) => {
     .exec()
     .then((doc) => {
       if (doc.n) {
-        res.status(200).json({
-          message: { text: 'User updated', type: 'success' },
-        });
+        res.status(200).json(message.success('User updated'));
       } else {
-        res.status(400).json({
-          message: { text: 'User not found', type: 'error' },
-        });
+        res.status(400).json(message.error('User not found'));
       }
     })
     .catch((err) => {
-      res.status(500).json({ message: { text: err, type: 'error' } });
+      res.status(500).json(message.error(err));
     });
 };
 
@@ -146,16 +131,12 @@ export const userDeleteById = (req, res, next) => {
     .exec()
     .then((doc) => {
       if (doc.result.n) {
-        res.status(200).json({
-          message: { text: 'User deleted', type: 'success' },
-        });
+        res.status(200).json(message.success('User deleted'));
       } else {
-        res.status(400).json({
-          message: { text: 'User not found', type: 'error' },
-        });
+        res.status(400).json(message.error('User not found'));
       }
     })
     .catch((err) => {
-      res.status(500).json({ message: { text: err, type: 'error' } });
+      res.status(500).json(message.error(err));
     });
 };

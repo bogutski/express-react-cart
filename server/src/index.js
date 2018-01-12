@@ -6,6 +6,8 @@ import userRouter from './modules/user/userRoutes';
 import productRouter from './modules/product/productRoutes';
 import vocabularRouter from './modules/vocabular/vocabularRoutes';
 
+import message from './modules/messages/messages';
+
 const app = express();
 
 // ===== DISABLE EXPRESS SIGNATURE ======
@@ -54,21 +56,11 @@ app.use('/product', productRouter);
 app.use('/vocabular', vocabularRouter);
 
 // ===== ERROR HANDLING =====
-app.use((req, res, next) => res.status(404).json({
-  message: {
-    text: 'API not found',
-    type: 'error',
-  },
-})); // eslint-disable-line no-unused-vars
+app.use((req, res, next) => res.status(404).json(message.error('API not found'))); // eslint-disable-line no-unused-vars
 
 app.use((error, req, res, next) => { // eslint-disable-line no-unused-vars
   res.status(error.status || 500);
-  res.json({
-    message: {
-      text: error.message,
-      type: 'error',
-    },
-  });
+  res.json(message.error(error.message));
 });
 
 // ===== PORT =====

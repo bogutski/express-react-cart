@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import Vocabular from './vocabularModel';
+import message from './../messages/messages';
 
 export const vocabularGetAll = (req, res, next) => {
   Vocabular.find()
@@ -12,12 +13,7 @@ export const vocabularGetAll = (req, res, next) => {
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({
-          message: {
-            text: err,
-            type: 'error',
-          },
-        });
+        .json(message.error(err));
     });
 };
 
@@ -33,22 +29,12 @@ export const vocabularCreate = (req, res, next) => {
     .then((result) => {
       console.log(result);
       res.status(201)
-        .json({
-          message: {
-            text: 'Vocabular created',
-            type: 'success',
-          },
-        });
+        .json(message.success('Vocabular created'));
     })
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({
-          message: {
-            text: err,
-            type: 'error',
-          },
-        });
+        .json(message.error(err));
     });
 };
 
@@ -63,18 +49,13 @@ export const vocabularGetById = (req, res, next) => {
           .json(doc);
       } else {
         res.status(404)
-          .json({
-            message: {
-              text: 'No vocabular for provided id',
-              type: 'error',
-            },
-          });
+          .json(message.error('No vocabular for provided id'));
       }
     })
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({ error: err });
+        .json(message.error(err.message));
     });
 };
 
@@ -85,31 +66,16 @@ export const vocabularUpdateById = (req, res, next) => {
     .then((doc) => {
       if (doc.n) {
         res.status(200)
-          .json({
-            message: {
-              text: 'Vocabular updated',
-              type: 'success',
-            },
-          });
+          .json(message.success('Vocabular updated'));
       } else {
         res.status(400)
-          .json({
-            message: {
-              text: 'Vocabular not found',
-              type: 'error',
-            },
-          });
+          .json(message.error('Vocabular not found'));
       }
     })
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({
-          message: {
-            text: err,
-            type: 'error',
-          },
-        });
+        .json(message.error(err));
     });
 };
 
@@ -120,31 +86,16 @@ export const vocabularDeleteById = (req, res, next) => {
     .then((doc) => {
       if (doc.result.n) {
         res.status(200)
-          .json({
-            message: {
-              text: 'Vocabular deleted',
-              type: 'success',
-            },
-          });
+          .json(message.success('Vocabular deleted'));
       } else {
         res.status(400)
-          .json({
-            message: {
-              text: 'Vocabular not found',
-              type: 'error',
-            },
-          });
+          .json(message.error('Vocabular not found'));
       }
     })
     .catch((err) => {
       console.log(err);
       res.status(500)
-        .json({
-          message: {
-            text: err,
-            type: 'error',
-          },
-        });
+        .json(message.error(err));
     });
 };
 
