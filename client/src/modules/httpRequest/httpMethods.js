@@ -73,6 +73,9 @@ export function get(url) {
           autoDismiss: 0,
         }));
       }
+
+      // Fix failed autologin
+      if (error.response.data.message.text === 'Auth failed') localStorage.clear();
       return error;
     });
 }
