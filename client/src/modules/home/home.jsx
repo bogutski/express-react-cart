@@ -17,7 +17,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // getUserById: userId => dispatch(getUserById(userId)),
+  // userGetById: userId => dispatch(userGetById(userId)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Home));

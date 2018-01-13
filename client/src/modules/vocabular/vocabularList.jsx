@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Button } from 'reactstrap';
 import ReactTable from 'react-table';
 import { withRouter, Link } from 'react-router-dom';
-import { getAllVocabulars, vocabularDeleteById } from './_actions/vocabularActions';
+import { vocabularGetAll, vocabularDeleteById } from './_actions/vocabularActions';
 
 class VocabularList extends Component {
   constructor(props) {
@@ -14,12 +14,12 @@ class VocabularList extends Component {
 
   componentDidMount() {
     if (_.isEmpty(this.props.userList)) {
-      this.props.getAllVocabulars();
+      this.props.vocabularGetAll();
     }
   }
 
-  delete(id) {
-    this.props.vocabularDeleteById(id);
+  delete(vocabularId) {
+    this.props.vocabularDeleteById(vocabularId);
   }
 
   columns() {
@@ -65,8 +65,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllVocabulars: () => dispatch(getAllVocabulars()),
-  vocabularDeleteById: id => dispatch(vocabularDeleteById(id)),
+  vocabularGetAll: () => dispatch(vocabularGetAll()),
+  vocabularDeleteById: vocabularId => dispatch(vocabularDeleteById(vocabularId)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(VocabularList));

@@ -6,7 +6,10 @@ import { Button, Form } from 'reactstrap';
 import _ from 'lodash';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
-import { vocabularAddTermToRoot, vocabularUpdateTerm, cancelEditTerm } from '../_actions/vocabularActions';
+import {
+  cancelEditTerm, vocabularAddTermToRoot,
+  vocabularUpdateTerm,
+} from '../_actions/vocabularActions';
 
 class VocabularTermForm extends Component {
   constructor(props) {
@@ -52,7 +55,7 @@ class VocabularTermForm extends Component {
             type="submit"
             color="primary"
             disabled={this.props.termForm && {}.hasOwnProperty.call(this.props.termForm, 'syncErrors')}
-          >{_.isEmpty(this.props.editedTerm) ? 'Add to root' : 'Save' }
+          >{_.isEmpty(this.props.editedTerm) ? 'Add to root' : 'Save'}
           </Button>
 
           {' '}

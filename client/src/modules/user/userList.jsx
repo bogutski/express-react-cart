@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactTable from 'react-table';
-import { getAllUsers } from './_actions/userActions';
 import { withRouter } from 'react-router-dom';
+import { userGetAll } from './_actions/userActions';
 
 class UserList extends Component {
   componentDidMount() {
     if (_.isEmpty(this.props.userList)) {
-      this.props.getAllUsers();
+      this.props.userGetAll();
     }
   }
 
@@ -40,7 +40,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllUsers: () => dispatch(getAllUsers()),
+  userGetAll: () => dispatch(userGetAll()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserList));

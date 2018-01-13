@@ -81,7 +81,6 @@ const mapDispatchToProps = dispatch => ({
   userRegister: (email, password) => dispatch(userRegister(email, password)),
 });
 
-
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({ form: 'userRegister' }),

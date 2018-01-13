@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Collapse, Nav, NavItem, UncontrolledDropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import {
+  Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem,
+  UncontrolledDropdown,
+} from 'reactstrap';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
@@ -16,7 +19,7 @@ class UserSection extends Component {
               {this.props.userInfo.email}
             </DropdownToggle>
 
-            <DropdownMenu >
+            <DropdownMenu>
               <DropdownItem onClick={() => this.props.userLogout()}>
                 Logout
               </DropdownItem>

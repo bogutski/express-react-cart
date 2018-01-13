@@ -17,7 +17,7 @@ export function vocabularUpdate(vocabularId, data) {
     );
 }
 
-export function getAllVocabulars() {
+export function vocabularGetAll() {
   return dispatch =>
     get('/vocabular')
       .then((res) => {
@@ -52,10 +52,8 @@ export function getVocabularById(vocabularId) {
 export function vocabularDeleteById(vocabularId) {
   return dispatch =>
     del(`/vocabular/${vocabularId}`)
-      .then((res) => {
-        dispatch(initialize('vocabular', { ...res.data })); // Fill form
-        dispatch(vocabularSetTreeData(res.data.terms || []));
-        dispatch(getAllVocabulars()); // Reload list
+      .then(() => {
+        dispatch(vocabularGetAll()); // Reload list
       });
 }
 

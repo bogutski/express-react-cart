@@ -18,7 +18,7 @@ export function userRegister(email, password) {
       });
 }
 
-export function getAllUsers() {
+export function userGetAll() {
   return dispatch =>
     get('/user')
       .then((res) => {
@@ -29,7 +29,7 @@ export function getAllUsers() {
       });
 }
 
-export function getUserById(userId) {
+export function userGetById(userId) {
   return dispatch =>
     get(`/user/${userId}`)
       .then((res) => {
@@ -55,7 +55,7 @@ export function userLogin(email, password) {
         return res;
       })
       .then((res) => {
-        dispatch(getUserById(res.data.userId));
+        dispatch(userGetById(res.data.userId));
       });
 }
 

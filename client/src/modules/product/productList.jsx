@@ -2,14 +2,24 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactTable from 'react-table';
+import { Button } from 'reactstrap';
 import { withRouter, Link } from 'react-router-dom';
-import { getAllProducts } from './_actions/productActions';
+import { productGetAll, productDeleteById } from './_actions/productActions';
 
 class ProductList extends Component {
+  constructor(props) {
+    super(props);
+    this.delete = this.delete.bind(this);
+  }
+
   componentDidMount() {
     if (_.isEmpty(this.props.userList)) {
-      this.props.getAllProducts();
+      this.props.productGetAll();
     }
+  }
+
+  delete(id) {
+    this.props.productDeleteById(id);
   }
 
   columns() {
@@ -33,7 +43,12 @@ class ProductList extends Component {
       {
         Header: 'Actions',
         id: 'act',
-        accessor: el => <Link to={`/product/edit/${el._id}`}>Edit</Link>,
+        accessor: el => (
+          <div>
+            <Link to={`/product/edit/${el._id}`}>Edit</Link>
+            <Button color="link" onClick={() => this.delete(el._id)} >Delete</Button>
+          </div>
+        ),
       },
     ];
   }
@@ -45,6 +60,8 @@ class ProductList extends Component {
           data={this.props.productList}
           columns={this.columns()}
           minRows={0}
+          defaultPageSize={30}
+          showPagination={this.props.productList.length > 30}
         />
       </div>
     );
@@ -56,7 +73,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getAllProducts: () => dispatch(getAllProducts()),
+  productGetAll: () => dispatch(productGetAll()),
+  productDeleteById: productId => dispatch(productDeleteById(productId)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProductList));

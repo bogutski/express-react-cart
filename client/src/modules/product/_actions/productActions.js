@@ -1,5 +1,5 @@
 import { initialize } from 'redux-form';
-import { get, patch, post } from '../../httpRequest/httpMethods';
+import { del, get, patch, post } from '../../httpRequest/httpMethods';
 
 export function productCreate(product) {
   return () =>
@@ -17,7 +17,15 @@ export function productUpdate(productId, data) {
     );
 }
 
-export function getAllProducts() {
+export function productDeleteById(productId) {
+  return dispatch =>
+    del(`/product/${productId}`)
+      .then(() => {
+        dispatch(productGetAll()); // Reload list
+      });
+}
+
+export function productGetAll() {
   return dispatch =>
     get('/product')
       .then((res) => {
@@ -28,7 +36,7 @@ export function getAllProducts() {
       });
 }
 
-export function getProductById(productId) {
+export function productGetById(productId) {
   return dispatch =>
     get(`/product/${productId}`)
       .then((res) => {

@@ -14,7 +14,7 @@ import Home from './../modules/home/home';
 import Catalog from './../modules/catalog/catalogIndex';
 import Product from './../modules/product/productIndex';
 import ProductForm from './../modules/product/productForm';
-import { getUserById } from '../modules/user/_actions/userActions';
+import { userGetById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
 import VocabularForm from '../modules/vocabular/form/vocabularForm';
 
@@ -26,7 +26,7 @@ class App extends Component {
 
   componentDidMount() {
     if (_.isEmpty(this.props.userInfo) && !_.isEmpty(localStorage.getItem('userId'))) {
-      this.props.getUserById(localStorage.getItem('userId'));
+      this.props.userGetById(localStorage.getItem('userId'));
     }
   }
 
@@ -75,7 +75,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getUserById: userId => dispatch(getUserById(userId)),
+  userGetById: userId => dispatch(userGetById(userId)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

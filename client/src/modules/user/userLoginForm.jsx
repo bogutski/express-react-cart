@@ -82,7 +82,6 @@ const mapDispatchToProps = dispatch => ({
   userLogin: (email, password) => dispatch(userLogin(email, password)),
 });
 
-
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({ form: 'userLogin' }),

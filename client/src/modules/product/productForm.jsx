@@ -5,7 +5,7 @@ import { Button, Form, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from './../form/form';
 import { required, number } from './../form/validators';
-import { productCreate, productUpdate, getProductById } from './_actions/productActions';
+import { productCreate, productUpdate, productGetById } from './_actions/productActions';
 
 class ProductForm extends Component {
   constructor(props) {
@@ -17,7 +17,7 @@ class ProductForm extends Component {
     const productId = this.props.match.params.id;
 
     if (productId) {
-      this.props.getProductById(productId);
+      this.props.productGetById(productId);
     } else {
       // this.props.clearProductForm();
     }
@@ -78,7 +78,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  getProductById: productId => dispatch(getProductById(productId)),
+  productGetById: productId => dispatch(productGetById(productId)),
   productCreate: product => dispatch(productCreate(product)),
   productUpdate: (productId, data) => dispatch(productUpdate(productId, data)),
 });
