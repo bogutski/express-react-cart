@@ -3,9 +3,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
+import Select from 'react-select';
 import { TextField } from './../form/form';
 import { required, number } from './../form/validators';
 import { productCreate, productUpdate, productGetById } from './_actions/productActions';
+
 
 class ProductForm extends Component {
   constructor(props) {
@@ -40,6 +42,11 @@ class ProductForm extends Component {
   }
 
   render() {
+    const options = [
+      { value: 1, label: 'select option' },
+      { value: 2, label: 'select option2' },
+    ];
+
     return (
       <Form onSubmit={this.formSubmit}>
         <h3>Product</h3>
@@ -57,6 +64,20 @@ class ProductForm extends Component {
           placeholder="Price"
           component={TextField}
           validate={[required, number]}
+        />
+
+        <Field
+          name="catalog"
+          component={props =>
+            (<Select
+              value={props.input.value}
+              onChange={props.input.onChange}
+              onBlur={() => props.input.onBlur(props.input.value)}
+              options={options}
+              placeholder="Select"
+              simpleValue
+            />)
+          }
         />
 
         <Label for="exampleFile">File</Label>
