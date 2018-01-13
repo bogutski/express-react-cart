@@ -33,7 +33,7 @@ class ProductList extends Component {
       {
         Header: 'Actions',
         id: 'act',
-        accessor: el => <Link to={`/product/${el._id}`}>Edit</Link>,
+        accessor: el => <Link to={`/product/edit/${el._id}`}>Edit</Link>,
       },
     ];
   }

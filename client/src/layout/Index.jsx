@@ -47,11 +47,11 @@ class App extends Component {
 
                   <Route exact path="/vocabular" component={Vocabular} />
                   <Route exact path="/vocabular/add" component={VocabularForm} />
-                  <Route exact path="/vocabular/:id" component={VocabularForm} />
+                  <Route exact path="/vocabular/edit/:id" component={VocabularForm} />
 
                   <Route exact path="/product" component={Product} />
                   <Route exact path="/product/add" component={ProductForm} />
-                  <Route exact path="/product/:id" component={ProductForm} />
+                  <Route exact path="/product/edit/:id" component={ProductForm} />
 
                   <Route exact path="/user/list" component={UserList} />
                   <Route exact path="/user/login" component={UserLoginForm} />

@@ -25,7 +25,7 @@ class VocabularList extends Component {
       {
         Header: 'Actions',
         id: 'act',
-        accessor: el => <Link to={`/vocabular/${el._id}`}>Edit</Link>,
+        accessor: el => <Link to={`/vocabular/edit/${el._id}`}>Edit</Link>,
       },
     ];
   }
