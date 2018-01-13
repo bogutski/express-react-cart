@@ -1,5 +1,5 @@
 import { initialize } from 'redux-form';
-import { get, post, patch } from '../../httpRequest/httpMethods';
+import { get, post, patch, del } from '../../httpRequest/httpMethods';
 
 export function vocabularCreate(data) {
   return () =>
@@ -43,6 +43,15 @@ export function clearVocabularForm() {
 export function getVocabularById(vocabularId) {
   return dispatch =>
     get(`/vocabular/${vocabularId}`)
+      .then((res) => {
+        dispatch(initialize('vocabular', { ...res.data })); // Fill form
+        dispatch(vocabularSetTreeData(res.data.terms || []));
+      });
+}
+
+export function vocabularDeleteById(vocabularId) {
+  return dispatch =>
+    del(`/vocabular/${vocabularId}`)
       .then((res) => {
         dispatch(initialize('vocabular', { ...res.data })); // Fill form
         dispatch(vocabularSetTreeData(res.data.terms || []));

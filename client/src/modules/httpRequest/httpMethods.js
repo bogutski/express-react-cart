@@ -7,9 +7,9 @@ const headers = {
   // 'Content-Type': 'multipart/form-data',
 };
 
-export function post(url, data) {
+function httpMethod(method, url, data) {
   return axios({
-    method: 'post',
+    method,
     url,
     data,
     headers,
@@ -33,30 +33,16 @@ export function post(url, data) {
     });
 }
 
+export function post(url, data) {
+  httpMethod('post', url, data);
+}
+
 export function patch(url, data) {
-  return axios({
-    method: 'patch',
-    url,
-    data,
-    headers,
-  })
-    .then((res) => {
-      store.dispatch(Notifications.removeAll()); // Removes all notifications
-      store.dispatch(Notifications.success({
-        title: res.data.message.text,
-        autoDismiss: 0,
-      }));
-      return res;
-    })
-    .catch((error) => {
-      if (error.response) {
-        store.dispatch(Notifications.error({
-          title: error.response.data.message.text,
-          autoDismiss: 0,
-        }));
-      }
-      return error;
-    });
+  httpMethod('patch', url, data);
+}
+
+export function del(url, data) {
+  httpMethod('delete', url, data);
 }
 
 export function get(url) {

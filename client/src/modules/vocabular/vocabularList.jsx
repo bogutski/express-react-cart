@@ -1,15 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Button } from 'reactstrap';
 import ReactTable from 'react-table';
 import { withRouter, Link } from 'react-router-dom';
-import { getAllVocabulars } from './_actions/vocabularActions';
+import { getAllVocabulars, vocabularDeleteById } from './_actions/vocabularActions';
 
 class VocabularList extends Component {
+  constructor(props) {
+    super(props);
+    this.delete = this.delete.bind(this);
+  }
+
   componentDidMount() {
     if (_.isEmpty(this.props.userList)) {
       this.props.getAllVocabulars();
     }
+  }
+
+  delete(id) {
+    console.log('del', id);
+    this.props.vocabularDeleteById(id);
   }
 
   columns() {
@@ -25,7 +36,12 @@ class VocabularList extends Component {
       {
         Header: 'Actions',
         id: 'act',
-        accessor: el => <Link to={`/vocabular/edit/${el._id}`}>Edit</Link>,
+        accessor: el => (
+          <div>
+            <Link to={`/vocabular/edit/${el._id}`}>Edit</Link>
+            <Button color="link" onClick={() => this.delete(el._id)} >Delete</Button>
+          </div>
+        ),
       },
     ];
   }
@@ -49,6 +65,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getAllVocabulars: () => dispatch(getAllVocabulars()),
+  vocabularDeleteById: id => dispatch(vocabularDeleteById(id)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(VocabularList));
