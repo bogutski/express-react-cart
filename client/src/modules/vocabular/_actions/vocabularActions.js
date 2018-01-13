@@ -55,6 +55,7 @@ export function vocabularDeleteById(vocabularId) {
       .then((res) => {
         dispatch(initialize('vocabular', { ...res.data })); // Fill form
         dispatch(vocabularSetTreeData(res.data.terms || []));
+        dispatch(getAllVocabulars()); // Reload list
       });
 }
 

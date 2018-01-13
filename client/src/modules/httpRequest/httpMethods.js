@@ -34,15 +34,15 @@ function httpMethod(method, url, data) {
 }
 
 export function post(url, data) {
-  httpMethod('post', url, data);
+  return httpMethod('post', url, data);
 }
 
 export function patch(url, data) {
-  httpMethod('patch', url, data);
+  return httpMethod('patch', url, data);
 }
 
 export function del(url, data) {
-  httpMethod('delete', url, data);
+  return httpMethod('delete', url, data);
 }
 
 export function get(url) {

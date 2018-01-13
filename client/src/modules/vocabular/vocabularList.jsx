@@ -19,7 +19,6 @@ class VocabularList extends Component {
   }
 
   delete(id) {
-    console.log('del', id);
     this.props.vocabularDeleteById(id);
   }
 
@@ -53,6 +52,8 @@ class VocabularList extends Component {
           data={this.props.vocabularList}
           columns={this.columns()}
           minRows={0}
+          defaultPageSize={30}
+          showPagination={this.props.vocabularList.length > 30}
         />
       </div>
     );
