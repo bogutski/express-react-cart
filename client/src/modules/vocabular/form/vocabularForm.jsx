@@ -16,6 +16,16 @@ class VocabularForm extends Component {
     this.formSubmit = this.formSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const vocabularId = this.props.match.params.id;
+
+    if (vocabularId) {
+      this.props.getVocabularById(vocabularId);
+    } else {
+      this.props.clearVocabularForm();
+    }
+  }
+
   formSubmit(e) {
     e.preventDefault();
 
@@ -25,24 +35,11 @@ class VocabularForm extends Component {
       terms: this.props.vocabularTree,
     };
 
-    console.log(vocabularId);
-
     if (vocabularId) {
       this.props.vocabularUpdate(vocabularId, data);
     } else {
       this.props.vocabularCreate(data);
     }
-  }
-
-  componentDidMount() {
-    const vocabularId = this.props.match.params.id;
-
-    if (vocabularId) {
-      this.props.getVocabularById(vocabularId);
-    } else {
-      this.props.clearVocabularForm();
-    }
-
   }
 
   render() {

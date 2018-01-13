@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import ProductCreateForm from './productForm';
 import ProductList from './productList';
+import ProductControls from './productControls';
 
 class ProductIndex extends Component {
   render() {
     return (
       <div>
-        <ProductCreateForm />
+        <h5>Products</h5>
+        <ProductControls />
         <ProductList />
       </div>
     );

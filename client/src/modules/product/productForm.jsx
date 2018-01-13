@@ -5,7 +5,7 @@ import { Button, Form, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from './../form/form';
 import { required, number } from './../form/validators';
-import { productCreate } from './_actions/productActions';
+import { productCreate, productUpdate, getProductById } from './_actions/productActions';
 
 class ProductForm extends Component {
   constructor(props) {
@@ -13,14 +13,30 @@ class ProductForm extends Component {
     this.formSubmit = this.formSubmit.bind(this);
   }
 
+  componentDidMount() {
+    const productId = this.props.match.params.id;
+
+    if (productId) {
+      this.props.getProductById(productId);
+    } else {
+      // this.props.clearProductForm();
+    }
+  }
+
+
   formSubmit(e) {
     e.preventDefault();
 
-    const product = {
+    const productId = this.props.match.params.id;
+    const data = {
       ...this.props.productForm.values,
     };
 
-    this.props.productCreate(product);
+    if (productId) {
+      this.props.productUpdate(productId, data);
+    } else {
+      this.props.productCreate(data);
+    }
   }
 
   render() {
@@ -62,7 +78,9 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
+  getProductById: productId => dispatch(getProductById(productId)),
   productCreate: product => dispatch(productCreate(product)),
+  productUpdate: (productId, data) => dispatch(productUpdate(productId, data)),
 });
 
 export default compose(

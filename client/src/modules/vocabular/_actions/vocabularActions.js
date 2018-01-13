@@ -44,7 +44,7 @@ export function getVocabularById(vocabularId) {
   return dispatch =>
     get(`/vocabular/${vocabularId}`)
       .then((res) => {
-        dispatch(initialize('vocabular', { ...res.data })); // Fill form name
+        dispatch(initialize('vocabular', { ...res.data })); // Fill form
         dispatch(vocabularSetTreeData(res.data.terms || []));
       });
 }
