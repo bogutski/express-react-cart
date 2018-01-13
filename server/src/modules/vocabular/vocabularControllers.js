@@ -18,10 +18,10 @@ export const vocabularGetAll = (req, res, next) => {
 };
 
 export const vocabularCreate = (req, res, next) => {
-  console.log(req.body);
   const vocabular = new Vocabular({
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
+    terms: req.body.terms,
   });
 
   vocabular

@@ -3,13 +3,14 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Col, Form, Row } from 'reactstrap';
+import _ from 'lodash';
 import VocabularTree from './vocabularTree';
 import VocabularTermForm from './vocabularTermForm';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
-import { vocabularCreate, vocabularUpdate, getVocabularById } from '../_actions/vocabularActions';
+import { getVocabularById, vocabularCreate, vocabularUpdate, clearVocabularForm } from '../_actions/vocabularActions';
 
-class VocabularEditForm extends Component {
+class VocabularForm extends Component {
   constructor(props) {
     super(props);
     this.formSubmit = this.formSubmit.bind(this);
@@ -24,6 +25,8 @@ class VocabularEditForm extends Component {
       terms: this.props.vocabularTree,
     };
 
+    console.log(vocabularId);
+
     if (vocabularId) {
       this.props.vocabularUpdate(vocabularId, data);
     } else {
@@ -36,15 +39,17 @@ class VocabularEditForm extends Component {
 
     if (vocabularId) {
       this.props.getVocabularById(vocabularId);
+    } else {
+      this.props.clearVocabularForm();
     }
-  }
 
+  }
 
   render() {
     return (
       <Row>
         <Col md="12">
-          <h5>Vocabular Edit</h5>
+          <h5>Vocabular {_.has(this.props, 'vocabularForm.values.name') ? this.props.vocabularForm.values.name : null }</h5>
 
           <Form onSubmit={this.formSubmit}>
             <Field
@@ -76,7 +81,6 @@ class VocabularEditForm extends Component {
   }
 }
 
-
 const mapStateToProps = state => ({
   vocabularForm: state.form.vocabular,
   vocabularTree: state.vocabular.vocabularTree,
@@ -84,12 +88,12 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   getVocabularById: vocabularId => dispatch(getVocabularById(vocabularId)),
-  vocabularCreate: vocabular => dispatch(vocabularCreate(vocabular)),
+  vocabularCreate: data => dispatch(vocabularCreate(data)),
   vocabularUpdate: (vocabularId, data) => dispatch(vocabularUpdate(vocabularId, data)),
+  clearVocabularForm: () => dispatch(clearVocabularForm()),
 });
-
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({ form: 'vocabular' }),
-)(VocabularEditForm);
+)(VocabularForm);

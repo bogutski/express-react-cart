@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactTable from 'react-table';
+import { withRouter, Link } from 'react-router-dom';
 import { getAllProducts } from './_actions/productActions';
-import { withRouter } from 'react-router-dom';
 
 class ProductList extends Component {
   componentDidMount() {
@@ -29,6 +29,11 @@ class ProductList extends Component {
       {
         Header: 'Image',
         accessor: 'image',
+      },
+      {
+        Header: 'Actions',
+        id: 'act',
+        accessor: el => <Link to={`/product/${el._id}`}>Edit</Link>,
       },
     ];
   }

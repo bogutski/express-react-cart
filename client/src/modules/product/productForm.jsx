@@ -7,7 +7,7 @@ import { TextField } from './../form/form';
 import { required, number } from './../form/validators';
 import { productCreate } from './_actions/productActions';
 
-class ProductCreateForm extends Component {
+class ProductForm extends Component {
   constructor(props) {
     super(props);
     this.formSubmit = this.formSubmit.bind(this);
@@ -17,8 +17,7 @@ class ProductCreateForm extends Component {
     e.preventDefault();
 
     const product = {
-      name: this.props.productForm.values.name,
-      price: this.props.productForm.values.price,
+      ...this.props.productForm.values,
     };
 
     this.props.productCreate(product);
@@ -27,7 +26,7 @@ class ProductCreateForm extends Component {
   render() {
     return (
       <Form onSubmit={this.formSubmit}>
-        <h3>Product Create</h3>
+        <h3>Product</h3>
         <Field
           name="name"
           type="text"
@@ -66,8 +65,7 @@ const mapDispatchToProps = dispatch => ({
   productCreate: product => dispatch(productCreate(product)),
 });
 
-
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
   reduxForm({ form: 'product' }),
-)(ProductCreateForm);
+)(ProductForm);

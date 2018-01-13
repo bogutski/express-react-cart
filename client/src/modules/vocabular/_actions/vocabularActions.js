@@ -1,11 +1,11 @@
 import { initialize } from 'redux-form';
 import { get, post, patch } from '../../httpRequest/httpMethods';
 
-export function vocabularCreate(vocabular) {
+export function vocabularCreate(data) {
   return () =>
     post(
       '/vocabular',
-      vocabular,
+      data,
     );
 }
 
@@ -31,9 +31,13 @@ export function getAllVocabulars() {
 export function vocabularSetTreeData(treeData) {
   return dispatch =>
     dispatch({
-      type: 'VOCABULAR_TREE',
+      type: 'VOCABULAR_TERM_TREE',
       payload: treeData,
     });
+}
+
+export function clearVocabularForm() {
+  return dispatch => dispatch(vocabularSetTreeData([]));
 }
 
 export function getVocabularById(vocabularId) {

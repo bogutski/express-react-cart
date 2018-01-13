@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import VocabularCreateForm from './form/vocabularCreateForm';
+import VocabularControl from './vocabularControls';
 import VocabularList from './vocabularList';
 
 class Vocabular extends Component {
   render() {
     return (
       <div>
-        <VocabularCreateForm />
+        <VocabularControl />
         <VocabularList />
       </div>
     );
