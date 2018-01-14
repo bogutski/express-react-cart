@@ -13,7 +13,7 @@ class ProductList extends Component {
   }
 
   componentDidMount() {
-    if (_.isEmpty(this.props.userList)) {
+    if (_.isEmpty(this.props.productList)) {
       this.props.productGetAll();
     }
   }
