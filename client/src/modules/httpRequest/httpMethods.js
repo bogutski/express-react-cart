@@ -1,4 +1,5 @@
 import axios from 'axios';
+import _ from 'lodash';
 import Notifications from 'react-notification-system-redux';
 import store from '../../redux/store';
 
@@ -15,11 +16,15 @@ function httpMethod(method, url, data) {
     headers,
   })
     .then((res) => {
-      store.dispatch(Notifications.removeAll()); // Removes all notifications
-      store.dispatch(Notifications.success({
-        title: res.data.message.text,
-        autoDismiss: 0,
-      }));
+      // If response has message
+      if (_.has(res.data, 'message.text')) {
+        store.dispatch(Notifications.removeAll()); // Removes all notifications
+        store.dispatch(Notifications.success({
+          title: res.data.message.text,
+          autoDismiss: 0,
+        }));
+      }
+
       return res;
     })
     .catch((error) => {

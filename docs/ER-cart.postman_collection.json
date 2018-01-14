@@ -231,6 +231,36 @@
 					"response": []
 				},
 				{
+					"name": "Get Vocabular by params",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Catalog\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/vocabular/params",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"vocabular",
+								"params"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "Create vocabular",
 					"request": {
 						"auth": {
@@ -240,8 +270,7 @@
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"disabled": true
+								"value": "application/json"
 							},
 							{
 								"key": "Content-Type",
@@ -251,7 +280,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Catalog voc\"\n}"
+							"raw": "{\n    \"name\": \"Colors\",\n    \"terms\": [{\"name\" : \"Color1\"}]\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/vocabular",

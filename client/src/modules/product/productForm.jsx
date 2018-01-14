@@ -7,6 +7,7 @@ import Select from 'react-select';
 import { TextField } from './../form/form';
 import { required, number } from './../form/validators';
 import { productCreate, productUpdate, productGetById } from './_actions/productActions';
+import { vocabularFillCategoryList } from './../vocabular/_actions/vocabularActions';
 
 
 class ProductForm extends Component {
@@ -20,9 +21,9 @@ class ProductForm extends Component {
 
     if (productId) {
       this.props.productGetById(productId);
-    } else {
-      // this.props.clearProductForm();
     }
+
+    this.props.vocabularFillCategoryList({ name: 'Catalog' });
   }
 
 
@@ -96,12 +97,14 @@ class ProductForm extends Component {
 
 const mapStateToProps = state => ({
   productForm: state.form.product,
+  categoryList: state.vocabular.categoryList,
 });
 
 const mapDispatchToProps = dispatch => ({
   productGetById: productId => dispatch(productGetById(productId)),
   productCreate: product => dispatch(productCreate(product)),
   productUpdate: (productId, data) => dispatch(productUpdate(productId, data)),
+  vocabularFillCategoryList: data => dispatch(vocabularFillCategoryList(data)),
 });
 
 export default compose(

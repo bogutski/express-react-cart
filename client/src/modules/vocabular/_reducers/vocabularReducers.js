@@ -5,6 +5,7 @@ const initialState = {
   vocabularInfo: {}, // Current vocabular info
   vocabularTree: [], // Current vocabular tree of terms
   editedTerm: {}, // Currently edited term, name, params, path
+  categoryList: [], // List of terms from voc: Category
 };
 
 const vocabular = (state = initialState, action) => {
@@ -67,6 +68,13 @@ const vocabular = (state = initialState, action) => {
       return {
         ...state,
         vocabularTree,
+      };
+    }
+
+    case 'VOCABULAR_FILL_CATEGORY_LIST': {
+      return {
+        ...state,
+        categoryList: action.payload,
       };
     }
 

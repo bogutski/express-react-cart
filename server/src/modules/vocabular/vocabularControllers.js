@@ -59,6 +59,27 @@ export const vocabularGetById = (req, res, next) => {
     });
 };
 
+export const vocabularGetByParams = (req, res, next) => {
+  console.log(req.body);
+  Vocabular.find(req.body)
+    .select('-__v')
+    .exec()
+    .then((doc) => {
+      if (doc) {
+        res.status(200)
+          .json(doc);
+      } else {
+        res.status(404)
+          .json(message.error('No vocabular for provided params'));
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500)
+        .json(message.error(err.message));
+    });
+};
+
 export const vocabularUpdateById = (req, res, next) => {
   const id = req.params.vocabularId;
   Vocabular.update({ _id: id }, { $set: req.body })
