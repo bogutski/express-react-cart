@@ -72,7 +72,7 @@ class VocabularTermForm extends Component {
             : null}
         </div>
 
-        <Pre obj={this.props.editedTerm} />
+        <Pre obj={this.props.editedTerm} on />
 
       </Form>
     );
