@@ -79,9 +79,9 @@ const vocabular = (state = initialState, action) => {
         // Makes sure you traverse every node in the tree, not just the visible ones
         ignoreCollapsed: false,
       }).map(({ node, path }) => ({
-        id: node.name,
+        id: node.id,
         label: node.name,
-        value: node.name,
+        value: node.id,
 
         // The last entry in the path is this node's key
         // The second to last entry (accessed here) is the parent node's key
