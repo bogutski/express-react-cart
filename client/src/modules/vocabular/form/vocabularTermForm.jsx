@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { Button, Form } from 'reactstrap';
 import _ from 'lodash';
+import shortid from 'shortid';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
 import Pre from './../../pre/pre';
@@ -25,6 +26,7 @@ class VocabularTermForm extends Component {
     const node = this.props.editedTerm;
 
     const term = {
+      id: shortid.generate(), // Create id. If exist next string will override to prev value
       ...this.props.termForm.values,
     };
 
