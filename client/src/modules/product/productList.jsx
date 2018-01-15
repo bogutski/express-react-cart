@@ -33,6 +33,10 @@ class ProductList extends Component {
         accessor: 'name',
       },
       {
+        Header: 'Catalog',
+        accessor: 'catalog',
+      },
+      {
         Header: 'Price',
         accessor: 'price',
       },

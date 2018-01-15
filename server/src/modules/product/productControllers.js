@@ -23,6 +23,7 @@ export const productCreate = (req, res, next) => {
     _id: new mongoose.Types.ObjectId(),
     name: req.body.name,
     price: req.body.price,
+    catalog: req.body.catalog,
     // image: ' - ', // req.file.path && null,
   });
 
