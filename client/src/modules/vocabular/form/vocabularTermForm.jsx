@@ -6,6 +6,7 @@ import { Button, Form } from 'reactstrap';
 import _ from 'lodash';
 import { required } from './../../form/validators';
 import { TextField } from './../../form/form';
+import Pre from './../../pre/pre';
 import {
   cancelEditTerm, vocabularAddTermToRoot,
   vocabularUpdateTerm,
@@ -71,12 +72,7 @@ class VocabularTermForm extends Component {
             : null}
         </div>
 
-        {/*
-        <hr />
-        <pre>
-          {JSON.stringify(this.props.editedTerm, 0, 2)}
-        </pre>
-        */}
+        <Pre obj={this.props.editedTerm} />
 
       </Form>
     );
