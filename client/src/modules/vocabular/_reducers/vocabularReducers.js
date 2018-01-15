@@ -1,4 +1,4 @@
-import { changeNodeAtPath, removeNodeAtPath } from 'react-sortable-tree';
+import { changeNodeAtPath, removeNodeAtPath, getFlatDataFromTree } from 'react-sortable-tree';
 
 const initialState = {
   vocabularList: [], // Vocabularies list
@@ -72,9 +72,26 @@ const vocabular = (state = initialState, action) => {
     }
 
     case 'VOCABULAR_FILL_CATEGORY_LIST': {
+      const flatData = getFlatDataFromTree({
+        treeData: action.payload,
+        // This ensures your "id" properties are exported in the path
+        getNodeKey: ({ node }) => node.name,
+        // Makes sure you traverse every node in the tree, not just the visible ones
+        ignoreCollapsed: false,
+      }).map(({ node, path }) => ({
+        id: node.name,
+        label: node.name,
+        value: node.name,
+
+        // The last entry in the path is this node's key
+        // The second to last entry (accessed here) is the parent node's key
+        parent: path.length > 1 ? path[path.length - 2] : null,
+      }));
+
+      console.log(flatData);
       return {
         ...state,
-        categoryList: action.payload,
+        categoryList: flatData,
       };
     }
 

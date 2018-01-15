@@ -26,7 +26,6 @@ class ProductForm extends Component {
     this.props.vocabularFillCategoryList({ name: 'Catalog' });
   }
 
-
   formSubmit(e) {
     e.preventDefault();
 
@@ -43,11 +42,6 @@ class ProductForm extends Component {
   }
 
   render() {
-    const options = [
-      { value: 1, label: 'select option' },
-      { value: 2, label: 'select option2' },
-    ];
-
     return (
       <Form onSubmit={this.formSubmit}>
         <h3>Product</h3>
@@ -74,7 +68,7 @@ class ProductForm extends Component {
               value={props.input.value}
               onChange={props.input.onChange}
               onBlur={() => props.input.onBlur(props.input.value)}
-              options={options}
+              options={this.props.categoryList}
               placeholder="Select"
               simpleValue
             />)
