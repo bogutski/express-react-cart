@@ -3,8 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import Select from 'react-select';
-import { TextField } from './../form/form';
+import { TextField, Selectbox } from './../form/form';
 import { number, required } from './../form/validators';
 import { productCreate, productGetById, productUpdate } from './_actions/productActions';
 
@@ -59,16 +58,8 @@ class ProductForm extends Component {
 
         <Field
           name="catalog"
-          component={props =>
-            (<Select
-              value={props.input.value}
-              onChange={props.input.onChange}
-              onBlur={() => props.input.onBlur(props.input.value)}
-              options={this.props.categoryList}
-              placeholder="Select"
-              simpleValue
-            />)
-          }
+          options={this.props.categoryList}
+          component={Selectbox}
         />
 
         <Label for="exampleFile">File</Label>
