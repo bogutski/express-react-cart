@@ -2,22 +2,23 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Button, Form } from 'reactstrap';
+import { Button, Form, Input } from 'reactstrap';
+
 import _ from 'lodash';
 import shortid from 'shortid';
 import { required } from './../../form/validators';
-import { TextField } from './../../form/form';
+import { TextField, Checkbox } from './../../form/form';
 import Pre from './../../pre/pre';
 import {
-  cancelEditTerm, vocabularAddTermToRoot,
-  vocabularUpdateTerm,
+  vocabularTermAddToRoot, vocabularTermCancelEdit,
+  vocabularTermUpdate,
 } from '../_actions/vocabularActions';
 
 class VocabularTermForm extends Component {
   constructor(props) {
     super(props);
     this.formSubmit = this.formSubmit.bind(this);
-    this.cancelEditTerm = this.cancelEditTerm.bind(this);
+    this.vocabularTermCancelEdit = this.vocabularTermCancelEdit.bind(this);
   }
 
   formSubmit(e) {
@@ -31,14 +32,14 @@ class VocabularTermForm extends Component {
     };
 
     if (_.isEmpty(this.props.editedTerm)) {
-      this.props.vocabularAddTermToRoot(term);
+      this.props.vocabularTermAddToRoot(term);
     } else {
-      this.props.vocabularUpdateTerm(node, term, this.props.editedTerm.path);
+      this.props.vocabularTermUpdate(node, term, this.props.editedTerm.path);
     }
   }
 
-  cancelEditTerm() {
-    this.props.cancelEditTerm();
+  vocabularTermCancelEdit() {
+    this.props.vocabularTermCancelEdit();
   }
 
   render() {
@@ -52,6 +53,21 @@ class VocabularTermForm extends Component {
           component={TextField}
           validate={[required]}
         />
+
+        <Field
+          name="authopath"
+          component={Checkbox}
+          type="checkbox"
+        />
+
+        <Field
+          name="path"
+          type="text"
+          placeholder="URL path"
+          component={TextField}
+          validate={[required]}
+        />
+
         <div>
 
           <Button
@@ -68,7 +84,7 @@ class VocabularTermForm extends Component {
               type="button"
               outline
               color="secondary"
-              onClick={() => this.props.cancelEditTerm()}
+              onClick={() => this.props.vocabularTermCancelEdit()}
             >Cancel
             </Button>
             : null}
@@ -88,9 +104,10 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  vocabularAddTermToRoot: term => dispatch(vocabularAddTermToRoot(term)),
-  vocabularUpdateTerm: (node, term, path) => dispatch(vocabularUpdateTerm(node, term, path)),
-  cancelEditTerm: () => dispatch(cancelEditTerm()),
+  vocabularTermAddToRoot: term => dispatch(vocabularTermAddToRoot(term)),
+  vocabularTermUpdate: (node, term, path) => dispatch(vocabularTermUpdate(node, term, path)),
+  vocabularTermCancelEdit: () => dispatch(vocabularTermCancelEdit()),
+  //  vocabularTermGeneratePath: () => dispatch(vocabularTermGeneratePath()),
 });
 
 

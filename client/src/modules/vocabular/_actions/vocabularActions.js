@@ -36,7 +36,7 @@ export function vocabularSetTreeData(treeData) {
     });
 }
 
-export function clearVocabularForm() {
+export function vocabularClearForm() {
   return dispatch => dispatch(vocabularSetTreeData([]));
 }
 
@@ -76,18 +76,6 @@ export function vocabularFillCatalog() {
   };
 }
 
-export function vocabularFillCategoryList(data) {
-  return (dispatch) => {
-    dispatch(vocabularGetByParams(data))
-      .then((res) => {
-        dispatch({
-          type: 'VOCABULAR_CATALOG_FLAT',
-          payload: res[0].terms,
-        });
-      });
-  };
-}
-
 export function vocabularDeleteById(vocabularId) {
   return dispatch =>
     del(`/vocabular/${vocabularId}`)
@@ -109,7 +97,7 @@ export function vocabularTermToEditForm(node, path) {
   };
 }
 
-export function vocabularUpdateTerm(node, term, path) {
+export function vocabularTermUpdate(node, term, path) {
   return (dispatch) => {
     dispatch({
       type: 'VOCABULAR_TERM_UPDATE',
@@ -124,7 +112,7 @@ export function vocabularUpdateTerm(node, term, path) {
   };
 }
 
-export function vocabularAddTermToRoot(term) {
+export function vocabularTermAddToRoot(term) {
   return (dispatch) => {
     dispatch({
       type: 'VOCABULAR_TERM_ADD_TO_ROOT',
@@ -135,7 +123,7 @@ export function vocabularAddTermToRoot(term) {
   };
 }
 
-export function cancelEditTerm() {
+export function vocabularTermCancelEdit() {
   return (dispatch) => {
     dispatch({
       type: 'VOCABULAR_TERM_CANCEL_EDIT',
@@ -145,7 +133,7 @@ export function cancelEditTerm() {
   };
 }
 
-export function vocabularDeleteTerm(path) {
+export function vocabularTermDelete(path) {
   return (dispatch) => {
     dispatch({
       type: 'VOCABULAR_TERM_DELETE',

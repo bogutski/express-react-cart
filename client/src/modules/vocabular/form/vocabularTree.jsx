@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import SortableTree from 'react-sortable-tree';
 import { Button, ButtonGroup } from 'reactstrap';
 import {
-  vocabularDeleteTerm,
+  vocabularTermDelete,
   vocabularSetTreeData,
   vocabularTermToEditForm,
 } from '../_actions/vocabularActions';
@@ -28,7 +28,7 @@ class VocabularTree extends Component {
                 <Button
                   color="danger"
                   outline
-                  onClick={() => this.props.vocabularDeleteTerm(path)}
+                  onClick={() => this.props.vocabularTermDelete(path)}
                 >Remove
                 </Button>
               </ButtonGroup>,
@@ -47,7 +47,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   vocabularSetTreeData: treeData => dispatch(vocabularSetTreeData(treeData)),
-  vocabularDeleteTerm: path => dispatch(vocabularDeleteTerm(path)),
+  vocabularTermDelete: path => dispatch(vocabularTermDelete(path)),
   vocabularTermToEditForm: (node, path) => dispatch(vocabularTermToEditForm(node, path)),
 });
 

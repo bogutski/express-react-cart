@@ -1,4 +1,5 @@
 import React from 'react';
+import { Input } from 'reactstrap';
 
 export const TextField = ({
   input, meta, label, placeholder, descr,
@@ -31,6 +32,16 @@ export const TextField = ({
     </div>
   </div>
 );
+
+export const Checkbox = props =>
+  (
+    <Input
+      checked={props.input.value}
+      onChange={props.input.onChange}
+      type="checkbox"
+    />
+  );
+
 
 export const TextArea = '';
 
