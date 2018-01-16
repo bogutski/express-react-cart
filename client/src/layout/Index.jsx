@@ -17,6 +17,7 @@ import ProductForm from './../modules/product/productForm';
 import { userGetById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
 import VocabularForm from '../modules/vocabular/form/vocabularForm';
+import { vocabularFillCatalog } from './../modules/vocabular/_actions/vocabularActions';
 
 class App extends Component {
   constructor(props) {
@@ -27,6 +28,10 @@ class App extends Component {
   componentDidMount() {
     if (_.isEmpty(this.props.userInfo) && !_.isEmpty(localStorage.getItem('userId'))) {
       this.props.userGetById(localStorage.getItem('userId'));
+    }
+
+    if (_.isEmpty(this.props.catalog)) {
+      this.props.vocabularFillCatalog();
     }
   }
 
@@ -72,10 +77,12 @@ class App extends Component {
 
 const mapStateToProps = state => ({
   userInfo: state.user.userInfo,
+  catalog: state.vocabular.catalog,
 });
 
 const mapDispatchToProps = dispatch => ({
   userGetById: userId => dispatch(userGetById(userId)),
+  vocabularFillCatalog: () => dispatch(vocabularFillCatalog()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

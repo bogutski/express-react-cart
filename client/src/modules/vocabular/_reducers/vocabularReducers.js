@@ -5,7 +5,8 @@ const initialState = {
   vocabularInfo: {}, // Current vocabular info
   vocabularTree: [], // Current vocabular tree of terms
   editedTerm: {}, // Currently edited term, name, params, path
-  categoryList: [], // List of terms from voc: Category
+  categoryList: [], // Flat list of terms from voc: Category
+  catalog: [], // Terms from Catalog vocabular
 };
 
 const vocabular = (state = initialState, action) => {
@@ -71,7 +72,14 @@ const vocabular = (state = initialState, action) => {
       };
     }
 
-    case 'VOCABULAR_FILL_CATEGORY_LIST': {
+    case 'VOCABULAR_CATALOG': {
+      return {
+        ...state,
+        catalog: action.payload,
+      };
+    }
+
+    case 'VOCABULAR_CATALOG_FLAT': {
       const flatData = getFlatDataFromTree({
         treeData: action.payload,
         // This ensures your "id" properties are exported in the path
@@ -88,7 +96,6 @@ const vocabular = (state = initialState, action) => {
         parent: path.length > 1 ? path[path.length - 2] : null,
       }));
 
-      console.log(flatData);
       return {
         ...state,
         categoryList: flatData,

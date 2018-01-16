@@ -58,12 +58,30 @@ export function vocabularGetByParams(data) {
       .then(res => res.data);
 }
 
+export function vocabularFillCatalog() {
+  const catalogSearchParam = { name: 'Catalog' };
+
+  return (dispatch) => {
+    dispatch(vocabularGetByParams(catalogSearchParam))
+      .then((res) => {
+        dispatch({
+          type: 'VOCABULAR_CATALOG',
+          payload: res[0].terms,
+        });
+        dispatch({
+          type: 'VOCABULAR_CATALOG_FLAT',
+          payload: res[0].terms,
+        });
+      });
+  };
+}
+
 export function vocabularFillCategoryList(data) {
   return (dispatch) => {
     dispatch(vocabularGetByParams(data))
       .then((res) => {
         dispatch({
-          type: 'VOCABULAR_FILL_CATEGORY_LIST',
+          type: 'VOCABULAR_CATALOG_FLAT',
           payload: res[0].terms,
         });
       });

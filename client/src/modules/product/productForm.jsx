@@ -5,10 +5,8 @@ import { Button, Form, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import Select from 'react-select';
 import { TextField } from './../form/form';
-import { required, number } from './../form/validators';
-import { productCreate, productUpdate, productGetById } from './_actions/productActions';
-import { vocabularFillCategoryList } from './../vocabular/_actions/vocabularActions';
-
+import { number, required } from './../form/validators';
+import { productCreate, productGetById, productUpdate } from './_actions/productActions';
 
 class ProductForm extends Component {
   constructor(props) {
@@ -22,8 +20,6 @@ class ProductForm extends Component {
     if (productId) {
       this.props.productGetById(productId);
     }
-
-    this.props.vocabularFillCategoryList({ name: 'Catalog' });
   }
 
   formSubmit(e) {
@@ -98,7 +94,6 @@ const mapDispatchToProps = dispatch => ({
   productGetById: productId => dispatch(productGetById(productId)),
   productCreate: product => dispatch(productCreate(product)),
   productUpdate: (productId, data) => dispatch(productUpdate(productId, data)),
-  vocabularFillCategoryList: data => dispatch(vocabularFillCategoryList(data)),
 });
 
 export default compose(
