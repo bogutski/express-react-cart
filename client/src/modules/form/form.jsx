@@ -3,7 +3,7 @@ import { Input } from 'reactstrap';
 import Select from 'react-select';
 
 export const TextField = ({
-  input, meta, label, placeholder, descr,
+  input, meta, label, placeholder, descr, disabled,
 }) => (
   <div>
     {/* <pre>{JSON.stringify(meta, 0, 2)}</pre> */}
@@ -18,6 +18,7 @@ export const TextField = ({
 
       <input
         {...input}
+        disabled={disabled}
         placeholder={placeholder}
         className={[
           'form-control',
@@ -43,7 +44,7 @@ export const Checkbox = props =>
     />
   );
 
-export const Selectbox = (props) => (
+export const Selectbox = props => (
   <Select
     value={props.input.value}
     onChange={props.input.onChange}
