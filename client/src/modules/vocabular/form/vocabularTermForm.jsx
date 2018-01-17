@@ -2,15 +2,14 @@ import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { Button, Form, Input } from 'reactstrap';
-
+import { Button, Form } from 'reactstrap';
 import _ from 'lodash';
 import shortid from 'shortid';
 import { required } from './../../form/validators';
-import { TextField, Checkbox } from './../../form/form';
+import { Checkbox, TextField } from './../../form/form';
 import Pre from './../../pre/pre';
 import {
-  vocabularTermAddToRoot, vocabularTermCancelEdit,
+  vocabularTermAddToRoot, vocabularTermCancelEdit, vocabularTermGeneratePath,
   vocabularTermUpdate,
 } from '../_actions/vocabularActions';
 
@@ -19,6 +18,32 @@ class VocabularTermForm extends Component {
     super(props);
     this.formSubmit = this.formSubmit.bind(this);
     this.vocabularTermCancelEdit = this.vocabularTermCancelEdit.bind(this);
+    this.changeName = this.changeName.bind(this);
+    this.changeAutopath = this.changeAutopath.bind(this);
+  }
+
+  changeName(e) {
+    if (
+      _.has(this.props, 'termForm.values.autopath')
+      && this.props.termForm.values.autopath
+      && this.props.termForm.values.name
+    ) {
+      const node = this.props.termForm.values;
+      const termName = e.target.value;
+      this.props.vocabularTermGeneratePath(node, termName);
+    }
+  }
+
+  changeAutopath(e) {
+    if (e.target.checked) {
+      const node = this.props.termForm.values;
+
+      const termName = _.has(this.props, 'termForm.values.name')
+        ? this.props.termForm.values.name
+        : '';
+
+      this.props.vocabularTermGeneratePath(node, termName);
+    }
   }
 
   formSubmit(e) {
@@ -46,16 +71,19 @@ class VocabularTermForm extends Component {
     return (
       <Form onSubmit={this.formSubmit}>
         <h5>Term</h5>
+
         <Field
           name="name"
           type="text"
+          onChange={this.changeName}
           placeholder="Term name"
           component={TextField}
           validate={[required]}
         />
 
         <Field
-          name="authopath"
+          name="autopath"
+          onChange={this.changeAutopath}
           component={Checkbox}
           type="checkbox"
         />
@@ -63,6 +91,7 @@ class VocabularTermForm extends Component {
         <Field
           name="path"
           type="text"
+          disabled={_.has(this.props, 'termForm.values.autopath') && this.props.termForm.values.autopath}
           placeholder="URL path"
           component={TextField}
           validate={[required]}
@@ -107,9 +136,8 @@ const mapDispatchToProps = dispatch => ({
   vocabularTermAddToRoot: term => dispatch(vocabularTermAddToRoot(term)),
   vocabularTermUpdate: (node, term, path) => dispatch(vocabularTermUpdate(node, term, path)),
   vocabularTermCancelEdit: () => dispatch(vocabularTermCancelEdit()),
-  //  vocabularTermGeneratePath: () => dispatch(vocabularTermGeneratePath()),
+  vocabularTermGeneratePath: (node, termName) => dispatch(vocabularTermGeneratePath(node, termName)),
 });
-
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),

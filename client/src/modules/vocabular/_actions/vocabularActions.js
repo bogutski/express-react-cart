@@ -1,5 +1,6 @@
 import { initialize } from 'redux-form';
 import { del, get, patch, post } from '../../httpRequest/httpMethods';
+import toSlugCase from 'to-slug-case';
 
 export function vocabularCreate(data) {
   return () =>
@@ -141,5 +142,12 @@ export function vocabularTermDelete(path) {
     });
 
     dispatch(initialize('term', {})); // Clear form
+  };
+}
+
+export function vocabularTermGeneratePath(node, termName) {
+  return (dispatch) => {
+    const path = toSlugCase(termName); // Example: 'Term 1 point'  to 'term-1-point'
+    dispatch(initialize('term', { ...node, path })); // Clear form
   };
 }

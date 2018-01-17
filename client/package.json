@@ -32,7 +32,8 @@
     "redux-form-validators": "^2.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
-    "shortid": "^2.2.8"
+    "shortid": "^2.2.8",
+    "to-slug-case": "^1.0.0"
   },
   "devDependencies": {
     "babel-jest": "^21.2.0",

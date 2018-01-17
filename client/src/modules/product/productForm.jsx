@@ -40,6 +40,7 @@ class ProductForm extends Component {
     return (
       <Form onSubmit={this.formSubmit}>
         <h3>Product</h3>
+
         <Field
           name="name"
           type="text"
