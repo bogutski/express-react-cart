@@ -17,6 +17,7 @@ class VocabularTree extends Component {
           onChange={treeData => this.props.vocabularSetTreeData(treeData)}
           generateNodeProps={({ node, path }) => ({
             title: node.name,
+            subtitle() { return <div>{node.path}</div>; },
             buttons: [
               <ButtonGroup size="sm">
                 <Button
