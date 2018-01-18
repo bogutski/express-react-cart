@@ -3,7 +3,6 @@ import { Collapse, Navbar, NavbarBrand, NavbarToggler } from 'reactstrap';
 import SiteMenu from './siteMenu';
 import UserSection from '../user/userSection';
 
-
 class MainMenu extends Component {
   constructor(props) {
     super(props);

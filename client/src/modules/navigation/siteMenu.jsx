@@ -19,7 +19,7 @@ class SiteMenu extends Component {
         </NavItem>
 
         <NavItem>
-          <Link to="/product" className="nav-link">Products</Link>
+          <Link to="/product/list" className="nav-link">Products</Link>
         </NavItem>
       </Nav>
     );

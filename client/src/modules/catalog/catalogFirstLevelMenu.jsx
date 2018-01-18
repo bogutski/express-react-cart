@@ -10,8 +10,16 @@ class CatalogFirstLevelMenu extends Component {
 
         {
           this.props.catalog.map(el => (
-            <NavItem>
-              <Link to={el.id} className="nav-link">{el.name}</Link>
+            <NavItem key={el.id}>
+              <Link
+                to={{
+                  pathname: `catalog/${el.path}`,
+                  state: { referrer: 123 },
+                }
+                }
+                className="nav-link"
+              >{el.name}
+              </Link>
             </NavItem>
           ))
         }

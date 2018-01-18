@@ -12,8 +12,9 @@ import UserLoginForm from '../modules/user/userLoginForm';
 import UserList from './../modules/user/userList';
 import Home from './../modules/home/home';
 import Catalog from './../modules/catalog/catalogIndex';
-import Product from './../modules/product/productIndex';
+import ProductList from '../modules/product/productList';
 import ProductForm from './../modules/product/productForm';
+import ProductView from './../modules/product/view/productView';
 import { userGetById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
 import VocabularForm from '../modules/vocabular/form/vocabularForm';
@@ -54,7 +55,8 @@ class App extends Component {
                   <Route exact path="/vocabular/add" component={VocabularForm} />
                   <Route exact path="/vocabular/edit/:id" component={VocabularForm} />
 
-                  <Route exact path="/product" component={Product} />
+                  <Route exact path="/product/list" component={ProductList} />
+                  <Route exact path="/product/:id" component={ProductView} />
                   <Route exact path="/product/add" component={ProductForm} />
                   <Route exact path="/product/edit/:id" component={ProductForm} />
 
