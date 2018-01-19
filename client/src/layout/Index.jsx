@@ -50,6 +50,7 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component={Home} />
                   <Route exact path="/catalog" component={Catalog} />
+                  <Route exact path="/catalog/:term" component={Catalog} />
 
                   <Route exact path="/vocabular" component={Vocabular} />
                   <Route exact path="/vocabular/add" component={VocabularForm} />
