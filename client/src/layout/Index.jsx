@@ -19,6 +19,7 @@ import { userGetById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
 import VocabularForm from '../modules/vocabular/form/vocabularForm';
 import { vocabularFillCatalog } from './../modules/vocabular/_actions/vocabularActions';
+// import { productGetAll } from '../modules/product/_actions/productActions';
 
 class App extends Component {
   constructor(props) {
@@ -81,11 +82,13 @@ class App extends Component {
 const mapStateToProps = state => ({
   userInfo: state.user.userInfo,
   catalog: state.vocabular.catalog,
+  // productList: state.product.productList,
 });
 
 const mapDispatchToProps = dispatch => ({
   userGetById: userId => dispatch(userGetById(userId)),
   vocabularFillCatalog: () => dispatch(vocabularFillCatalog()),
+  // productGetAll: () => dispatch(productGetAll()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

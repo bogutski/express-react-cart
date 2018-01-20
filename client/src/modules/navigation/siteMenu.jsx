@@ -11,7 +11,16 @@ class SiteMenu extends Component {
         </NavItem>
 
         <NavItem>
-          <Link to="/catalog" className="nav-link">Catalog</Link>
+          <Link
+            to={{
+              pathname: '/catalog',
+              state: {
+                component: 'catalog',
+              },
+            }}
+            className="nav-link"
+          >Catalog
+          </Link>
         </NavItem>
 
         <NavItem>

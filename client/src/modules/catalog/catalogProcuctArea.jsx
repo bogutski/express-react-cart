@@ -24,7 +24,6 @@ class CatalogProcuctArea extends Component {
     return (
       <Row>
 
-
         <Nav>
           {this.getSubcategories().map(el => (
             <NavItem key={el.id}>

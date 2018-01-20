@@ -6,26 +6,25 @@ import { connect } from 'react-redux';
 class CatalogFirstLevelMenu extends Component {
   render() {
     return (
-      <Row>
-        <Nav>
-          {
-            this.props.catalog.map(el => (
-              <NavItem key={el.id}>
-                <Link
-                  to={{
-                    pathname: `/catalog/${el.path}`,
-                    state: {
-                      categoryId: el.id,
-                    },
-                  }}
-                  className="nav-link"
-                >{el.name}
-                </Link>
-              </NavItem>
-            ))
-          }
-        </Nav>
-      </Row>
+      <Nav>
+        {
+          this.props.catalog.map(el => (
+            <NavItem key={el.id}>
+              <Link
+                to={{
+                  pathname: `/catalog/${el.path}`,
+                  state: {
+                    component: 'catalog',
+                    categoryId: el.id,
+                  },
+                }}
+                className="nav-link"
+              >{el.name}
+              </Link>
+            </NavItem>
+          ))
+        }
+      </Nav>
     );
   }
 }
