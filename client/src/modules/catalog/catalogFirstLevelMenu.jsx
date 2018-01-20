@@ -15,7 +15,7 @@ class CatalogFirstLevelMenu extends Component {
                   to={{
                     pathname: `/catalog/${el.path}`,
                     state: {
-                      referrer: el.id,
+                      categoryId: el.id,
                     },
                   }}
                   className="nav-link"
