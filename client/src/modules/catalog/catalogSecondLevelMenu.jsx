@@ -24,10 +24,10 @@ class CatalogSecondLevelMenu extends Component {
           <NavItem key={el.id}>
             <Link
               to={{
-                pathname: `${this.props.router.pathname}/${el.path}`,
+                pathname: el.path,
                 state: {
                   component: 'catalog',
-                  categoryId: el.id,
+                  categoryId: this.props.router.state.categoryId,
                 },
               }}
               className="nav-link"
