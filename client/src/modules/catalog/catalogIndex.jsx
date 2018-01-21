@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Col, Container, Row } from 'reactstrap';
+import { Col, Row } from 'reactstrap';
 import CatalogProcuctArea from './catalogProcuctArea';
 import CatalogSecondLevelMenu from './catalogSecondLevelMenu';
 

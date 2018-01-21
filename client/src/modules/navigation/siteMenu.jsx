@@ -1,34 +1,50 @@
 import React, { Component } from 'react';
 import { Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class SiteMenu extends Component {
   render() {
     return (
       <Nav className="mr-auto" navbar>
         <NavItem>
-          <Link to="/" className="nav-link">Home</Link>
+          <NavLink
+            to="/"
+            activeClassName="active"
+            className="nav-link"
+          >Home
+          </NavLink>
         </NavItem>
 
         <NavItem>
-          <Link
+          <NavLink
             to={{
               pathname: '/catalog',
               state: {
                 component: 'catalog',
               },
             }}
+            activeClassName="active"
             className="nav-link"
           >Catalog
-          </Link>
+          </NavLink>
         </NavItem>
 
         <NavItem>
-          <Link to="/vocabular" className="nav-link">Vocaburars</Link>
+          <NavLink
+            to="/vocabular"
+            activeClassName="active"
+            className="nav-link"
+          >Vocaburars
+          </NavLink>
         </NavItem>
 
         <NavItem>
-          <Link to="/product/list" className="nav-link">Products</Link>
+          <NavLink
+            to="/product/list"
+            activeClassName="active"
+            className="nav-link"
+          >Products
+          </NavLink>
         </NavItem>
       </Nav>
     );

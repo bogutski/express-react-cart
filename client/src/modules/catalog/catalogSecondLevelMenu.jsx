@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { withRouter, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -30,7 +30,7 @@ class CatalogSecondLevelMenu extends Component {
       <Nav vertical>
         {this.getSubcategories().map(el => (
           <NavItem key={el.id}>
-            <Link
+            <NavLink
               to={{
                 pathname: this.pathForSecondLevel(
                   this.props.router.pathname,
@@ -43,9 +43,10 @@ class CatalogSecondLevelMenu extends Component {
                   categoryId: this.props.router.state.categoryId,
                 },
               }}
+              activeClassName="active"
               className="nav-link"
             >{el.name}
-            </Link>
+            </NavLink>
           </NavItem>
         ))}
       </Nav>
@@ -58,4 +59,4 @@ const mapStateToProps = state => ({
   catalog: state.vocabular.catalog,
 });
 
-export default connect(mapStateToProps)(CatalogSecondLevelMenu);
+export default withRouter(connect(mapStateToProps)(CatalogSecondLevelMenu));

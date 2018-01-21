@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Row, Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import Pre from './../pre/pre';
 

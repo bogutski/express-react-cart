@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class CatalogFirstLevelMenu extends Component {
@@ -10,7 +10,7 @@ class CatalogFirstLevelMenu extends Component {
         {
           this.props.catalog.map(el => (
             <NavItem key={el.id}>
-              <Link
+              <NavLink
                 to={{
                   pathname: `/catalog/${el.path}`,
                   state: {
@@ -19,9 +19,10 @@ class CatalogFirstLevelMenu extends Component {
                     categoryId: el.id,
                   },
                 }}
+                activeClassName="active"
                 className="nav-link"
               >{el.name}
-              </Link>
+              </NavLink>
             </NavItem>
           ))
         }
