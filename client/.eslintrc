@@ -90,6 +90,9 @@
         "functions": false,
         "classes": true
       }
+    ],
+    "class-methods-use-this": [
+      0
     ]
   }
 }

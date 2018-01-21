@@ -15,6 +15,7 @@ class CatalogFirstLevelMenu extends Component {
                   pathname: `/catalog/${el.path}`,
                   state: {
                     component: 'catalog',
+                    level: 1,
                     categoryId: el.id,
                   },
                 }}

@@ -17,6 +17,14 @@ class CatalogSecondLevelMenu extends Component {
     return [];
   }
 
+  pathForSecondLevel(firstLevelPath, secondLevelPath, currentLevel) {
+    if (currentLevel === 1) {
+      return `${firstLevelPath}/${secondLevelPath}`;
+    }
+    const pathWithoutLastPart = firstLevelPath.substr(0, firstLevelPath.lastIndexOf('/'));
+    return `${pathWithoutLastPart}/${secondLevelPath}`;
+  }
+
   render() {
     return (
       <Nav vertical>
@@ -24,9 +32,14 @@ class CatalogSecondLevelMenu extends Component {
           <NavItem key={el.id}>
             <Link
               to={{
-                pathname: el.path,
+                pathname: this.pathForSecondLevel(
+                  this.props.router.pathname,
+                  el.path,
+                  this.props.router.state.level,
+                ),
                 state: {
                   component: 'catalog',
+                  level: 2,
                   categoryId: this.props.router.state.categoryId,
                 },
               }}
