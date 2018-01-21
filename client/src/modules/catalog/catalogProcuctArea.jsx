@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import Pre from './../pre/pre';
 
-class CatalogProcuctArea extends Component {
+class CatalogProductArea extends Component {
   getSubcategories() {
     if (_.has(this.props.router, 'state.categoryId')) {
       const currentCategory = this.props.catalog
@@ -18,7 +18,6 @@ class CatalogProcuctArea extends Component {
 
     return [];
   }
-
 
   render() {
     return (
@@ -41,7 +40,7 @@ class CatalogProcuctArea extends Component {
           ))}
         </Nav>
 
-        <Pre obj={this.getSubcategories()} on />
+        <Pre obj={this.getSubcategories()} on- />
 
         <Pre obj={this.props.router} on />
 
@@ -55,4 +54,4 @@ const mapStateToProps = state => ({
   catalog: state.vocabular.catalog,
 });
 
-export default connect(mapStateToProps)(CatalogProcuctArea);
+export default connect(mapStateToProps)(CatalogProductArea);

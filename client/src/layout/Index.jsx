@@ -19,7 +19,6 @@ import { userGetById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
 import VocabularForm from '../modules/vocabular/form/vocabularForm';
 import { vocabularFillCatalog } from './../modules/vocabular/_actions/vocabularActions';
-// import { productGetAll } from '../modules/product/_actions/productActions';
 
 class App extends Component {
   constructor(props) {
@@ -50,8 +49,17 @@ class App extends Component {
               <div className="col">
                 <Switch>
                   <Route exact path="/" component={Home} />
-                  <Route exact path="/catalog" component={Catalog} />
-                  <Route exact path="/catalog/:term" component={Catalog} />
+
+                  {(
+                    _.has(this.props.router, 'state.component') &&
+                      this.props.router.state.component === 'catalog'
+                  ) ?
+                    <Route component={Catalog} />
+                    : null
+                  }
+
+                  {/* <Route exact path="/catalog" component={Catalog} /> */}
+                  {/* <Route exact path="/catalog/:term" component={Catalog} /> */}
 
                   <Route exact path="/vocabular" component={Vocabular} />
                   <Route exact path="/vocabular/add" component={VocabularForm} />
@@ -65,6 +73,7 @@ class App extends Component {
                   <Route exact path="/user/list" component={UserList} />
                   <Route exact path="/user/login" component={UserLoginForm} />
                   <Route exact path="/user/register" component={UserRegisterForm} />
+
                 </Switch>
               </div>
             </div>
@@ -82,13 +91,12 @@ class App extends Component {
 const mapStateToProps = state => ({
   userInfo: state.user.userInfo,
   catalog: state.vocabular.catalog,
-  // productList: state.product.productList,
+  router: state.router.location,
 });
 
 const mapDispatchToProps = dispatch => ({
   userGetById: userId => dispatch(userGetById(userId)),
   vocabularFillCatalog: () => dispatch(vocabularFillCatalog()),
-  // productGetAll: () => dispatch(productGetAll()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));
