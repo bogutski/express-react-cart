@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Nav, NavItem } from 'reactstrap';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class CatalogFirstLevelMenu extends Component {
@@ -35,4 +35,4 @@ const mapStateToProps = state => ({
   catalog: state.vocabular.catalog,
 });
 
-export default connect(mapStateToProps)(CatalogFirstLevelMenu);
+export default withRouter(connect(mapStateToProps)(CatalogFirstLevelMenu));

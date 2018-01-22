@@ -56,9 +56,6 @@ class App extends Component {
                     ) && <Route component={Catalog} />
                   }
 
-                  {/* <Route exact path="/catalog" component={Catalog} /> */}
-                  {/* <Route exact path="/catalog/:term" component={Catalog} /> */}
-
                   <Route exact path="/vocabular" component={Vocabular} />
                   <Route exact path="/vocabular/add" component={VocabularForm} />
                   <Route exact path="/vocabular/edit/:id" component={VocabularForm} />
