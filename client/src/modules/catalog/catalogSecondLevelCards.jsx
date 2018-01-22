@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Nav, NavItem, Card, CardImg, CardText, CardBody,
-  CardTitle, CardSubtitle, Col, Row } from 'reactstrap';
-import { withRouter, NavLink } from 'react-router-dom';
+import { Card, CardBody, CardImg, CardTitle, Col, Row } from 'reactstrap';
+import { NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 
@@ -30,37 +29,40 @@ class CatalogSecondLevelCards extends Component {
   render() {
     return (
       <Row>
-        {this.getSubcategories().map(el => (
+        {this.getSubcategories()
+          .map(el => (
+            <Col md={3}>
+              <NavLink
+                to={{
+                  pathname: this.pathForSecondLevel(
+                    this.props.router.pathname,
+                    el.path,
+                    this.props.router.state.level,
+                  ),
+                  state: {
+                    component: 'catalog',
+                    level: 2,
+                    categoryId: this.props.router.state.categoryId,
+                  },
+                }}
+                activeClassName="active"
+              >
 
-          <Col md={3}>
+                <Card key={el.id}>
+                  <CardImg
+                    top
+                    width="100%"
+                    src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                    alt="Card image cap"
+                  />
+                  <CardBody className="text-center">
+                    <CardTitle>{el.name}</CardTitle>
+                  </CardBody>
+                </Card>
 
-            <NavLink
-              to={{
-                pathname: this.pathForSecondLevel(
-                  this.props.router.pathname,
-                  el.path,
-                  this.props.router.state.level,
-                ),
-                state: {
-                  component: 'catalog',
-                  level: 2,
-                  categoryId: this.props.router.state.categoryId,
-                },
-              }}
-              activeClassName="active"
-            >
-
-              <Card key={el.id}>
-                <CardImg top width="100%" src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180" alt="Card image cap" />
-                <CardBody className="text-center">
-                  <CardTitle>{el.name}</CardTitle>
-                </CardBody>
-              </Card>
-
-            </NavLink>
-          </Col>
-
-        ))}
+              </NavLink>
+            </Col>
+          ))}
       </Row>
     );
   }
