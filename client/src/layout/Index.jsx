@@ -50,11 +50,10 @@ class App extends Component {
                 <Switch>
                   <Route exact path="/" component={Home} />
 
-                  {
-                    (_.has(this.props.router, 'state.component')
-                    && this.props.router.state.component === 'catalog'
-                    ) && <Route component={Catalog} />
-                  }
+                  <Route exact path="/catalog" component={Catalog} />
+                  <Route exact path="/catalog/:level" component={Catalog} />
+                  <Route exact path="/catalog/:level/:sublevel" component={Catalog} />
+                  <Route exact path="/catalog/:level/:sublevel/:product" component={ProductView} />
 
                   <Route exact path="/vocabular" component={Vocabular} />
                   <Route exact path="/vocabular/add" component={VocabularForm} />

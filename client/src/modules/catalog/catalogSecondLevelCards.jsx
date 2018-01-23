@@ -31,7 +31,7 @@ class CatalogSecondLevelCards extends Component {
       <Row>
         {this.getSubcategories()
           .map(el => (
-            <Col md={3}>
+            <Col key={el.id} md={3}>
               <NavLink
                 to={{
                   pathname: this.pathForSecondLevel(
@@ -48,7 +48,7 @@ class CatalogSecondLevelCards extends Component {
                 activeClassName="active"
               >
 
-                <Card key={el.id}>
+                <Card >
                   <CardImg
                     top
                     width="100%"
