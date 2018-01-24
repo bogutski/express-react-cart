@@ -9,9 +9,9 @@ class CatalogProductArea extends Component {
     return (
       <Row>
 
-        {/*{this.props.router.state.level === 1 && <CatalogSecondLevelCards /> }*/}
+        <CatalogSecondLevelCards />
 
-        <Pre obj={this.props.router} on />
+        <Pre obj={this.props.catalog} />
 
       </Row>
     );

@@ -7,9 +7,9 @@ import _ from 'lodash';
 // Clone from catalogSecondLevelMenu.jsx
 class CatalogSecondLevelCards extends Component {
   getSubcategories() {
-    if (_.has(this.props.router, 'state.categoryId')) {
+    if (_.has(this.props.match, 'params.level')) {
       const currentCategory = this.props.catalog
-        .find(el => el.id === this.props.router.state.categoryId);
+        .find(el => el.path === this.props.match.params.level);
 
       if (_.has(currentCategory, 'children')) {
         return currentCategory.children;
@@ -18,53 +18,36 @@ class CatalogSecondLevelCards extends Component {
     return [];
   }
 
-  pathForSecondLevel(firstLevelPath, secondLevelPath, currentLevel) {
-    if (currentLevel === 1) {
-      return `${firstLevelPath}/${secondLevelPath}`;
-    }
-    const pathWithoutLastPart = firstLevelPath.substr(0, firstLevelPath.lastIndexOf('/'));
-    return `${pathWithoutLastPart}/${secondLevelPath}`;
+  cards() {
+    return this.getSubcategories()
+      .map(el => (
+        <Col key={el.id} md={3}>
+          <NavLink
+            to={`/catalog/${this.props.match.params.level}/${el.path}`}
+            activeClassName="active"
+          >
+
+            <Card>
+              <CardImg
+                top
+                width="100%"
+                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                alt="Card image cap"
+              />
+              <CardBody className="text-center">
+                <CardTitle>{el.name}</CardTitle>
+              </CardBody>
+            </Card>
+
+          </NavLink>
+        </Col>
+      ));
   }
 
+
   render() {
-    return (
-      <Row>
-        {this.getSubcategories()
-          .map(el => (
-            <Col key={el.id} md={3}>
-              <NavLink
-                to={{
-                  pathname: this.pathForSecondLevel(
-                    this.props.router.pathname,
-                    el.path,
-                    this.props.router.state.level,
-                  ),
-                  state: {
-                    component: 'catalog',
-                    level: 2,
-                    categoryId: this.props.router.state.categoryId,
-                  },
-                }}
-                activeClassName="active"
-              >
-
-                <Card >
-                  <CardImg
-                    top
-                    width="100%"
-                    src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                    alt="Card image cap"
-                  />
-                  <CardBody className="text-center">
-                    <CardTitle>{el.name}</CardTitle>
-                  </CardBody>
-                </Card>
-
-              </NavLink>
-            </Col>
-          ))}
-      </Row>
-    );
+    // Show only on first level
+    return _.has(this.props, 'match.params.sublevel') ? null : this.cards();
   }
 }
 
