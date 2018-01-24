@@ -8,12 +8,7 @@ class SiteMenu extends Component {
       <Nav className="mr-auto" navbar>
         <NavItem>
           <NavLink
-            to={{
-              pathname: '/catalog',
-              state: {
-                component: 'catalog',
-              },
-            }}
+            to="/catalog"
             activeClassName="active"
             className="nav-link"
           >Catalog

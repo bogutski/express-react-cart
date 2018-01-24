@@ -19,29 +19,33 @@ class CatalogSecondLevelCards extends Component {
   }
 
   cards() {
-    return this.getSubcategories()
-      .map(el => (
-        <Col key={el.id} md={3}>
-          <NavLink
-            to={`/catalog/${this.props.match.params.level}/${el.path}`}
-            activeClassName="active"
-          >
+    return (
+      <Row>
+        {this.getSubcategories()
+          .map(el => (
+            <Col key={el.id} md={3}>
+              <NavLink
+                to={`/catalog/${this.props.match.params.level}/${el.path}`}
+                activeClassName="active"
+              >
 
-            <Card>
-              <CardImg
-                top
-                width="100%"
-                src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
-                alt="Card image cap"
-              />
-              <CardBody className="text-center">
-                <CardTitle>{el.name}</CardTitle>
-              </CardBody>
-            </Card>
+                <Card>
+                  <CardImg
+                    top
+                    width="100%"
+                    src="https://placeholdit.imgix.net/~text?txtsize=33&txt=318%C3%97180&w=318&h=180"
+                    alt="Card image cap"
+                  />
+                  <CardBody className="text-center">
+                    <CardTitle>{el.name}</CardTitle>
+                  </CardBody>
+                </Card>
 
-          </NavLink>
-        </Col>
-      ));
+              </NavLink>
+            </Col>
+          ))}
+      </Row>
+    );
   }
 
 

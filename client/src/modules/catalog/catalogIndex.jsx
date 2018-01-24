@@ -3,6 +3,7 @@ import { Col, Row } from 'reactstrap';
 import CatalogProcuctArea from './catalogProcuctArea';
 import CatalogSecondLevelMenu from './catalogSecondLevelMenu';
 import Pre from './../pre/pre';
+import CatalogSecondLevelCards from './catalogSecondLevelCards';
 
 class Catalog extends Component {
   render() {
@@ -16,9 +17,12 @@ class Catalog extends Component {
         <Col md={10}>
           <h1>Catalog</h1>
 
-          <Pre obj={this.props.match} on />
+          <CatalogSecondLevelCards />
 
           <CatalogProcuctArea />
+
+          <Pre obj={this.props.match} on />
+
         </Col>
 
       </Row>
