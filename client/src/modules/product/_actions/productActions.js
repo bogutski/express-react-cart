@@ -48,13 +48,17 @@ export function productGetById(productId) {
       });
 }
 
+// Strategy: load and accumulate products by category id in object - Unused
 export function productGetByCategoryId(categoryId) {
   return dispatch =>
     get(`/product/category/id/${categoryId}`)
       .then((res) => {
         dispatch({
           type: 'PRODUCT_LOAD_BY_CATEGORY_ID',
-          payload: res.data,
+          payload: {
+            data: res.data,
+            categoryId,
+          },
         });
       });
 }

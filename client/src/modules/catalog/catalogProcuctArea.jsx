@@ -7,6 +7,7 @@ import { productGetByCategoryId } from '../product/_actions/productActions';
 
 class CatalogProductArea extends Component {
   componentWillReceiveProps(nextProps) {
+    console.log('WRP');
     // Get current subcategory id for load products
     if (
       !_.isEmpty(nextProps.catalog) &&
@@ -18,9 +19,17 @@ class CatalogProductArea extends Component {
         .children
         .find(el => el.path === this.props.match.params.sublevel)
         .id;
+      console.log(currentSubCategoryId);
+      console.log(nextProps.categoryProductList[currentSubCategoryId]);
 
-      this.props.productGetByCategoryId(currentSubCategoryId);
+      if (_.isEmpty(nextProps.categoryProductList[currentSubCategoryId])) {
+        this.props.productGetByCategoryId(currentSubCategoryId);
+      }
     }
+  }
+
+  componentDidMount() {
+    console.log('CDM');
   }
 
 
@@ -37,6 +46,7 @@ class CatalogProductArea extends Component {
 const mapStateToProps = state => ({
   router: state.router.location,
   catalog: state.vocabular.catalog,
+  categoryProductList: state.product.categoryProductList,
 });
 
 const mapDispatchToProps = dispatch => ({
