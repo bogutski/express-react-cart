@@ -62,6 +62,27 @@ export const productGetById = (req, res, next) => {
     });
 };
 
+export const productGetByCategoryId = (req, res, next) => {
+  const id = req.params.categoryId;
+  Product.find({ catalog: id })
+    .select('-__v')
+    .exec()
+    .then((doc) => {
+      if (doc) {
+        res.status(200)
+          .json(doc);
+      } else {
+        res.status(404)
+          .json(message.error('No product for provided id'));
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+      res.status(500)
+        .json({ error: err });
+    });
+};
+
 export const productUpdateById = (req, res, next) => {
   const id = req.params.productId;
   Product.update({ _id: id }, { $set: req.body })

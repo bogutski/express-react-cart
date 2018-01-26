@@ -7,6 +7,7 @@ import {
   productGetById,
   productUpdateById,
   productDeleteById,
+  productGetByCategoryId,
 } from './productControllers';
 
 const router = Router();
@@ -14,6 +15,7 @@ const router = Router();
 router.get('/', productGetAll);
 router.post('/', upload.single('image'), productCreate);
 router.get('/:productId', productGetById);
+router.get('/category/id/:categoryId', productGetByCategoryId);
 router.patch('/:productId', productUpdateById);
 router.delete('/:productId', productDeleteById);
 
