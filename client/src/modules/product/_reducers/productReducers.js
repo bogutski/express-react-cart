@@ -5,7 +5,7 @@ const initialState = {
 
 const product = (state = initialState, action) => {
   switch (action.type) {
-    case 'PRODUCT_LIST':
+    case 'PRODUCT_LOAD_ALL':
       return {
         ...state,
         productList: action.payload,

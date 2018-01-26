@@ -30,7 +30,7 @@ export function productGetAll() {
     get('/product')
       .then((res) => {
         dispatch({
-          type: 'PRODUCT_LIST',
+          type: 'PRODUCT_LOAD_ALL',
           payload: res.data,
         });
       });
@@ -43,6 +43,17 @@ export function productGetById(productId) {
         dispatch(initialize('product', { ...res.data })); // Fill form
         dispatch({
           type: 'PRODUCT_INFO',
+          payload: res.data,
+        });
+      });
+}
+
+export function productGetByCategoryId(categoryId) {
+  return dispatch =>
+    get(`/product/category/id/${categoryId}`)
+      .then((res) => {
+        dispatch({
+          type: 'PRODUCT_LOAD_BY_CATEGORY_ID',
           payload: res.data,
         });
       });
