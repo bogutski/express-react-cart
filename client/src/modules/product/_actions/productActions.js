@@ -48,17 +48,11 @@ export function productGetById(productId) {
       });
 }
 
-// Strategy: load and accumulate products by category id in object - Unused
-export function productGetByCategoryId(categoryId) {
+// Filter from redux store
+export function productFilterByCategoryId(categoryId) {
   return dispatch =>
-    get(`/product/category/id/${categoryId}`)
-      .then((res) => {
-        dispatch({
-          type: 'PRODUCT_LOAD_BY_CATEGORY_ID',
-          payload: {
-            data: res.data,
-            categoryId,
-          },
-        });
-      });
+    dispatch({
+      type: 'PRODUCT_FILTER_BY_CATEGORY_ID',
+      payload: categoryId,
+    });
 }

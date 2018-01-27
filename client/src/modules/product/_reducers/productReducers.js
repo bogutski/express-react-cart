@@ -1,10 +1,6 @@
 const initialState = {
   productList: [], // Product list
   productInfo: {}, // Current product info
-
-  // Strategy: load and accumulate products by category id in object - Unused
-  categoryProductList: {}, // accumulate subcategories. Prevent repeating API calls
-
   currentCategory: [], // product list of current category
 };
 
@@ -16,14 +12,10 @@ const product = (state = initialState, action) => {
         productList: action.payload,
       };
 
-    // Strategy: load and accumulate products by category id in object - Unused
-    case 'PRODUCT_LOAD_BY_CATEGORY_ID':
+    case 'PRODUCT_FILTER_BY_CATEGORY_ID':
       return {
         ...state,
-        categoryProductList: {
-          ...state.categoryProductList,
-          [action.payload.categoryId]: action.payload.data,
-        },
+        currentCategory: state.productList.filter(el => el.catalog === action.payload),
       };
 
     case 'PRODUCT_INFO':
