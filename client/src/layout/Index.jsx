@@ -42,7 +42,7 @@ class App extends Component {
     }
   }
 
-  render() {
+  component() {
     return (
       <Container>
         <Alert />
@@ -86,11 +86,20 @@ class App extends Component {
       </Container>
     );
   }
+
+  render() {
+    return (
+      _.isEmpty(this.props.productList) || _.isEmpty(this.props.catalog)
+        ? <span>... Loading</span>
+        : this.component()
+    );
+  }
 }
 
 const mapStateToProps = state => ({
   userInfo: state.user.userInfo,
   catalog: state.vocabular.catalog,
+  productList: state.product.productList,
   router: state.router.location,
 });
 
