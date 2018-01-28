@@ -7,7 +7,35 @@
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  border: 1px solid black !important;
+  border: 1px solid black;
+  width: 100%;
+
+  &.light {
+    border: none;
+
+    .rt-thead.-header {
+      border-bottom: none;
+
+      .rt-th, .rt-td {
+        border-right: 1px solid #eceeef;
+      }
+
+    }
+
+    .rt-tbody {
+      .rt-tr-group {
+        border-bottom: none;
+      }
+
+      .rt-td {
+        padding: .75rem;
+        vertical-align: top;
+        border-top: 1px solid #eceeef;
+        border-right: none;
+      }
+    }
+
+  }
 }
 
 .ReactTable * {
@@ -78,7 +106,7 @@
   padding: 5px 5px;
   line-height: normal;
   position: relative;
-  border-right: solid 1px black !important;
+  border-right: solid 1px black;
   // -webkit-transition: box-shadow .3s cubic-bezier(.175, .885, .32, 1.275);
   // transition: box-shadow .3s cubic-bezier(.175, .885, .32, 1.275);
   // box-shadow: inset 0 0 0 0 transparent;
@@ -87,7 +115,7 @@
 .ReactTable .rt-thead .rt-th.-sort-asc,
 .ReactTable .rt-thead .rt-td.-sort-asc {
   // box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.6)
-  box-shadow: none !important;
+  box-shadow: none;
   .rt-resizable-header-content:after {
     background-image: url('./img/arrow-up.svg');
     background-position: 0px 0px;
@@ -105,7 +133,7 @@
 .ReactTable .rt-thead .rt-th.-sort-desc,
 .ReactTable .rt-thead .rt-td.-sort-desc {
   // box-shadow: inset 0 -3px 0 0 rgba(0, 0, 0, 0.6);
-  box-shadow: none !important;
+  box-shadow: none;
   .rt-resizable-header-content:after {
     background-image: url('./img/arrow-down.svg');
     background-position: 0px -1px;
@@ -125,7 +153,7 @@
 }
 
 .ReactTable .rt-thead .rt-th:last-child, .ReactTable .rt-thead .rt-td:last-child {
-  border-right: 0 !important;
+  border-right: 0;
 }
 
 .ReactTable .rt-thead .rt-resizable-header {
@@ -185,19 +213,19 @@
 }
 
 .ReactTable .rt-tbody .rt-tr-group {
-  border-bottom: solid 1px !important;
+  border-bottom: solid 1px;
 }
 
 .ReactTable .rt-tbody .rt-tr-group:last-child {
-  border-bottom: 0 !important;
+  border-bottom: 0;
 }
 
 .ReactTable .rt-tbody .rt-td {
-  border-right: solid 1px !important;
+  border-right: solid 1px;
 }
 
 .ReactTable .rt-tbody .rt-td:last-child {
-  border-right: 0 !important;
+  border-right: 0;
 }
 
 .ReactTable .rt-tbody .rt-expandable {
@@ -338,7 +366,7 @@
   flex-wrap: wrap;
   padding: 3px;
 
-  border-top: solid 1px rgba(0, 0, 0, 0.20) !important;
+  border-top: solid 1px rgba(0, 0, 0, 0.20);
 }
 
 .ReactTable .-pagination input, .ReactTable .-pagination select {
