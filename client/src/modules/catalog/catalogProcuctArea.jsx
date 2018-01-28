@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Row } from 'reactstrap';
+import { Row, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import ReactTable from 'react-table';
 import { productFilterByCategoryId } from '../product/_actions/productActions';
 
 class CatalogProductArea extends Component {
@@ -29,16 +30,52 @@ class CatalogProductArea extends Component {
     this.props.productFilterByCategoryId(currentSubCategoryId);
   }
 
+  columns() {
+    return [
+      {
+        Header: 'Image',
+        accessor: 'image',
+      },
+      {
+        Header: 'Name',
+        accessor: 'name',
+      },
+      {
+        Header: 'Catalog',
+        accessor: 'catalog',
+      },
+      {
+        Header: 'Price',
+        accessor: 'price',
+      },
+      {
+        Header: 'Actions',
+        id: 'act',
+        accessor: el => (
+          <div>
+            <Link to={`/product/${el._id}`}>View</Link>{' '}
+            <Button
+              color="primary"
+              size="sm"
+            >Add to cart
+            </Button>
+          </div>
+        ),
+      },
+    ];
+  }
+
   render() {
     return (
       <Row>
-        Products
-
-        <ul>
-          {this.props.currentCategory
-            .map(el => <li key={el._id}>{el.name} - {el.price}</li>)}
-        </ul>
-
+        <ReactTable
+          className="light"
+          data={this.props.currentCategory}
+          columns={this.columns()}
+          minRows={0}
+          defaultPageSize={30}
+          showPagination={this.props.currentCategory.length > 30}
+        />
       </Row>
     );
   }
