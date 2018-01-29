@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Nav, NavItem } from 'reactstrap';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class ProductControls extends Component {
   render() {
     return (
       <Nav className="mr-auto" navbar>
         <NavItem>
-          <Link to="/product/add" className="nav-link">Create product</Link>
+          <NavLink to="/product/add" className="nav-link">Create product</NavLink>
         </NavItem>
       </Nav>
     );

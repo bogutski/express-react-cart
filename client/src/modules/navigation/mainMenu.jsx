@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler } from 'reactstrap';
 import SiteMenu from './siteMenu';
 import UserSection from '../user/userSection';
+import CartBlock from '../cart/cartBlock';
 
 class MainMenu extends Component {
   constructor(props) {
@@ -28,6 +29,10 @@ class MainMenu extends Component {
 
         <Collapse isOpen={this.state.isOpen} navbar>
           <SiteMenu />
+        </Collapse>
+
+        <Collapse isOpen={this.state.isOpen} navbar>
+          <CartBlock />
         </Collapse>
 
         <Collapse isOpen={this.state.isOpen} navbar>
