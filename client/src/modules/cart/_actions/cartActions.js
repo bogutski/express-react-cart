@@ -1,8 +1,8 @@
-export function cartProductAdd(productId) {
+export function cartProductAdd(product, qt = 1) {
   return dispatch =>
     dispatch({
       type: 'CART_PRODUCT_ADD',
-      payload: productId,
+      payload: { ...product, qt },
     });
 }
 

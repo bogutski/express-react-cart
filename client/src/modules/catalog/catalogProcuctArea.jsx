@@ -56,7 +56,7 @@ class CatalogProductArea extends Component {
           <div>
             <Link to={`/product/${el._id}`}>View</Link>{' '}
             <Button
-              onClick={() => this.props.cartProductAdd(el)}
+              onClick={() => this.props.cartProductAdd(el, 1)}
               color="primary"
               size="sm"
             >Add to cart
