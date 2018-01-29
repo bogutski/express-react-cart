@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { withRouter, Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import { productFilterByCategoryId } from '../product/_actions/productActions';
+import { cartProductAdd } from '../cart/_actions/cartActions';
 
 class CatalogProductArea extends Component {
   componentDidMount() {
@@ -55,6 +56,7 @@ class CatalogProductArea extends Component {
           <div>
             <Link to={`/product/${el._id}`}>View</Link>{' '}
             <Button
+              onClick={() => this.props.cartProductAdd(el)}
               color="primary"
               size="sm"
             >Add to cart
@@ -90,6 +92,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   productFilterByCategoryId: categoryId => dispatch(productFilterByCategoryId(categoryId)),
+  cartProductAdd: productId => dispatch(cartProductAdd(productId)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CatalogProductArea));
