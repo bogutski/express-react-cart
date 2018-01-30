@@ -10,6 +10,16 @@ const cart = (state = initialState, action) => {
       return {
         ...state,
         cart: addProduct(state.cart, action.payload),
+        get totalCount() { return this.cart.reduce((acc, cur) => acc + cur.qt, 0); },
+        get totalPrice() { return this.cart.reduce((acc, cur) => acc + cur.total, 0); },
+      };
+
+    case 'CART_PRODUCT_REMOVE':
+      return {
+        ...state,
+        cart: state.cart.filter(el => el._id !== action.payload),
+        get totalCount() { return this.cart.reduce((acc, cur) => acc + cur.qt, 0); },
+        get totalPrice() { return this.cart.reduce((acc, cur) => acc + cur.total, 0); },
       };
 
     default:
