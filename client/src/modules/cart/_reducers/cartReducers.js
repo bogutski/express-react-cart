@@ -2,6 +2,7 @@ const initialState = {
   cart: [], // Product list in cart
   totalPrice: 0, // Total price in cart
   totalCount: 0,
+  cartVisible: false,
 };
 
 const cart = (state = initialState, action) => {
@@ -10,16 +11,30 @@ const cart = (state = initialState, action) => {
       return {
         ...state,
         cart: addProduct(state.cart, action.payload),
-        get totalCount() { return this.cart.reduce((acc, cur) => acc + cur.qt, 0); },
-        get totalPrice() { return this.cart.reduce((acc, cur) => acc + cur.total, 0); },
+        get totalCount() {
+          return this.cart.reduce((acc, cur) => acc + cur.qt, 0);
+        },
+        get totalPrice() {
+          return this.cart.reduce((acc, cur) => acc + cur.total, 0);
+        },
       };
 
     case 'CART_PRODUCT_REMOVE':
       return {
         ...state,
         cart: state.cart.filter(el => el._id !== action.payload),
-        get totalCount() { return this.cart.reduce((acc, cur) => acc + cur.qt, 0); },
-        get totalPrice() { return this.cart.reduce((acc, cur) => acc + cur.total, 0); },
+        get totalCount() {
+          return this.cart.reduce((acc, cur) => acc + cur.qt, 0);
+        },
+        get totalPrice() {
+          return this.cart.reduce((acc, cur) => acc + cur.total, 0);
+        },
+      };
+
+    case 'CART_VISIBLE_TOGGLE':
+      return {
+        ...state,
+        cartVisible: !state.cartVisible,
       };
 
     default:
@@ -50,6 +65,7 @@ function addProduct(currentCart, productAndQt) {
         qt: el.qt + productAndQt.qt,
         total: (el.qt + productAndQt.qt) * productAndQt.price,
       });
-    } return el;
+    }
+    return el;
   });
 }

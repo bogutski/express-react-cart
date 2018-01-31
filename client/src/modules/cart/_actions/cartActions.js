@@ -13,3 +13,10 @@ export function cartProductRemove(productId) {
       payload: productId,
     });
 }
+
+export function cartVisibleToggle() {
+  return dispatch =>
+    dispatch({
+      type: 'CART_VISIBLE_TOGGLE',
+    });
+}
