@@ -26,7 +26,7 @@ class Catalog extends Component {
               : null
           }
 
-          <Pre obj={this.props.match} on />
+          <Pre obj={this.props.match} />
 
         </Col>
 

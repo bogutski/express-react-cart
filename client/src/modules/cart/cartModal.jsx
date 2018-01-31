@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
-import { cartVisibleToggle } from './_actions/cartActions';
+import { cartProductRemove, cartVisibleToggle } from './_actions/cartActions';
 
 class CartModal extends Component {
   columns() {
@@ -28,7 +28,12 @@ class CartModal extends Component {
         id: 'act',
         accessor: el => (
           <div>
-            <Button color="link" size="sm" onClick={() => this.delete(el._id)}>Delete</Button>
+            <Button
+              color="link"
+              size="sm"
+              onClick={() => this.props.cartProductRemove(el._id)}
+            >Delete
+            </Button>
           </div>
         ),
       },
@@ -83,6 +88,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   cartVisibleToggle: () => dispatch(cartVisibleToggle()),
+  cartProductRemove: productId => dispatch(cartProductRemove(productId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CartModal);
