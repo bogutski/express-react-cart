@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
 import { Badge, Button } from 'reactstrap';
 import { connect } from 'react-redux';
+import { cartVisibleToggle } from './_actions/cartActions';
+import CartModal from './cartModal';
 
 class CartBlock extends Component {
   notEmptyCart() {
     return (
-      <Button color="primary" outline>
-        {this.props.cart.totalCount} {this.props.cart.totalCount > 1 ? 'items' : 'item'}
-        {' '}
-        <Badge
-          color="secondary"
-        >${this.props.cart.totalPrice}
-        </Badge>
-      </Button>
+      <div>
+
+        <Button
+          onClick={this.props.cartVisibleToggle}
+          color="primary"
+          outline
+        >
+          {this.props.cart.totalCount} {this.props.cart.totalCount > 1 ? 'items' : 'item'}
+          {' '}
+          <Badge
+            color="secondary"
+          >${this.props.cart.totalPrice}
+          </Badge>
+        </Button>
+
+        <CartModal />
+      </div>
     );
   }
 
@@ -23,9 +34,12 @@ class CartBlock extends Component {
   }
 }
 
-
 const mapStateToProps = state => ({
   cart: state.cart,
 });
 
-export default connect(mapStateToProps)(CartBlock);
+const mapDispatchToProps = dispatch => ({
+  cartVisibleToggle: () => dispatch(cartVisibleToggle()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CartBlock);
