@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "nightwatch": "^0.9.19",
+    "selenium-webdriver": "^4.0.0-alpha.1"
+  },
+  "scripts": {
+    "test": "nightwatch"
+  }
+}

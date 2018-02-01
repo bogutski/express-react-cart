@@ -1,0 +1,5 @@
+# Created by .ignore support plugin (hsz.mobi)
+/lib/chromedriver
+/lib/selenium-server-standalone-3.8.1.jar
+/node_modules/
+/selenium-debug.log
