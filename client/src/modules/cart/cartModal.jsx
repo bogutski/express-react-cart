@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
+import { NavLink } from 'react-router-dom';
 import { cartProductRemove, cartVisibleToggle } from './_actions/cartActions';
 
 class CartModal extends Component {
@@ -73,7 +74,11 @@ class CartModal extends Component {
           >Continue chopping
           </Button>
           {' '}
-          <Button color="primary">Checkout</Button>
+          <NavLink
+            to="/checkout"
+          >
+            <Button color="primary">Checkout</Button>
+          </NavLink>
         </ModalFooter>
       </Modal>
     );

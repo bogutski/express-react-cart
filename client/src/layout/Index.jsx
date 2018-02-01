@@ -15,6 +15,7 @@ import Catalog from './../modules/catalog/catalogIndex';
 import ProductList from '../modules/product/productList';
 import ProductForm from './../modules/product/productForm';
 import ProductView from './../modules/product/view/productView';
+import CheckoutPage from './../modules/checkout/checkoutPage';
 import { userGetById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
 import VocabularForm from '../modules/vocabular/form/vocabularForm';
@@ -69,6 +70,8 @@ class App extends Component {
                   <Route exact path="/product/:id" component={ProductView} />
                   <Route exact path="/product/add" component={ProductForm} />
                   <Route exact path="/product/edit/:id" component={ProductForm} />
+
+                  <Route exact path="/checkout" component={CheckoutPage} />
 
                   <Route exact path="/user/list" component={UserList} />
                   <Route exact path="/user/login" component={UserLoginForm} />
