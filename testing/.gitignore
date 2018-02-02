@@ -3,3 +3,4 @@
 /lib/selenium-server-standalone-3.8.1.jar
 /node_modules/
 /selenium-debug.log
+/reports/
