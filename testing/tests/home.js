@@ -4,15 +4,7 @@ module.exports = {
   'Home page': (client) => {
     client
       .url(globals.url)
-      .waitForElementVisible('#root', 100)
-      .assert.title(globals.title.home)
-      .end();
-  },
-
-  'Catalog page': (client) => {
-    client
-      .url(globals.url)
-      .waitForElementVisible('#root', 100)
+      .waitForElementVisible('//div[@id="root"]', 100)
       .assert.title(globals.title.home)
       .end();
   },
