@@ -3,6 +3,7 @@ import { Col, Container, Row } from 'reactstrap';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
+import { Helmet } from 'react-helmet';
 import _ from 'lodash';
 import Header from './Header';
 import Footer from './Footer';
@@ -46,6 +47,12 @@ class App extends Component {
   component() {
     return (
       <Container>
+
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>ER cart</title>
+        </Helmet>
+
         <Alert />
         <Row>
 

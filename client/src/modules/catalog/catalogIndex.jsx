@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
 import _ from 'lodash';
+import { Helmet } from 'react-helmet';
 import CatalogProcuctArea from './catalogProcuctArea';
 import CatalogSecondLevelMenu from './catalogSecondLevelMenu';
 import Pre from './../pre/pre';
@@ -10,6 +11,11 @@ class Catalog extends Component {
   render() {
     return (
       <Row>
+
+        <Helmet>
+          <title>Catalog</title>
+        </Helmet>
+
 
         <Col md={2}>
           <CatalogSecondLevelMenu />

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
+import { Helmet } from 'react-helmet';
 import { TextField } from './../form/form';
 import { email as validEmail, required } from './../form/validators';
 import { userLogin } from './_actions/userActions';
@@ -26,6 +27,11 @@ class UserLoginForm extends Component {
   form() {
     return (
       <Form onSubmit={this.formSubmit}>
+
+        <Helmet>
+          <title>Login</title>
+        </Helmet>
+
         <h3>User Login</h3>
         qwe@qwe.qwe
         <Field
