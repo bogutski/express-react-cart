@@ -46,54 +46,53 @@ class App extends Component {
 
   component() {
     return (
-      <Container>
-
+      <div>
         <Helmet>
           <meta charSet="utf-8" />
           <title>ER cart</title>
         </Helmet>
 
         <Alert />
-        <Row>
+        <Header />
+        <Container>
+          <Row>
+            <Col>
+              <div className="content">
+                <div className="col">
+                  <Switch>
+                    <Route exact path="/" component={Home} />
 
-          <Header />
+                    <Route exact path="/catalog" component={Catalog} />
+                    <Route exact path="/catalog/:level" component={Catalog} />
+                    <Route exact path="/catalog/:level/:sublevel" component={Catalog} />
+                    <Route exact path="/catalog/:level/:sublevel/:product" component={ProductView} />
 
-          <Col>
-            <div className="content">
-              <div className="col">
-                <Switch>
-                  <Route exact path="/" component={Home} />
+                    <Route exact path="/vocabular" component={Vocabular} />
+                    <Route exact path="/vocabular/add" component={VocabularForm} />
+                    <Route exact path="/vocabular/edit/:id" component={VocabularForm} />
 
-                  <Route exact path="/catalog" component={Catalog} />
-                  <Route exact path="/catalog/:level" component={Catalog} />
-                  <Route exact path="/catalog/:level/:sublevel" component={Catalog} />
-                  <Route exact path="/catalog/:level/:sublevel/:product" component={ProductView} />
+                    <Route exact path="/product/list" component={ProductList} />
+                    <Route exact path="/product/:id" component={ProductView} />
+                    <Route exact path="/product/add" component={ProductForm} />
+                    <Route exact path="/product/edit/:id" component={ProductForm} />
 
-                  <Route exact path="/vocabular" component={Vocabular} />
-                  <Route exact path="/vocabular/add" component={VocabularForm} />
-                  <Route exact path="/vocabular/edit/:id" component={VocabularForm} />
+                    <Route exact path="/checkout" component={CheckoutPage} />
 
-                  <Route exact path="/product/list" component={ProductList} />
-                  <Route exact path="/product/:id" component={ProductView} />
-                  <Route exact path="/product/add" component={ProductForm} />
-                  <Route exact path="/product/edit/:id" component={ProductForm} />
+                    <Route exact path="/user/list" component={UserList} />
+                    <Route exact path="/user/login" component={UserLoginForm} />
+                    <Route exact path="/user/register" component={UserRegisterForm} />
 
-                  <Route exact path="/checkout" component={CheckoutPage} />
-
-                  <Route exact path="/user/list" component={UserList} />
-                  <Route exact path="/user/login" component={UserLoginForm} />
-                  <Route exact path="/user/register" component={UserRegisterForm} />
-
-                </Switch>
+                  </Switch>
+                </div>
               </div>
-            </div>
-          </Col>
+            </Col>
 
-        </Row>
+          </Row>
 
-        <Footer />
+          <Footer />
 
-      </Container>
+        </Container>
+      </div>
     );
   }
 

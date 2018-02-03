@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { ConnectedRouter } from 'react-router-redux';
+import { Router } from 'react-router-dom';
 
 import createHistory from 'history/createBrowserHistory';
 import store from './redux/store';
@@ -16,9 +16,9 @@ const history = createHistory();
 
 render(
   <Provider store={store}>
-    <ConnectedRouter history={history}>
+    <Router history={history}>
       <Index />
-    </ConnectedRouter>
+    </Router>
   </Provider>,
   document.getElementById('root'),
 );

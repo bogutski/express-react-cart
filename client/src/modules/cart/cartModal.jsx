@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
-import { NavLink } from 'react-router-dom';
+import { NavLink, withRouter } from 'react-router-dom';
 import { cartProductRemove, cartVisibleToggle } from './_actions/cartActions';
 
 class CartModal extends Component {
+  gotoCheckout() {
+    this.props.history.push('/checkout');
+    this.props.cartVisibleToggle();
+  }
+
   columns() {
     return [
       {
@@ -70,15 +75,14 @@ class CartModal extends Component {
           <Button
             outline
             color="secondary"
-            onClick={this.props.cartVisibleToggle}
+            onClick={() => this.props.cartVisibleToggle()}
           >Continue chopping
           </Button>
           {' '}
           <NavLink
             to="/checkout"
-          >
-            <Button color="primary">Checkout</Button>
-          </NavLink>
+          />
+          <Button onClick={() => this.gotoCheckout()} color="primary">Checkout</Button>
         </ModalFooter>
       </Modal>
     );
@@ -96,4 +100,4 @@ const mapDispatchToProps = dispatch => ({
   cartProductRemove: productId => dispatch(cartProductRemove(productId)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(CartModal);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CartModal));
