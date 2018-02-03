@@ -70,7 +70,7 @@ class VocabularTermForm extends Component {
   render() {
     return (
       <Form onSubmit={this.formSubmit}>
-        <h5>Term</h5>
+        <h1>Term</h1>
 
         <Field
           name="name"

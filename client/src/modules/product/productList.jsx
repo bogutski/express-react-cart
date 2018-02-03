@@ -12,7 +12,7 @@ class ProductList extends Component {
           <title>Products</title>
         </Helmet>
 
-        <h5>Products</h5>
+        <h1>Products</h1>
         <ProductControls />
         <ProductListTable />
       </div>

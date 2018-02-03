@@ -46,7 +46,7 @@ class VocabularForm extends Component {
     return (
       <Row>
         <Col md="12">
-          <h5>Vocabular {_.has(this.props, 'vocabularForm.values.name') ? this.props.vocabularForm.values.name : null }</h5>
+          <h1>Vocabular {_.has(this.props, 'vocabularForm.values.name') ? this.props.vocabularForm.values.name : null }</h1>
 
           <Form onSubmit={this.formSubmit}>
             <Field

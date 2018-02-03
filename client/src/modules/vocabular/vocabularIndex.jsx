@@ -12,7 +12,7 @@ class Vocabular extends Component {
           <title>Vocabulars</title>
         </Helmet>
 
-        <h5>Vocabulars</h5>
+        <h1>Vocabulars</h1>
         <VocabularControl />
         <VocabularList />
       </div>

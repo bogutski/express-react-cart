@@ -22,12 +22,12 @@ class MainMenu extends Component {
 
   render() {
     return (
-      <Navbar color="faded" light expand="md">
-        <NavbarBrand>Brand</NavbarBrand>
+      <Navbar color="faded" expand="md">
+        <NavbarBrand id='site-name'>React Cart</NavbarBrand>
 
         <NavbarToggler onClick={this.toggle} />
 
-        <Collapse isOpen={this.state.isOpen} navbar>
+        <Collapse isOpen={this.state.isOpen} navbar id='site-menu'>
           <SiteMenu />
         </Collapse>
 
@@ -35,7 +35,7 @@ class MainMenu extends Component {
           <CartBlock />
         </Collapse>
 
-        <Collapse isOpen={this.state.isOpen} navbar>
+        <Collapse isOpen={this.state.isOpen} navbar id='user-section'>
           <UserSection />
         </Collapse>
 
