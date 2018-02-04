@@ -16,7 +16,6 @@ class Catalog extends Component {
           <title>Catalog</title>
         </Helmet>
 
-
         <Col md={2}>
           <CatalogSecondLevelMenu />
         </Col>

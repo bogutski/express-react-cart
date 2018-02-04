@@ -1,13 +1,17 @@
 import React from 'react';
-import { Col } from 'reactstrap';
 import MainMenu from '../modules/navigation/mainMenu';
 import CatalogFirstLevelMenu from './../modules/catalog/catalogFirstLevelMenu';
 
 const Header = () => (
-  <Col sm="12">
-    <MainMenu />
-    <CatalogFirstLevelMenu />
-  </Col>
+  <div>
+    <div id="main-menu">
+      <MainMenu />
+    </div>
+
+    <div id="catalog-menu">
+      <CatalogFirstLevelMenu />
+    </div>
+  </div>
 );
 
 export default Header;

@@ -31,6 +31,13 @@ Put `object` in props. Props `on` turn on
 ```javascript
 import Pre from './modules/pre/pre';
 
-<Pre obj={this.props.editedTerm} on />
+<Pre obj={anyObject} on />
 ```
 
+###Routing
+Aslo rap component to `withRouter`
+
+```javascript
+this.props.history.push('/destination');
+
+```
