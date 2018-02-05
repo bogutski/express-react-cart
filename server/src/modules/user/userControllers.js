@@ -6,7 +6,7 @@ import message from './../messages/messages';
 
 export const userGetAll = (req, res, next) => {
   User.find()
-    .select('-__v')
+    .select('-__v -password')
     .exec()
     .then((docs) => {
       res.status(200).json(docs);
