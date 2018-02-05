@@ -69,16 +69,14 @@ class CatalogProductArea extends Component {
 
   render() {
     return (
-      <Row>
-        <ReactTable
-          className="light"
-          data={this.props.currentCategory}
-          columns={this.columns()}
-          minRows={0}
-          defaultPageSize={30}
-          showPagination={this.props.currentCategory.length > 30}
-        />
-      </Row>
+      <ReactTable
+        className="light border"
+        data={this.props.currentCategory}
+        columns={this.columns()}
+        minRows={0}
+        defaultPageSize={30}
+        showPagination={this.props.currentCategory.length > 30}
+      />
     );
   }
 }

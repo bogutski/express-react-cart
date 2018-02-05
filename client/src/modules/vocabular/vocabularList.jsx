@@ -49,6 +49,7 @@ class VocabularList extends Component {
     return (
       <div>
         <ReactTable
+          className="light border"
           data={this.props.vocabularList}
           columns={this.columns()}
           minRows={0}

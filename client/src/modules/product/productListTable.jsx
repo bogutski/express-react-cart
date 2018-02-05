@@ -62,6 +62,7 @@ class ProductListTable extends Component {
     return (
       <div>
         <ReactTable
+          className="light border"
           data={this.props.productList}
           columns={this.columns()}
           minRows={0}

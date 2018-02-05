@@ -30,6 +30,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    // After refresh login for current user
     if (_.isEmpty(this.props.userInfo) && !_.isEmpty(localStorage.getItem('userId'))) {
       this.props.userGetById(localStorage.getItem('userId'));
     }

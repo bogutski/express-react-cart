@@ -57,7 +57,7 @@ class CartModal extends Component {
         <ModalBody>
 
           <ReactTable
-            className="light"
+            className="light border"
             resizable={false}
             data={this.props.cart.cart}
             columns={this.columns()}
