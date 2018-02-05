@@ -54,37 +54,34 @@ class App extends Component {
 
         <Alert />
         <Header />
-        <Container>
+
+        <Container fluid>
           <Row>
             <Col>
-              <div className="content">
-                <div className="col">
-                  <Switch>
-                    <Route exact path="/" component={Home} />
+              <Switch>
+                <Route exact path="/" component={Home} />
 
-                    <Route exact path="/catalog" component={Catalog} />
-                    <Route exact path="/catalog/:level" component={Catalog} />
-                    <Route exact path="/catalog/:level/:sublevel" component={Catalog} />
-                    <Route exact path="/catalog/:level/:sublevel/:product" component={ProductView} />
+                <Route exact path="/catalog" component={Catalog} />
+                <Route exact path="/catalog/:level" component={Catalog} />
+                <Route exact path="/catalog/:level/:sublevel" component={Catalog} />
+                <Route exact path="/catalog/:level/:sublevel/:product" component={ProductView} />
 
-                    <Route exact path="/vocabular" component={Vocabular} />
-                    <Route exact path="/vocabular/add" component={VocabularForm} />
-                    <Route exact path="/vocabular/edit/:id" component={VocabularForm} />
+                <Route exact path="/vocabular" component={Vocabular} />
+                <Route exact path="/vocabular/add" component={VocabularForm} />
+                <Route exact path="/vocabular/edit/:id" component={VocabularForm} />
 
-                    <Route exact path="/product/list" component={ProductList} />
-                    <Route exact path="/product/:id" component={ProductView} />
-                    <Route exact path="/product/add" component={ProductForm} />
-                    <Route exact path="/product/edit/:id" component={ProductForm} />
+                <Route exact path="/product/list" component={ProductList} />
+                <Route exact path="/product/:id" component={ProductView} />
+                <Route exact path="/product/add" component={ProductForm} />
+                <Route exact path="/product/edit/:id" component={ProductForm} />
 
-                    <Route exact path="/checkout" component={CheckoutPage} />
+                <Route exact path="/checkout" component={CheckoutPage} />
 
-                    <Route exact path="/user/list" component={UserList} />
-                    <Route exact path="/user/login" component={UserLoginForm} />
-                    <Route exact path="/user/register" component={UserRegisterForm} />
+                <Route exact path="/user/list" component={UserList} />
+                <Route exact path="/user/login" component={UserLoginForm} />
+                <Route exact path="/user/register" component={UserRegisterForm} />
 
-                  </Switch>
-                </div>
-              </div>
+              </Switch>
             </Col>
 
           </Row>

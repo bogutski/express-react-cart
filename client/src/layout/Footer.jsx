@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
+import Pre from './../modules/pre/pre';
 
-const Copywrite = () => (
-  <Row>
-    <Col className="d-flex justify-content-center">
-      Footer
-    </Col>
-  </Row>
-);
+class Footer extends Component {
+  render() {
+    return (
+      <Row>
+        <Col className="d-flex justify-content-center">
 
-export default Copywrite;
+          <Pre obj={this.props.match} />
+
+        </Col>
+      </Row>);
+  }
+}
+
+export default Footer;
