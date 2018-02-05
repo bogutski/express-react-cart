@@ -71,6 +71,33 @@
 					"response": []
 				},
 				{
+					"name": "Get Products by category id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Super Cars 2\",\n    \"price\": 10\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/product/category/id/Skt82Zkrz",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"product",
+								"category",
+								"id",
+								"Skt82Zkrz"
+							]
+						},
+						"description": ""
+					},
+					"response": []
+				},
+				{
 					"name": "Create product",
 					"request": {
 						"auth": {
@@ -390,6 +417,10 @@
 							{
 								"key": "Content-Type",
 								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{_token}}"
 							}
 						],
 						"body": {},
