@@ -62,9 +62,7 @@ class UserLoginForm extends Component {
   }
 
   insteadForm() {
-    return (
-      <span>User already logged</span>
-    );
+    this.props.history.push('/');
   }
 
   render() {

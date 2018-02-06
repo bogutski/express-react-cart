@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import {
-  Collapse, DropdownItem, DropdownMenu, DropdownToggle, Nav, NavItem,
+  Collapse,
+  DropdownItem,
+  DropdownMenu,
+  DropdownToggle,
+  Nav,
+  NavItem,
   UncontrolledDropdown,
 } from 'reactstrap';
 import { connect } from 'react-redux';
@@ -23,6 +28,12 @@ class UserSection extends Component {
               <DropdownItem onClick={() => this.props.userLogout()}>
                 Logout
               </DropdownItem>
+
+              <Link
+                to={`/user/${this.props.userInfo._id}`}
+                className="dropdown-item"
+              >Profile
+              </Link>
 
               <Link to="/user/list" className="dropdown-item">User list</Link>
 

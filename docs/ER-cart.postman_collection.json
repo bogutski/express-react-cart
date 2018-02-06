@@ -242,7 +242,7 @@
 							"raw": "{\n    \"name\": \"Super Cars 2\",\n    \"price\": 10\n}"
 						},
 						"url": {
-							"raw": "http://localhost:5000/vocabular/5a4465a37b6f217bb522d500",
+							"raw": "http://localhost:5000/vocabular/5a5d9e37b28cc2c60f5f1678",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -250,7 +250,7 @@
 							"port": "5000",
 							"path": [
 								"vocabular",
-								"5a4465a37b6f217bb522d500"
+								"5a5d9e37b28cc2c60f5f1678"
 							]
 						},
 						"description": ""
@@ -574,6 +574,24 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "Options",
+			"request": {
+				"method": "OPTIONS",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:5000",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000"
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	],
 	"event": [
