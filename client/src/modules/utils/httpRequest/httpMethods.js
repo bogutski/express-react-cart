@@ -1,7 +1,7 @@
 import axios from 'axios';
 import _ from 'lodash';
 import Notifications from 'react-notification-system-redux';
-import store from '../../redux/store';
+import store from '../../../redux/store';
 
 function getHeaders() {
   return {

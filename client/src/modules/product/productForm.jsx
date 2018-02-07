@@ -3,8 +3,8 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import { TextField, Selectbox } from './../form/form';
-import { number, required } from './../form/validators';
+import { TextField, Selectbox } from '../utils/form/form';
+import { number, required } from '../utils/form/validators';
 import { productCreate, productGetById, productUpdate } from './_actions/productActions';
 
 class ProductForm extends Component {

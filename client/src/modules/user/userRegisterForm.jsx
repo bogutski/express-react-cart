@@ -5,8 +5,8 @@ import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
 import { Helmet } from 'react-helmet';
-import { TextField } from './../form/form';
-import { email as validEmail, minLength5, required } from './../form/validators';
+import { TextField } from '../utils/form/form';
+import { email as validEmail, minLength5, required } from '../utils/form/validators';
 import { userRegister } from './_actions/userActions';
 
 class UserRegisterForm extends Component {

@@ -4,7 +4,7 @@ import _ from 'lodash';
 import { Helmet } from 'react-helmet';
 import CatalogProcuctArea from './catalogProcuctArea';
 import CatalogSecondLevelMenu from './catalogSecondLevelMenu';
-import Pre from './../pre/pre';
+import Pre from '../utils/pre/pre';
 import CatalogSecondLevelCards from './catalogSecondLevelCards';
 
 class Catalog extends Component {

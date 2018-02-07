@@ -1,5 +1,5 @@
 import { push } from 'react-router-redux';
-import { get, post } from '../../httpRequest/httpMethods';
+import { get, post } from '../../utils/httpRequest/httpMethods';
 
 export function userRegister(email, password) {
   return dispatch =>

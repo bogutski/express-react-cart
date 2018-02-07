@@ -4,8 +4,6 @@ import { Helmet } from 'react-helmet';
 // import { userLogin } from './_actions/userActions';
 
 class UserProfile extends Component {
-
-
   render() {
     return (
       <div>
@@ -15,6 +13,8 @@ class UserProfile extends Component {
         </Helmet>
 
         <h1>Profile</h1>
+
+
 
       </div>
     );

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Col, Row } from 'reactstrap';
-import Pre from './../modules/pre/pre';
+import Pre from '../modules/utils/pre/pre';
 
 class Footer extends Component {
   render() {

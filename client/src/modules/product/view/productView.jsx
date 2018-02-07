@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { productGetById } from './../_actions/productActions';
-import Pre from './../../pre/pre';
+import Pre from '../../utils/pre/pre';
 import ProductViewPrice from './productViewPrice';
 
 class ProductView extends Component {

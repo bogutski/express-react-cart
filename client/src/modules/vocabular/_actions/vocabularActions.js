@@ -1,5 +1,5 @@
 import { initialize } from 'redux-form';
-import { del, get, patch, post } from '../../httpRequest/httpMethods';
+import { del, get, patch, post } from '../../utils/httpRequest/httpMethods';
 import toSlugCase from 'to-slug-case';
 
 export function vocabularCreate(data) {

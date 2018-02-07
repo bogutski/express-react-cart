@@ -6,8 +6,8 @@ import { Button, Col, Form, Row } from 'reactstrap';
 import _ from 'lodash';
 import VocabularTree from './vocabularTree';
 import VocabularTermForm from './vocabularTermForm';
-import { required } from './../../form/validators';
-import { TextField } from './../../form/form';
+import { required } from '../../utils/form/validators';
+import { TextField } from '../../utils/form/form';
 import { vocabularGetById, vocabularCreate, vocabularUpdate, vocabularClearForm } from '../_actions/vocabularActions';
 
 class VocabularForm extends Component {
