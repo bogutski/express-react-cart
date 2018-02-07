@@ -33,7 +33,7 @@ class UserLoginForm extends Component {
           <title>Login</title>
         </Helmet>
 
-        <h3>User Login</h3>
+        <h1>User Login</h1>
         qwe@qwe.qwe
         <Field
           name="email"

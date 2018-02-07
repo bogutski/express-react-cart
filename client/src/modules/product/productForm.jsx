@@ -39,7 +39,7 @@ class ProductForm extends Component {
   render() {
     return (
       <Form onSubmit={this.formSubmit}>
-        <h3>Product</h3>
+        <h1>Product</h1>
 
         <Field
           name="name"

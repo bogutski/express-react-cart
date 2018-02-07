@@ -3,7 +3,7 @@ const globals = require('../../data/globals');
 module.exports = {
   'Catalog link': (client) => {
     client
-      .url(globals.url)
+      .url(globals.url.main)
       .waitForElementVisible('//div[@id="site-menu"]', 500)
       .click('//a[text()=\'Catalog\']')
       .waitForElementVisible('//h1', 100)
@@ -13,7 +13,7 @@ module.exports = {
 
   'Vocabulars link': (client) => {
     client
-      .url(globals.url)
+      .url(globals.url.main)
       .waitForElementVisible('//div[@id="site-menu"]', 3000)
       .click('//a[text()="Vocabulars"]')
       .assert.containsText('//h1', 'Vocabulars')

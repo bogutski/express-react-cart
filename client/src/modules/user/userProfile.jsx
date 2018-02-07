@@ -14,7 +14,7 @@ class UserProfile extends Component {
           <title>Profile</title>
         </Helmet>
 
-        <h3>Profile</h3>
+        <h1>Profile</h1>
 
       </div>
     );

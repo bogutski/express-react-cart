@@ -32,7 +32,7 @@ class UserRegisterForm extends Component {
           <title>Registration</title>
         </Helmet>
 
-        <h3>User Register</h3>
+        <h1>User Register</h1>
         <Field
           name="email"
           type="text"

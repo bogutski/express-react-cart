@@ -4,5 +4,8 @@ module.exports = {
   title: {
     home: 'React App',
   },
-  url: 'http://localhost:3000',
+  url: {
+    main: 'http://localhost:3000',
+    login: 'http://localhost:3000/user/login'
+  }
 };
