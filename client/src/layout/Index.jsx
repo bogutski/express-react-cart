@@ -46,11 +46,6 @@ class App extends Component {
     }
   }
 
-  componentWillReceiveProps(nextProps, nextContext) {
-    console.log(nextProps);
-  }
-
-
   component() {
     return (
       <div>

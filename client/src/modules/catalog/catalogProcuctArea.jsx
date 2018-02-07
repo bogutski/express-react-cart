@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Row, Button } from 'reactstrap';
+import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { withRouter, Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import ReactTable from 'react-table';
 import { productFilterByCategoryId } from '../product/_actions/productActions';
 import { cartProductAdd } from '../cart/_actions/cartActions';

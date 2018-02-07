@@ -3,6 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
+import { Redirect } from 'react-router';
 import _ from 'lodash';
 import { Helmet } from 'react-helmet';
 import { TextField } from './../form/form';
@@ -61,16 +62,12 @@ class UserLoginForm extends Component {
     );
   }
 
-  insteadForm() {
-    this.props.history.push('/');
-  }
-
   render() {
     return (
       <div>
         {_.isEmpty(this.props.userInfo)
           ? this.form()
-          : this.insteadForm()
+          : <Redirect to="/" />
         }
       </div>
     );
