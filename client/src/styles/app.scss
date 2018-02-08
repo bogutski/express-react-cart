@@ -2,8 +2,8 @@ $color1: #2b284a;
 $color2: #cae40f;
 $color3: #efefef;
 
-.nav-link.active {
-  background: #fff8e2;
+h1, h2, h3 {
+  color: $color1;
 }
 
 .card {
@@ -11,12 +11,36 @@ $color3: #efefef;
 }
 
 // NAVBAR
-#main-menu {
+#main-bar {
   background: $color1;
 }
 
-#catalog-menu {
+// CATALOG
+#catalog-bar {
   background: $color3;
+  .nav-link {
+    color: $color1;
+
+    &.active {
+      background-color: lighten($color1, 20%);
+      color: lighten($color1, 70%);
+    }
+  }
+}
+
+#catalog-second-level {
+  .nav-link {
+    color: $color1;
+
+    &:hover {
+      background-color: $color3;
+    }
+
+    &.active {
+      background-color: lighten($color1, 20%);
+      color: lighten($color1, 70%);
+    }
+  }
 }
 
 #site-name {
@@ -32,5 +56,15 @@ $color3: #efefef;
 .nav-tabs {
   .active {
     font-weight: normal !important;
+  }
+}
+
+#site-menu {
+  .nav-link {
+    color: lighten($color1, 50%);
+
+    &.active {
+      color: lighten($color1, 70%);
+    }
   }
 }

@@ -11,13 +11,13 @@ class CartBlock extends Component {
 
         <Button
           onClick={this.props.cartVisibleToggle}
-          color="primary"
+          color="warning"
           outline
         >
           {this.props.cart.totalCount} {this.props.cart.totalCount > 1 ? 'items' : 'item'}
           {' '}
           <Badge
-            color="secondary"
+            color="warning"
           >${this.props.cart.totalPrice}
           </Badge>
         </Button>
@@ -30,7 +30,7 @@ class CartBlock extends Component {
   render() {
     return this.props.cart.totalCount > 0
       ? this.notEmptyCart()
-      : <span>Empty cart</span>;
+      : <span className="text-muted">Empty cart</span>;
   }
 }
 

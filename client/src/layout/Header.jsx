@@ -4,11 +4,11 @@ import CatalogFirstLevelMenu from './../modules/catalog/catalogFirstLevelMenu';
 
 const Header = () => (
   <div className='mb-4'>
-    <div id="main-menu">
+    <div id="main-bar">
       <MainMenu />
     </div>
 
-    <div id="catalog-menu">
+    <div id="catalog-bar">
       <CatalogFirstLevelMenu />
     </div>
   </div>

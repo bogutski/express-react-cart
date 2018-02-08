@@ -19,7 +19,7 @@ class CatalogSecondLevelMenu extends Component {
 
   render() {
     return (
-      <Nav vertical>
+      <Nav vertical id="catalog-second-level">
         {this.getSubcategories().map(el => (
           <NavItem key={el.id}>
             <NavLink

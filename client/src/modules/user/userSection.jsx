@@ -25,9 +25,6 @@ class UserSection extends Component {
             </DropdownToggle>
 
             <DropdownMenu>
-              <DropdownItem onClick={() => this.props.userLogout()}>
-                Logout
-              </DropdownItem>
 
               <Link
                 to={`/user/${this.props.userInfo._id}`}
@@ -36,6 +33,12 @@ class UserSection extends Component {
               </Link>
 
               <Link to="/user/list" className="dropdown-item">User list</Link>
+
+              <DropdownItem divider />
+
+              <DropdownItem onClick={() => this.props.userLogout()}>
+                Logout
+              </DropdownItem>
 
             </DropdownMenu>
 
