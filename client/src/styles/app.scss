@@ -21,9 +21,14 @@ h1, h2, h3 {
   .nav-link {
     color: $color1;
 
+    &:hover {
+      color: lighten($color1, 20%);
+    }
+
     &.active {
-      background-color: lighten($color1, 20%);
-      color: lighten($color1, 70%);
+      border-bottom: 3px solid lighten($color1, 20%);
+      color: lighten($color1, 20%);
+      padding-bottom: 5px;
     }
   }
 }
