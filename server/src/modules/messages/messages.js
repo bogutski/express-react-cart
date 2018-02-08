@@ -1,20 +1,22 @@
 const message = {};
 
-message.success = text => (
+message.success = (text, payload) => (
   {
     message: {
       text,
       type: 'success',
     },
+    payload,
   }
 );
 
-message.error = text => (
+message.error = (text, payload) => (
   {
     message: {
       text,
       type: 'error',
     },
+    payload,
   }
 );
 

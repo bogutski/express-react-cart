@@ -19,20 +19,26 @@ export const productGetAll = (req, res, next) => {
 
 export const productCreate = (req, res, next) => {
   console.log(req.body);
+  const _id = new mongoose.Types.ObjectId();
+
   const product = new Product({
-    _id: new mongoose.Types.ObjectId(),
+    _id,
     name: req.body.name,
     price: req.body.price,
     catalog: req.body.catalog,
     // image: ' - ', // req.file.path && null,
   });
 
+  const payload = {
+    productId: _id,
+  };
+
   product
     .save()
     .then((result) => {
       console.log(result);
       res.status(201)
-        .json(message.success('Product created'));
+        .json(message.success('Product created', payload));
     })
     .catch((err) => {
       console.log(err);
