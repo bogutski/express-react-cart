@@ -21,7 +21,7 @@ class Tabs extends Component {
             </li>))}
         </ul>
 
-        <div>
+        <div className="pt-3">
           {tabs.map(el => (
             <TabContent key={el.name} for={el.name}>{el.content}</TabContent>
           ))}

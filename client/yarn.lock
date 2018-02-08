@@ -5751,7 +5751,7 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.6, prop-types@^15.5.7, prop-types@^15.5.8, prop-types@^15.5.9, prop-types@^15.6.0:
   version "15.6.0"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.6.0.tgz#ceaf083022fc46b4a35f69e13ef75aed0d639856"
   dependencies:
@@ -6108,6 +6108,13 @@ react-table@^6.7.6:
   resolved "https://registry.yarnpkg.com/react-table/-/react-table-6.7.6.tgz#3f9e3b308328ceb04ef93a47babefaba2619c905"
   dependencies:
     classnames "^2.2.5"
+
+react-tabs-redux@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/react-tabs-redux/-/react-tabs-redux-2.0.1.tgz#a02019e62c647d6c93e84da29a26c69c5c1b44e4"
+  dependencies:
+    classnames "^2.2.3"
+    prop-types "^15.5.7"
 
 react-transition-group@^2.2.0:
   version "2.2.1"

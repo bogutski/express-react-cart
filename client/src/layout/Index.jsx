@@ -49,12 +49,14 @@ class App extends Component {
   component() {
     return (
       <div>
+
         <Helmet>
           <meta charSet="utf-8" />
           <title>ER cart</title>
         </Helmet>
 
         <Alert />
+
         <Header />
 
         <Container fluid>

@@ -10,7 +10,7 @@ $color3: #efefef;
   margin-bottom: 1rem;
 }
 
-// Navbar
+// NAVBAR
 #main-menu {
   background: $color1;
 }
@@ -21,4 +21,16 @@ $color3: #efefef;
 
 #site-name {
   color: #cae40f;
+}
+
+.nav-link {
+  outline: none;
+  cursor: pointer;
+}
+
+// TABS
+.nav-tabs {
+  .active {
+    font-weight: normal !important;
+  }
 }

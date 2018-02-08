@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
+import Tabs from './../../utils/tabs/tabs';
+import UserProfileEdit from './userProfileEdit';
+import UserProfileView from './userProfileView';
 // import { userLogin } from './_actions/userActions';
+
 
 class UserProfile extends Component {
   render() {
@@ -14,7 +18,21 @@ class UserProfile extends Component {
 
         <h1>Profile</h1>
 
-
+        <Tabs
+          tabs={[
+            {
+              name: 'view',
+              label: 'View',
+              content: <UserProfileView />,
+              default: true,
+            },
+            {
+              name: 'edit',
+              label: 'Edit',
+              content: <UserProfileEdit />,
+            },
+          ]}
+        />
 
       </div>
     );
