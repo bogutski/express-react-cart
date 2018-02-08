@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { TabContent, TabLink, Tabs as ReduxTabs } from 'react-tabs-redux';
-import Pre from '../pre/pre';
 
 class Tabs extends Component {
   render() {

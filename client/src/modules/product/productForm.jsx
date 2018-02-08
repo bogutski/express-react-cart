@@ -3,7 +3,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form, Input, Label } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import { TextField, Selectbox } from '../utils/form/form';
+import { Selectbox, TextField } from '../utils/form/form';
 import { number, required } from '../utils/form/validators';
 import { productCreate, productGetById, productUpdate } from './_actions/productActions';
 
@@ -15,7 +15,6 @@ class ProductForm extends Component {
 
   componentDidMount() {
     const productId = this.props.match.params.id;
-
     if (productId) {
       this.props.productGetById(productId);
     }

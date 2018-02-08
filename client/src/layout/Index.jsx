@@ -75,8 +75,8 @@ class App extends Component {
                 <Route exact path="/vocabular/edit/:id" component={VocabularForm} />
 
                 <Route exact path="/product/list" component={ProductList} />
-                <Route exact path="/product/:id" component={ProductView} />
                 <Route exact path="/product/add" component={ProductForm} />
+                <Route exact path="/product/:id" component={ProductView} />
                 <Route exact path="/product/edit/:id" component={ProductForm} />
 
                 <Route exact path="/checkout" component={CheckoutPage} />

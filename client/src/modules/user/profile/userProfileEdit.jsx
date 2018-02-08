@@ -8,6 +8,10 @@ class UserProfileEdit extends Component {
     return (
       <div>
 
+        <Helmet>
+          <title>Edit profile</title>
+        </Helmet>
+
         Edit form
 
       </div>

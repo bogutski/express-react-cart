@@ -8,6 +8,10 @@ class UserProfileView extends Component {
     return (
       <div>
 
+        <Helmet>
+          <title>Profile</title>
+        </Helmet>
+
         {this.props.userInfo._id}
         <hr />
         {this.props.userInfo.email}
