@@ -33,7 +33,7 @@ function httpMethod(method, url, data) {
     })
     .catch((error) => {
       if (error.response) {
-        if (!_.isEmpty(error.response.data.message.text)) {
+        if (_.has(error.response, 'data.message.text')) {
           store.dispatch(Notifications.error({
             title: error.response.data.message.text,
             autoDismiss: 0,
@@ -41,6 +41,11 @@ function httpMethod(method, url, data) {
 
           // Fix failed autologin
           if (error.response.data.message.text === 'Auth failed') localStorage.clear();
+        } else if (_.has(error.response, 'data.error.message')) {
+          store.dispatch(Notifications.error({
+            title: error.response.data.error.message,
+            autoDismiss: 0,
+          }));
         } else {
           console.log('ERROR RESPONSE', error.response);
         }
