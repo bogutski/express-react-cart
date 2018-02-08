@@ -1,12 +1,15 @@
 import { initialize } from 'redux-form';
 import { del, get, patch, post } from '../../utils/httpRequest/httpMethods';
+import history from './../../../history';
 
 export function productCreate(product) {
   return () =>
     post(
       '/product',
       product,
-    );
+    ).then((res) => {
+      history.push(`/product/${res.data.payload.productId}`);
+    });
 }
 
 export function productUpdate(productId, data) {
