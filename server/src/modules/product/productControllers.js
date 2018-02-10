@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import _ from 'lodash';
 import Product from './productModel';
 import message from './../messages/messages';
 
@@ -26,7 +27,7 @@ export const productCreate = (req, res, next) => {
     name: req.body.name,
     price: req.body.price,
     catalog: req.body.catalog,
-    // image: ' - ', // req.file.path && null,
+    image: _.has(req, 'file.path') ? req.file.path : null,
   });
 
   const payload = {
