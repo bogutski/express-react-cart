@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { productGetById } from './../_actions/productActions';
 import Pre from '../../utils/pre/pre';
+import Tabs from './../../utils/tabs/tabs';
 import ProductViewPrice from './productViewPrice';
 
 class ProductView extends Component {
@@ -19,9 +20,23 @@ class ProductView extends Component {
       <div>
         <h1>{this.props.productInfo.name}</h1>
 
-        <ProductViewPrice price={this.props.productInfo.price} />
+        <Tabs
+          tabs={[
+            {
+              name: 'view',
+              label: 'View',
+              content: <ProductViewPrice price={this.props.productInfo.price} />,
+              default: true,
+            },
+            {
+              name: 'edit',
+              label: 'Edit',
+              content: <Pre obj={this.props.productInfo} on />,
+            },
+          ]}
+        />
 
-        <Pre obj={this.props.productInfo} on />
+
       </div>
     );
   }
