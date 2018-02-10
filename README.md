@@ -3,17 +3,20 @@
 ## Server side
 * Express JS, Mongo Atlas, JWT
 * Folder `client`
+* Initial install `npm i`
 * `npm run dev`
 
 ## Client side
 * React/Redux, React router
 * Folder `server`
+* Initial install `npm i`
 * `npm start`
 
 ### Testing
 * Selenium web driver (Chromedriver) + Nigntwatch.js
 * upload to `testing/lib` files: `chromedriver` and `selenium-server-standalone-3.8.1.jar` 
 * Folder `testing`
+* Initial install `npm i`
 * Run `npm run test`
 
 ---

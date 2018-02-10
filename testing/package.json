@@ -4,6 +4,9 @@
     "selenium-webdriver": "^4.0.0-alpha.1"
   },
   "scripts": {
-    "test": "nightwatch"
+    "test": "nightwatch",
+    "test-home": "nightwatch -test tests/home.js",
+    "test-user": "nightwatch -test tests/user/user.js",
+    "test-navigation": "nightwatch -test tests/navigation/navigation.js"
   }
 }
