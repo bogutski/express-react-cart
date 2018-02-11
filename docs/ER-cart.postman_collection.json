@@ -116,8 +116,33 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"Super Cars 2\",\n    \"price\": 10\n}"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Product {{$timestamp}}",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "price",
+									"value": "10",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "catalog",
+									"value": "Hy5jp2YEz",
+									"description": "",
+									"type": "text"
+								},
+								{
+									"key": "image",
+									"value": "",
+									"description": "",
+									"type": "file"
+								}
+							]
 						},
 						"url": {
 							"raw": "http://localhost:5000/product",
