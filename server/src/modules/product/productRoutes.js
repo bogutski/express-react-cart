@@ -13,7 +13,7 @@ import {
 const router = Router();
 
 router.get('/', productGetAll);
-router.post('/', upload.single('image'), productCreate);
+router.post('/', upload.array('image', 20), productCreate);
 router.get('/:productId', productGetById);
 router.get('/category/id/:categoryId', productGetByCategoryId);
 router.patch('/:productId', productUpdateById);

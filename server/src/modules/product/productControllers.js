@@ -1,7 +1,15 @@
 import mongoose from 'mongoose';
 import _ from 'lodash';
+import cloudinary from 'cloudinary';
 import Product from './productModel';
 import message from './../messages/messages';
+
+cloudinary.config({
+  cloud_name: '-',
+  api_key: '-',
+  api_secret: '-',
+});
+
 
 export const productGetAll = (req, res, next) => {
   Product.find()
@@ -22,17 +30,26 @@ export const productCreate = (req, res, next) => {
   console.log(req.body);
   const _id = new mongoose.Types.ObjectId();
 
+  const filesArr = req.files.map(el => el.path);
+
   const product = new Product({
     _id,
     name: req.body.name,
     price: req.body.price,
     catalog: req.body.catalog,
-    image: _.has(req, 'file.path') ? req.file.path : null,
+    image: _.isEmpty(filesArr) ? filesArr : null,
   });
 
   const payload = {
     productId: _id,
   };
+
+  // Upload to Cloudinary
+  filesArr.forEach((el) => {
+    cloudinary.uploader.upload(el, (result) => {
+      console.log(result);
+    });
+  });
 
   product
     .save()
