@@ -1,8 +1,7 @@
 import mongoose from 'mongoose';
-import _ from 'lodash';
 import Product from './productModel';
 import message from './../messages/messages';
-// import cloudUpload from './../fileUpload/cloudinaryFileUpload';
+import cloudMultiUpload from './../fileUpload/cloudinaryFileUpload';
 
 export const productGetAll = (req, res) => {
   Product.find()
@@ -19,20 +18,24 @@ export const productGetAll = (req, res) => {
     });
 };
 
-export const productCreate = (req, res) => {
+export async function productCreate(req, res) {
   const _id = new mongoose.Types.ObjectId();
 
+  // Paths to local upload folder
   const filesArr = req.files.map(el => el.path);
-  // const cloudUrls = _.isEmpty(filesArr) ? cloudUpload(filesArr) : null;
+
+  let cloudUrls = await cloudMultiUpload(filesArr);
+  cloudUrls = cloudUrls.map(el => (el.url));
 
   const product = new Product({
     _id,
     name: req.body.name,
     price: req.body.price,
     catalog: req.body.catalog,
-    image: filesArr,
+    image: cloudUrls,
   });
 
+  // Send back product id for redirect to new product after creating
   const payload = {
     productId: _id,
   };
@@ -49,7 +52,7 @@ export const productCreate = (req, res) => {
       res.status(500)
         .json(message.error(err));
     });
-};
+}
 
 export const productGetById = (req, res) => {
   const id = req.params.productId;
