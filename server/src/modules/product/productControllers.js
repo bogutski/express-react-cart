@@ -1,17 +1,10 @@
 import mongoose from 'mongoose';
 import _ from 'lodash';
-import cloudinary from 'cloudinary';
 import Product from './productModel';
 import message from './../messages/messages';
+// import cloudUpload from './../fileUpload/cloudinaryFileUpload';
 
-cloudinary.config({
-  cloud_name: '-',
-  api_key: '-',
-  api_secret: '-',
-});
-
-
-export const productGetAll = (req, res, next) => {
+export const productGetAll = (req, res) => {
   Product.find()
     .select('-__v')
     .exec()
@@ -26,30 +19,23 @@ export const productGetAll = (req, res, next) => {
     });
 };
 
-export const productCreate = (req, res, next) => {
-  console.log(req.body);
+export const productCreate = (req, res) => {
   const _id = new mongoose.Types.ObjectId();
 
   const filesArr = req.files.map(el => el.path);
+  // const cloudUrls = _.isEmpty(filesArr) ? cloudUpload(filesArr) : null;
 
   const product = new Product({
     _id,
     name: req.body.name,
     price: req.body.price,
     catalog: req.body.catalog,
-    image: _.isEmpty(filesArr) ? filesArr : null,
+    image: filesArr,
   });
 
   const payload = {
     productId: _id,
   };
-
-  // Upload to Cloudinary
-  filesArr.forEach((el) => {
-    cloudinary.uploader.upload(el, (result) => {
-      console.log(result);
-    });
-  });
 
   product
     .save()
@@ -65,7 +51,7 @@ export const productCreate = (req, res, next) => {
     });
 };
 
-export const productGetById = (req, res, next) => {
+export const productGetById = (req, res) => {
   const id = req.params.productId;
   Product.findById(id)
     .select('-__v')
@@ -86,7 +72,7 @@ export const productGetById = (req, res, next) => {
     });
 };
 
-export const productGetByCategoryId = (req, res, next) => {
+export const productGetByCategoryId = (req, res) => {
   const id = req.params.categoryId;
   Product.find({ catalog: id })
     .select('-__v')
@@ -107,7 +93,7 @@ export const productGetByCategoryId = (req, res, next) => {
     });
 };
 
-export const productUpdateById = (req, res, next) => {
+export const productUpdateById = (req, res) => {
   const id = req.params.productId;
   Product.update({ _id: id }, { $set: req.body })
     .exec()
@@ -127,7 +113,7 @@ export const productUpdateById = (req, res, next) => {
     });
 };
 
-export const productDeleteById = (req, res, next) => {
+export const productDeleteById = (req, res) => {
   const id = req.params.productId;
   Product.remove({ _id: id })
     .exec()
