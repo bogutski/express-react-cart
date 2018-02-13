@@ -7,9 +7,10 @@ export function productCreate(product) {
     post(
       '/product',
       product,
-    ).then((res) => {
-      history.push(`/product/${res.data.payload.productId}`);
-    });
+    )
+      .then((res) => {
+        history.push(`/product/${res.data.payload.productId}`);
+      });
 }
 
 export function productUpdate(productId, data) {

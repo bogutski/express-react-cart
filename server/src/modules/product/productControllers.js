@@ -25,7 +25,6 @@ export async function productCreate(req, res) {
   const filesArr = req.files.map(el => el.path);
 
   let cloudUrls = await cloudMultiUpload(filesArr);
-  console.log(cloudUrls);
   cloudUrls = cloudUrls.map(el => ({
     pid: el.public_id,
     url: el.url,

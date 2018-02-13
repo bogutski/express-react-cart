@@ -6,6 +6,7 @@
     "@types/react": "^16.0.34",
     "axios": "^0.17.1",
     "bootstrap": "4.0.0-beta.3",
+    "cloudinary-react": "^1.0.6",
     "history": "^4.7.2",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
