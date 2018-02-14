@@ -4,6 +4,7 @@ import { Col, Row } from 'reactstrap';
 import { productGetById } from './../_actions/productActions';
 import ProductViewPrice from './productViewPrice';
 import ProductViewImage from './productViewImage';
+import ProductViewCartButton from './productViewCartButton';
 
 class ProductViewMain extends Component {
   render() {
@@ -11,12 +12,14 @@ class ProductViewMain extends Component {
     return (
       <Row>
 
-        <Col>
+        <Col lg={6}>
           <ProductViewImage image={this.props.productInfo.image} />
         </Col>
 
-        <Col>
+        <Col lg={6}>
           <ProductViewPrice price={this.props.productInfo.price} />
+
+          <ProductViewCartButton product={this.props.productInfo} />
         </Col>
 
       </Row>

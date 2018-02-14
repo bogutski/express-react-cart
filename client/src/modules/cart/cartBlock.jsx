@@ -14,7 +14,7 @@ class CartBlock extends Component {
           color="warning"
           outline
         >
-          {this.props.cart.totalCount} {this.props.cart.totalCount > 1 ? 'items' : 'item'}
+          {this.props.cart.totalCount}{this.props.cart.totalCount > 1 ? ' items' : ' item'}
           {' '}
           <Badge
             color="warning"

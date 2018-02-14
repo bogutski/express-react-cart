@@ -90,7 +90,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   productFilterByCategoryId: categoryId => dispatch(productFilterByCategoryId(categoryId)),
-  cartProductAdd: productId => dispatch(cartProductAdd(productId)),
+  cartProductAdd: (productId, qt) => dispatch(cartProductAdd(productId, qt)),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CatalogProductArea));

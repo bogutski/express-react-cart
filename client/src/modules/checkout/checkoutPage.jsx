@@ -57,7 +57,7 @@ class CheckoutPage extends Component {
         />
 
         {this.props.cart.totalCount}
-        {this.props.cart.totalCount > 1 ? 'items' : 'item'}
+        {this.props.cart.totalCount > 1 ? ' items' : ' item'}
         {' '}
         ${this.props.cart.totalPrice}
       </div>

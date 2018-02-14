@@ -66,7 +66,7 @@ class CartModal extends Component {
             showPagination={this.props.cart.cart.length > 30}
           />
 
-          {this.props.cart.totalCount} {this.props.cart.totalCount > 1 ? 'items' : 'item'}
+          {this.props.cart.totalCount}{this.props.cart.totalCount > 1 ? ' items' : ' item'}
           {' '}
           ${this.props.cart.totalPrice}
 
