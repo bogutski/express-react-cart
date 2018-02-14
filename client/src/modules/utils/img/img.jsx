@@ -13,7 +13,8 @@ class Img extends Component {
         cloudName={cloudName}
         publicId={publicId}
         width={this.props.w}
-        crop="scale"
+        height={this.props.h || null}
+        crop="fit"
         onClick={this.props.onClick}
       />
     );

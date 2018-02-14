@@ -22,7 +22,7 @@ class ProductListTable extends Component {
       {
         Header: 'Image',
         id: 'image',
-        accessor: el => <Img pid={el.image[0].pid} />,
+        accessor: el => <Img pid={el.image[0].pid} h={100} />,
       },
       {
         Header: 'Id',
