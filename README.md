@@ -2,13 +2,13 @@
 
 ## Server side
 * Express JS, Mongo Atlas, JWT
-* Folder `client`
+* Folder `server`
 * Initial install `npm i`
 * `npm run dev`
 
 ## Client side
 * React/Redux, React router
-* Folder `server`
+* Folder `client`
 * Initial install `npm i`
 * `npm start`
 
