@@ -1,12 +1,17 @@
 import React, { Component } from 'react';
-import { Image, Transformation } from 'cloudinary-react';
+import { Image } from 'cloudinary-react';
 
 class Img extends Component {
   render() {
+    // example url http://res.cloudinary.com/bogutskii/image/upload/v1518501376/mbyyt6hblk4uliwocs8u.png
+    const url = this.props.url || '';
+    const cloudName = url ? url.split('/')[3] : 'bogutskii';
+    const publicId = this.props.pid || url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
+
     return (
       <Image
-        cloudName={this.props.url.split('/')[3]}
-        publicId={this.props.pid}
+        cloudName={cloudName}
+        publicId={publicId}
         width={this.props.w}
         crop="scale"
       />
@@ -15,7 +20,7 @@ class Img extends Component {
 }
 
 Img.defaultProps = {
-  width: 300,
+  w: 300,
 };
 
 export default Img;

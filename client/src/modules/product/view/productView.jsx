@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { productGetById } from './../_actions/productActions';
 import Pre from '../../utils/pre/pre';
 import Tabs from './../../utils/tabs/tabs';
-import ProductViewPrice from './productViewPrice';
+import ProductViewDetails from './productViewDetails';
 
 class ProductView extends Component {
   componentDidMount() {
@@ -14,18 +15,16 @@ class ProductView extends Component {
     }
   }
 
-  render() {
-    console.log(this.props.productInfo);
+  component() {
     return (
       <div>
         <h1>{this.props.productInfo.name}</h1>
-
         <Tabs
           tabs={[
             {
               name: 'view',
               label: 'View',
-              content: <ProductViewPrice price={this.props.productInfo.price} />,
+              content: <ProductViewDetails />,
               default: true,
             },
             {
@@ -35,8 +34,18 @@ class ProductView extends Component {
             },
           ]}
         />
+      </div>
+    );
+  }
 
-
+  render() {
+    return (
+      <div>
+        {
+          !_.isEmpty(this.props.productInfo)
+            ? this.component()
+            : <span>Loading ...</span>
+        }
       </div>
     );
   }

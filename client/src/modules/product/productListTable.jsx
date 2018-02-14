@@ -3,19 +3,14 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactTable from 'react-table';
 import { Button } from 'reactstrap';
-import { withRouter, Link } from 'react-router-dom';
-import { productGetAll, productDeleteById } from './_actions/productActions';
+import { Link, withRouter } from 'react-router-dom';
+import { productDeleteById } from './_actions/productActions';
+import Img from './../utils/img/img';
 
 class ProductListTable extends Component {
   constructor(props) {
     super(props);
     this.delete = this.delete.bind(this);
-  }
-
-  componentDidMount() {
-    if (_.isEmpty(this.props.productList)) {
-      this.props.productGetAll();
-    }
   }
 
   delete(id) {
@@ -24,6 +19,11 @@ class ProductListTable extends Component {
 
   columns() {
     return [
+      {
+        Header: 'Image',
+        id: 'image',
+        accessor: el => <Img pid={el.image[0].pid} />,
+      },
       {
         Header: 'Id',
         accessor: '_id', // String-based value accessors!
@@ -41,24 +41,20 @@ class ProductListTable extends Component {
         accessor: 'price',
       },
       {
-        Header: 'Image',
-        accessor: 'image',
-      },
-      {
         Header: 'Actions',
         id: 'act',
         accessor: el => (
           <div>
             <Link to={`/product/${el._id}`}>View</Link>{' '}
             <Link to={`/product/edit/${el._id}`}>Edit</Link>
-            <Button color="link" size="sm" onClick={() => this.delete(el._id)} >Delete</Button>
+            <Button color="link" size="sm" onClick={() => this.delete(el._id)}>Delete</Button>
           </div>
         ),
       },
     ];
   }
 
-  render() {
+  table() {
     return (
       <div>
         <ReactTable
@@ -72,6 +68,10 @@ class ProductListTable extends Component {
       </div>
     );
   }
+
+  render() {
+    return _.isEmpty(this.props.productList) ? <span>No products</span> : this.table();
+  }
 }
 
 const mapStateToProps = state => ({
@@ -79,7 +79,6 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  productGetAll: () => dispatch(productGetAll()),
   productDeleteById: productId => dispatch(productDeleteById(productId)),
 });
 
