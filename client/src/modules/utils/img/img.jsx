@@ -14,6 +14,7 @@ class Img extends Component {
         publicId={publicId}
         width={this.props.w}
         crop="scale"
+        onClick={this.props.onClick}
       />
     );
   }
