@@ -22,7 +22,8 @@ class ProductListTable extends Component {
       {
         Header: 'Image',
         id: 'image',
-        accessor: el => <Img pid={el.image[0].pid} h={100} />,
+        // Check product without images
+        accessor: el => (!_.isEmpty(el.image) ? <Img pid={el.image[0].pid} h={100} /> : ''),
       },
       {
         Header: 'Id',
