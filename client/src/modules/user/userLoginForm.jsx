@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Button, Form } from 'reactstrap';
+import { Button, Col, Form, Row } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import { Redirect } from 'react-router';
 import _ from 'lodash';
@@ -27,38 +27,44 @@ class UserLoginForm extends Component {
 
   form() {
     return (
-      <Form onSubmit={this.formSubmit}>
+      <Row>
 
-        <Helmet>
-          <title>Login</title>
-        </Helmet>
+        <Col sm={6}>
 
-        <h1>User Login</h1>
-        qwe@qwe.qwe
-        <Field
-          name="email"
-          type="text"
-          placeholder="Email"
-          component={TextField}
-          validate={[required, validEmail]}
-        />
+          <Form onSubmit={this.formSubmit}>
 
-        <Field
-          placeholder="Password"
-          name="password"
-          component={TextField}
-          type="password"
-          validate={[required]}
-        />
+            <Helmet>
+              <title>Login</title>
+            </Helmet>
 
-        <Button
-          type="submit"
-          color="primary"
-          disabled={this.props.userLoginForm && {}.hasOwnProperty.call(this.props.userLoginForm, 'syncErrors')}
-          value="Register"
-        >Login
-        </Button>
-      </Form>
+            <h1>User Login</h1>
+            qwe@qwe.qwe
+            <Field
+              name="email"
+              type="text"
+              placeholder="Email"
+              component={TextField}
+              validate={[required, validEmail]}
+            />
+
+            <Field
+              placeholder="Password"
+              name="password"
+              component={TextField}
+              type="password"
+              validate={[required]}
+            />
+
+            <Button
+              type="submit"
+              color="primary"
+              disabled={this.props.userLoginForm && {}.hasOwnProperty.call(this.props.userLoginForm, 'syncErrors')}
+              value="Register"
+            >Login
+            </Button>
+          </Form>
+        </Col>
+      </Row>
     );
   }
 
