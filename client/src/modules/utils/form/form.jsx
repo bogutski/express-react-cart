@@ -57,3 +57,14 @@ export const Selectbox = props => (
 
 export const TextArea = '';
 
+export const FileField = ({ input, type, meta: { touched, error, warning } }) => {
+  delete input.value;
+  return (
+    <div>
+      <label htmlFor={input.name}>
+        Choose File from your Computer
+        <input {...input} type={type} multiple />
+      </label>
+    </div>
+  );
+};

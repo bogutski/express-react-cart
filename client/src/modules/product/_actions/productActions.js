@@ -2,11 +2,12 @@ import { initialize } from 'redux-form';
 import { del, get, patch, post } from '../../utils/httpRequest/httpMethods';
 import history from './../../../history';
 
-export function productCreate(product) {
+export function productCreate(formData) {
   return () =>
     post(
       '/product',
-      product,
+      formData,
+      'multipart/form-data',
     )
       .then((res) => {
         history.push(`/product/${res.data.payload.productId}`);
@@ -33,6 +34,7 @@ export function productGetAll() {
   return dispatch =>
     get('/product')
       .then((res) => {
+        console.log(res.data);
         dispatch({
           type: 'PRODUCT_LOAD_ALL',
           payload: res.data,

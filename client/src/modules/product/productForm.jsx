@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Button, Form, Input, Label } from 'reactstrap';
+import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import { Selectbox, TextField } from '../utils/form/form';
+import { FileField, Selectbox, TextField } from '../utils/form/form';
 import { number, required } from '../utils/form/validators';
 import { productCreate, productGetById, productUpdate } from './_actions/productActions';
+
+// const customFileInput = (field) => {
+//   delete field.input.value; // <-- just delete the value property
+//   return <input type="file" id="file" {...field.input} />;
+// };
 
 class ProductForm extends Component {
   constructor(props) {
@@ -28,10 +33,16 @@ class ProductForm extends Component {
       ...this.props.productForm.values,
     };
 
+    const formData = new FormData();
+    formData.append('name', '123');
+    formData.append('price', 123);
+    formData.append('image', data.file[0]);
+    formData.append('image', data.file[1]);
+
     if (productId) {
       this.props.productUpdate(productId, data);
     } else {
-      this.props.productCreate(data);
+      this.props.productCreate(formData);
     }
   }
 
@@ -62,8 +73,7 @@ class ProductForm extends Component {
           component={Selectbox}
         />
 
-        <Label for="exampleFile">File</Label>
-        <Input type="file" name="file" id="exampleFile" />
+        <Field name="file" type="file" component={FileField} multiple />
 
         <Button
           type="submit"
