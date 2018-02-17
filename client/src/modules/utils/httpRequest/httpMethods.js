@@ -3,21 +3,21 @@ import _ from 'lodash';
 import Notifications from 'react-notification-system-redux';
 import store from '../../../redux/store';
 
-function getHeaders() {
+function getHeaders(type) {
   return {
     Authorization: _.isEmpty(localStorage.getItem('token'))
       ? ''
       : `Bearer ${localStorage.getItem('token')}`,
-    // 'Content-Type': 'multipart/form-data',
+    'Content-Type': type,
   };
 }
 
-function httpMethod(method, url, data) {
+function httpMethod(method, url, data, type = 'application/json') {
   return axios({
     method,
     url,
     data,
-    headers: getHeaders(),
+    headers: getHeaders(type),
   })
     .then((res) => {
       // If response has message
@@ -59,8 +59,8 @@ export function get(url, data) {
   return httpMethod('get', url, data);
 }
 
-export function post(url, data) {
-  return httpMethod('post', url, data);
+export function post(url, data, type) {
+  return httpMethod('post', url, data, type);
 }
 
 export function patch(url, data) {
