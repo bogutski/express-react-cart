@@ -33,11 +33,15 @@ class ProductForm extends Component {
       ...this.props.productForm.values,
     };
 
+    const countFiles = Object.keys(data.file).length;
+
     const formData = new FormData();
-    formData.append('name', '123');
-    formData.append('price', 123);
-    formData.append('image', data.file[0]);
-    formData.append('image', data.file[1]);
+    formData.append('name', data.name);
+    formData.append('price', data.price);
+
+    for (let i = 0; i < countFiles; i++) {
+      formData.append('image', data.file[i]);
+    }
 
     if (productId) {
       this.props.productUpdate(productId, data);
