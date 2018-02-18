@@ -3,7 +3,9 @@ import { Button, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
 import { NavLink, withRouter } from 'react-router-dom';
+import _ from 'lodash';
 import { cartProductRemove, cartVisibleToggle } from './_actions/cartActions';
+import Img from './../utils/img/img';
 
 class CartModal extends Component {
   gotoCheckout() {
@@ -13,6 +15,11 @@ class CartModal extends Component {
 
   columns() {
     return [
+      {
+        Header: 'Image',
+        id: 'image',
+        accessor: el => (!_.isEmpty(el.image) ? <Img pid={el.image[0].pid} w={100} /> : ''),
+      },
       {
         Header: 'Name',
         accessor: 'name',

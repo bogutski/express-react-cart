@@ -2,10 +2,17 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
 import { Button } from 'reactstrap';
+import _ from 'lodash';
+import Img from './../utils/img/img';
 
 class CheckoutPage extends Component {
   columns() {
     return [
+      {
+        Header: 'Image',
+        id: 'image',
+        accessor: el => (!_.isEmpty(el.image) ? <Img pid={el.image[0].pid} w={100} /> : ''),
+      },
       {
         Header: 'Name',
         accessor: 'name',
@@ -47,7 +54,7 @@ class CheckoutPage extends Component {
         <h1>Checkout</h1>
 
         <ReactTable
-          className="light"
+          className="light border"
           resizable={false}
           data={this.props.cart.cart}
           columns={this.columns()}
