@@ -8,7 +8,6 @@ import ProductViewCartButton from './productViewCartButton';
 
 class ProductViewMain extends Component {
   render() {
-    console.log(this.props.productInfo);
     return (
       <Row>
 

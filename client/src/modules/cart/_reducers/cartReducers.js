@@ -7,6 +7,12 @@ const initialState = {
 
 const cart = (state = initialState, action) => {
   switch (action.type) {
+    case 'CART_FILL':
+      return {
+        ...state,
+        ...action.payload,
+      };
+
     case 'CART_PRODUCT_ADD':
       return {
         ...state,

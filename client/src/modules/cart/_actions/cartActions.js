@@ -1,3 +1,11 @@
+export function cartFill(cart) {
+  return dispatch =>
+    dispatch({
+      type: 'CART_FILL',
+      payload: cart,
+    });
+}
+
 export function cartProductAdd(product, qt = 1) {
   return dispatch =>
     dispatch({

@@ -15,12 +15,12 @@ class ProductViewImage extends Component {
   }
 
   render() {
-    console.log(this.state.mainImagePid);
     return (
       <div>
 
         <div className="d-block">
           <Img
+            className="border"
             pid={this.state.mainImagePid || this.props.image[0].pid}
             h={400}
           />
@@ -38,7 +38,8 @@ class ProductViewImage extends Component {
                     onClick={() => this.clickOnThumb(el.pid)}
                     className={[
                       'mr-2 mb-2',
-                      el.pid === this.state.mainImagePid && 'border border-dark',
+                      'border',
+                      el.pid === this.state.mainImagePid && 'border-dark',
                     ].join(' ')}
                   />);
               }

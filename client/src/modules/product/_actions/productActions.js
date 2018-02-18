@@ -34,7 +34,6 @@ export function productGetAll() {
   return dispatch =>
     get('/product')
       .then((res) => {
-        console.log(res.data);
         dispatch({
           type: 'PRODUCT_LOAD_ALL',
           payload: res.data,
