@@ -6,6 +6,10 @@ h1, h2, h3 {
   color: $color1;
 }
 
+img {
+  max-width: 100%;
+}
+
 .card {
   margin-bottom: 1rem;
 }

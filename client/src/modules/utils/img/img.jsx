@@ -13,16 +13,19 @@ class Img extends Component {
         cloudName={cloudName}
         publicId={publicId}
         width={this.props.w}
-        height={this.props.h || null}
-        crop="fit"
+        height={this.props.h}
+        crop={this.props.crop}
         onClick={this.props.onClick}
+        className={this.props.className}
       />
     );
   }
 }
 
 Img.defaultProps = {
-  w: 300,
+  w: null,
+  h: null,
+  crop: 'fit',
 };
 
 export default Img;
