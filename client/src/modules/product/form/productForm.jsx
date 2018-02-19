@@ -3,14 +3,11 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
-import { FileField, Selectbox, TextField } from '../utils/form/form';
-import { number, required } from '../utils/form/validators';
-import { productCreate, productGetById, productUpdate } from './_actions/productActions';
-
-// const customFileInput = (field) => {
-//   delete field.input.value; // <-- just delete the value property
-//   return <input type="file" id="file" {...field.input} />;
-// };
+import _ from 'lodash';
+import { FileField, Selectbox, TextField } from '../../utils/form/form';
+import { number, required } from '../../utils/form/validators';
+import { productCreate, productGetById, productUpdate } from '../_actions/productActions';
+import Pre from '../../utils/pre/pre';
 
 class ProductForm extends Component {
   constructor(props) {
@@ -85,6 +82,9 @@ class ProductForm extends Component {
           disabled={this.props.productForm && {}.hasOwnProperty.call(this.props.productForm, 'syncErrors')}
         >Save
         </Button>
+
+        <Pre obj={_.get(this.props, 'productForm.values', {})} />
+
       </Form>
     );
   }

@@ -4,6 +4,7 @@ import ReactTable from 'react-table';
 import { Button } from 'reactstrap';
 import _ from 'lodash';
 import Img from './../utils/img/img';
+import { cartProductRemove } from '../cart/_actions/cartActions';
 
 class CheckoutPage extends Component {
   columns() {
@@ -46,13 +47,9 @@ class CheckoutPage extends Component {
     ];
   }
 
-
-  render() {
+  table() {
     return (
       <div>
-
-        <h1>Checkout</h1>
-
         <ReactTable
           className="light border"
           resizable={false}
@@ -70,6 +67,18 @@ class CheckoutPage extends Component {
       </div>
     );
   }
+
+  render() {
+    return (
+      <div>
+
+        <h1>Checkout</h1>
+
+        {this.props.cart.totalCount ? this.table() : 'Empty cart'}
+
+      </div>
+    );
+  }
 }
 
 const mapStateToProps = state => ({
@@ -77,7 +86,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // cartVisibleToggle: () => dispatch(cartVisibleToggle()),
+  cartProductRemove: productId => dispatch(cartProductRemove(productId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage);

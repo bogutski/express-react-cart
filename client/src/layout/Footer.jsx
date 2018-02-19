@@ -8,7 +8,7 @@ class Footer extends Component {
       <Row>
         <Col className="d-flex justify-content-center">
 
-          <Pre obj={this.props.match} />
+          <Pre obj={this.props.match} off />
 
         </Col>
       </Row>);

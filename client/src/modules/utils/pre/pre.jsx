@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 
 class Pre extends Component {
   render() {
     return (
       <div>
-        { this.props.on ?
+        { !this.props.off ?
           <pre>
-            {JSON.stringify(this.props.obj, 0, 2)}
+            {JSON.stringify(_.get(this.props, 'obj', {}), 0, 2)}
           </pre>
           : null
         }
@@ -17,7 +18,7 @@ class Pre extends Component {
 
 Pre.defaultProps = {
   obj: {},
-  on: false,
+  off: false,
 };
 
 export default Pre;

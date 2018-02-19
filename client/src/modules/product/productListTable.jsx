@@ -46,8 +46,8 @@ class ProductListTable extends Component {
         id: 'act',
         accessor: el => (
           <div>
-            <Link to={`/product/${el._id}`}>View</Link>{' '}
-            <Link to={`/product/edit/${el._id}`}>Edit</Link>
+            <Link className="btn btn-link btn-sm" to={`/product/${el._id}`}>View</Link>{' '}
+            <Link className="btn btn-link btn-sm" to={`/product/edit/${el._id}`}>Edit</Link>
             <Button color="link" size="sm" onClick={() => this.delete(el._id)}>Delete</Button>
           </div>
         ),

@@ -15,7 +15,7 @@ import UserProfile from '../modules/user/profile/userProfile';
 import Home from './../modules/home/home';
 import Catalog from './../modules/catalog/catalogIndex';
 import ProductList from '../modules/product/productList';
-import ProductForm from './../modules/product/productForm';
+import ProductForm from '../modules/product/form/productForm';
 import ProductView from './../modules/product/view/productView';
 import CheckoutPage from './../modules/checkout/checkoutPage';
 import { userGetById } from '../modules/user/_actions/userActions';
