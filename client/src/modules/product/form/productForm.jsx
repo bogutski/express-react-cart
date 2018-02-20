@@ -8,6 +8,7 @@ import { FileField, Selectbox, TextField } from '../../utils/form/form';
 import { number, required } from '../../utils/form/validators';
 import { productCreate, productGetById, productUpdate } from '../_actions/productActions';
 import Pre from '../../utils/pre/pre';
+import ProductFormImages from './productFormImages';
 
 class ProductForm extends Component {
   constructor(props) {
@@ -75,6 +76,8 @@ class ProductForm extends Component {
         />
 
         <Field name="file" type="file" component={FileField} multiple />
+
+        <ProductFormImages />
 
         <Button
           type="submit"
