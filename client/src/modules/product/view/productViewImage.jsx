@@ -28,23 +28,19 @@ class ProductViewImage extends Component {
 
         <div className="d-block mt-4">
           {
-            this.props.image.map((el, i) => {
-              if (i > 0) {
-                return (
-                  <Img
-                    key={el.pid}
-                    pid={el.pid}
-                    h={100}
-                    onClick={() => this.clickOnThumb(el.pid)}
-                    className={[
-                      'mr-2 mb-2',
-                      'border',
-                      el.pid === this.state.mainImagePid && 'border-dark',
-                    ].join(' ')}
-                  />);
-              }
-              return null;
-            })
+            this.props.image.map((el, i) =>
+              (<Img
+                key={el.pid}
+                pid={el.pid}
+                h={100}
+                onClick={() => this.clickOnThumb(el.pid)}
+                className={[
+                  'mr-2 mb-2',
+                  'border',
+                  !this.state.mainImagePid && i === 0 && 'border-dark',
+                  el.pid === this.state.mainImagePid && 'border-dark',
+                ].join(' ')}
+              />))
           }
         </div>
 
