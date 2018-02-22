@@ -5,14 +5,14 @@ import _ from 'lodash';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import Img from '../../utils/img/img';
 
-const DragHandle = SortableHandle(() => <div className="svg-icon hamburger w30 h30" />);
+const DragHandle = SortableHandle(() => <div className="svg-icon hamburger w30 h30 mr-4" />);
 
 const SortableItem = SortableElement(({ value }) => (
-  <div className="d-flex">
+  <div className="d-flex align-items-center mb-2">
     <DragHandle />
-    <Img pid={value.pid} h={50} />
-    {value.pid}
-    <span>Delete</span>
+    <Img pid={value.pid} h={50} className="border mr-4" />
+    <input type="text" placeholder="Title" className="mr-4"/>
+    <div className="btn btn-danger btn-sm">Delete</div>
   </div>
 ));
 
