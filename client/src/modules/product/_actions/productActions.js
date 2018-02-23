@@ -1,4 +1,4 @@
-import { initialize } from 'redux-form';
+import { change, initialize } from 'redux-form';
 import { del, get, patch, post } from '../../utils/httpRequest/httpMethods';
 import history from './../../../history';
 
@@ -60,4 +60,8 @@ export function productFilterByCategoryId(categoryId) {
       type: 'PRODUCT_FILTER_BY_CATEGORY_ID',
       payload: categoryId,
     });
+}
+
+export function rerangeImages(images) {
+  return dispatch => dispatch(change('product', 'image', images));
 }
