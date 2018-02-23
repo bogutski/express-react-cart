@@ -63,8 +63,8 @@ export function post(url, data, type) {
   return httpMethod('post', url, data, type);
 }
 
-export function patch(url, data) {
-  return httpMethod('patch', url, data);
+export function patch(url, data, type) {
+  return httpMethod('patch', url, data, type);
 }
 
 export function del(url, data) {

@@ -19,6 +19,7 @@ export function productUpdate(productId, data) {
     patch(
       `/product/${productId}`,
       data,
+      'multipart/form-data',
     );
 }
 

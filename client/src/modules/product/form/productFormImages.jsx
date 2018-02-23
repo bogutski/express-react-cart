@@ -18,7 +18,7 @@ const SortableItem = SortableElement(({ value }) => (
 ));
 
 const SortableList = SortableContainer(({ items }) => (
-  <div>
+  <div className="mt-4">
     {items.map((value, index) => (
       <SortableItem key={`${value.pid}`} index={index} value={value} />
     ))}
