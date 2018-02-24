@@ -31,18 +31,22 @@ class ProductForm extends Component {
       ...this.props.productForm.values,
     };
 
-    const countFiles = Object.keys(data.file).length;
-
     const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('price', data.price);
 
+    Object.keys(data)
+      .forEach((el) => {
+        formData.append(el, data[el]);
+      });
+
+    const countFiles = Object.keys(_.get(data, 'file', {})).length;
     for (let i = 0; i < countFiles; i++) {
       formData.append('image', data.file[i]);
     }
 
+    formData.append('existingImage', JSON.stringify(data.image));
+
     if (productId) {
-      this.props.productUpdate(productId, data);
+      this.props.productUpdate(productId, formData);
     } else {
       this.props.productCreate(formData);
     }
@@ -75,9 +79,11 @@ class ProductForm extends Component {
           component={Selectbox}
         />
 
-        <Field name="file" type="file" component={FileField} multiple />
-
         <ProductFormImages />
+
+        <hr />
+        <Field name="file" type="file" component={FileField} multiple />
+        <hr />
 
         <Button
           type="submit"

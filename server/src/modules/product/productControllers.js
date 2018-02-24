@@ -103,8 +103,25 @@ export const productGetByCategoryId = (req, res) => {
     });
 };
 
-export const productUpdateById = (req, res) => {
+export async function productUpdateById(req, res) {
   const id = req.params.productId;
+
+  let images = [];
+  if (!_.isEmpty(req.files)) {
+    // Paths to local upload folder
+    const filesArr = req.files.map(el => el.path);
+    const cloudUrls = await cloudMultiUpload(filesArr);
+
+    images = cloudUrls.map(el => ({
+      pid: el.public_id,
+      url: el.url,
+    }));
+  }
+
+  const existingImages = JSON.parse(req.body.existingImage);
+
+  req.body.image = [...existingImages, ...images];
+
   Product.update({ _id: id }, { $set: req.body })
     .exec()
     .then((doc) => {
@@ -121,7 +138,7 @@ export const productUpdateById = (req, res) => {
       res.status(500)
         .json(message.error(err));
     });
-};
+}
 
 export const productDeleteById = (req, res) => {
   const id = req.params.productId;
