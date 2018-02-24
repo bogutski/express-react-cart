@@ -13,7 +13,7 @@ const SortableItem = SortableElement(({ value }) => (
     <DragHandle />
     <Img pid={value.pid} h={50} className="border mr-4" />
     <input type="text" placeholder="Title" className="mr-4" />
-    <div className="btn btn-danger btn-sm">Delete</div>
+    <div className="btn text-danger" >Delete</div>
   </div>
 ));
 

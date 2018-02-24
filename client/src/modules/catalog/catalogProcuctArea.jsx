@@ -3,8 +3,10 @@ import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import ReactTable from 'react-table';
+import _ from 'lodash';
 import { productFilterByCategoryId } from '../product/_actions/productActions';
 import { cartProductAdd } from '../cart/_actions/cartActions';
+import Img from '../utils/img/img';
 
 class CatalogProductArea extends Component {
   componentDidMount() {
@@ -35,11 +37,17 @@ class CatalogProductArea extends Component {
     return [
       {
         Header: 'Image',
-        accessor: 'image',
+        id: 'image',
+        accessor: el => (!_.isEmpty(el.image) ?
+          <Link to={`/product/${el._id}`}>
+            <Img pid={el.image[0].pid} w={150} />
+          </Link> : ''),
       },
       {
         Header: 'Name',
-        accessor: 'name',
+        id: 'name',
+        accessor: el => (
+          <Link to={`/product/${el._id}`}>{el.name}</Link>),
       },
       {
         Header: 'Catalog',

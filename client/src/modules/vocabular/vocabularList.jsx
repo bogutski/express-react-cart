@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Button } from 'reactstrap';
 import ReactTable from 'react-table';
-import { withRouter, Link } from 'react-router-dom';
-import { vocabularGetAll, vocabularDeleteById } from './_actions/vocabularActions';
+import { Link, withRouter } from 'react-router-dom';
+import { vocabularDeleteById, vocabularGetAll } from './_actions/vocabularActions';
 
 class VocabularList extends Component {
   constructor(props) {
@@ -37,8 +37,13 @@ class VocabularList extends Component {
         id: 'act',
         accessor: el => (
           <div>
-            <Link to={`/vocabular/edit/${el._id}`}>Edit</Link>
-            <Button color="link" onClick={() => this.delete(el._id)} >Delete</Button>
+            <Link className="brn btn-link" to={`/vocabular/edit/${el._id}`}>Edit</Link>
+            <Button
+              color="link"
+              className="text-danger"
+              onClick={() => this.delete(el._id)}
+            >Delete
+            </Button>
           </div>
         ),
       },

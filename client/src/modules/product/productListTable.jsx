@@ -23,7 +23,10 @@ class ProductListTable extends Component {
         Header: 'Image',
         id: 'image',
         // Check product without images
-        accessor: el => (!_.isEmpty(el.image) ? <Img pid={el.image[0].pid} w={150} /> : ''),
+        accessor: el => (!_.isEmpty(el.image) ?
+          <Link to={`/product/${el._id}`}>
+            <Img pid={el.image[0].pid} w={150} />
+          </Link> : ''),
       },
       {
         Header: 'Id',
@@ -48,7 +51,13 @@ class ProductListTable extends Component {
           <div>
             <Link className="btn btn-link btn-sm" to={`/product/${el._id}`}>View</Link>{' '}
             <Link className="btn btn-link btn-sm" to={`/product/edit/${el._id}`}>Edit</Link>
-            <Button color="link" size="sm" onClick={() => this.delete(el._id)}>Delete</Button>
+            <Button
+              color="link"
+              size="sm"
+              className="text-danger"
+              onClick={() => this.delete(el._id)}
+            >Delete
+            </Button>
           </div>
         ),
       },

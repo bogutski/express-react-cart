@@ -37,7 +37,7 @@ class CheckoutPage extends Component {
           <div>
             <Button
               color="link"
-              size="sm"
+              className="text-danger"
               onClick={() => this.props.cartProductRemove(el._id)}
             >Delete
             </Button>
