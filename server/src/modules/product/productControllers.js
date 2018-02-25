@@ -4,7 +4,7 @@ import Product from './productModel';
 import message from './../messages/messages';
 import cloudMultiUpload from './../fileUpload/cloudinaryFileUpload';
 
-export const productGetAll = (req, res) => {
+export const productLoadAll = (req, res) => {
   Product.find()
     .select('-__v')
     .exec()

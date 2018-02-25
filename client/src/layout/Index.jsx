@@ -22,7 +22,7 @@ import { userGetById } from '../modules/user/_actions/userActions';
 import Vocabular from '../modules/vocabular/vocabularIndex';
 import VocabularForm from '../modules/vocabular/form/vocabularForm';
 import { vocabularFillCatalog } from './../modules/vocabular/_actions/vocabularActions';
-import { productGetAll } from './../modules/product/_actions/productActions';
+import { productsGet } from './../modules/product/_actions/productActions';
 import { cartFill } from './../modules/cart/_actions/cartActions';
 
 class App extends Component {
@@ -33,10 +33,13 @@ class App extends Component {
 
   componentDidMount() {
     // Fill cart from localStorage after reload page
-    const cart = localStorage.getItem('cart');
-    if (!_.isEmpty(cart)) {
-      this.props.cartFill(JSON.parse(cart));
+    const localCart = localStorage.getItem('cart');
+    if (!_.isEmpty(localCart)) {
+      this.props.cartFill(JSON.parse(localCart));
     }
+
+    // Strategy small store: list of all products will be loaded on first load page
+    this.props.productsGet();
 
     // After refresh login for current user
     if (_.isEmpty(this.props.userInfo) && !_.isEmpty(localStorage.getItem('userId'))) {
@@ -45,11 +48,6 @@ class App extends Component {
 
     if (_.isEmpty(this.props.catalog)) {
       this.props.vocabularFillCatalog();
-    }
-
-    // Strategy small store: list of all products will be loaded on first load page
-    if (_.isEmpty(this.props.productList)) {
-      this.props.productGetAll();
     }
   }
 
@@ -135,8 +133,8 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
   userGetById: userId => dispatch(userGetById(userId)),
   vocabularFillCatalog: () => dispatch(vocabularFillCatalog()),
-  productGetAll: () => dispatch(productGetAll()),
   cartFill: cart => dispatch(cartFill(cart)),
+  productsGet: () => dispatch(productsGet()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(App));

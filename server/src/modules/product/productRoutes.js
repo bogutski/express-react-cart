@@ -4,7 +4,7 @@ import upload from './../fileUpload/fileUpload';
 import {
   productCreate,
   productDeleteById,
-  productGetAll,
+  productLoadAll,
   productGetByCategoryId,
   productGetById,
   productUpdateById,
@@ -12,7 +12,7 @@ import {
 
 const router = Router();
 
-router.get('/', productGetAll);
+router.get('/', productLoadAll);
 router.post('/', upload.array('image', 20), productCreate);
 router.get('/:productId', productGetById);
 router.get('/category/id/:categoryId', productGetByCategoryId);

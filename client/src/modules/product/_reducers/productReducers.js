@@ -6,7 +6,13 @@ const initialState = {
 
 const product = (state = initialState, action) => {
   switch (action.type) {
-    case 'PRODUCT_LOAD_ALL':
+    case 'PRODUCTS_FILL':
+      return {
+        ...state,
+        productList: action.payload,
+      };
+
+    case 'PRODUCT_LIST_FILL':
       return {
         ...state,
         productList: action.payload,
