@@ -1,79 +1,7 @@
-$color1: #2b284a;
-$color2: #cae40f;
-$color3: #efefef;
-
-h1, h2, h3 {
-  color: $color1;
-}
-
 img {
   max-width: 100%;
 }
 
 .card {
   margin-bottom: 1rem;
-}
-
-// NAVBAR
-#main-bar {
-  background: $color1;
-}
-
-// CATALOG
-#catalog-bar {
-  background: $color3;
-  .nav-link {
-    color: $color1;
-
-    &:hover {
-      color: lighten($color1, 20%);
-    }
-
-    &.active {
-      border-bottom: 3px solid lighten($color1, 20%);
-      color: lighten($color1, 20%);
-      padding-bottom: 5px;
-    }
-  }
-}
-
-#catalog-second-level {
-  .nav-link {
-    color: $color1;
-
-    &:hover {
-      background-color: $color3;
-    }
-
-    &.active {
-      background-color: lighten($color1, 20%);
-      color: lighten($color1, 70%);
-    }
-  }
-}
-
-#site-name {
-  color: #cae40f;
-}
-
-.nav-link {
-  outline: none;
-  cursor: pointer;
-}
-
-// TABS
-.nav-tabs {
-  .active {
-    font-weight: normal !important;
-  }
-}
-
-#site-menu {
-  .nav-link {
-    color: lighten($color1, 50%);
-
-    &.active {
-      color: lighten($color1, 70%);
-    }
-  }
 }
