@@ -1,6 +1,6 @@
 // NAVBAR
 #main-bar {
-  background: $color1;
+  background: radial-gradient(circle at 0 0, $color1, #644073);;
 }
 
 // CATALOG
@@ -52,7 +52,7 @@
   }
 }
 
-#site-menu {
+#site-menu, #user-section {
   .nav-link {
     color: lighten($color1, 50%);
 

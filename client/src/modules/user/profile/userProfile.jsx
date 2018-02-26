@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Helmet } from 'react-helmet';
 import Tabs from './../../utils/tabs/tabs';
-import UserProfileEdit from './userProfileEdit';
+import UserProfileEdit from './form/userProfileEdit';
 import UserProfileView from './userProfileView';
 // import { userLogin } from './_actions/userActions';
-
+import ShippingForm from '../shipping/form/shippingForm';
+import BillingForm from '../billing/form/billingForm';
 
 class UserProfile extends Component {
   render() {
@@ -30,6 +31,16 @@ class UserProfile extends Component {
               name: 'edit',
               label: 'Edit',
               content: <UserProfileEdit />,
+            },
+            {
+              name: 'shipping',
+              label: 'Shipping',
+              content: <ShippingForm />,
+            },
+            {
+              name: 'billing',
+              label: 'Billing',
+              content: <BillingForm />,
             },
           ]}
         />
