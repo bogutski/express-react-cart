@@ -5,6 +5,8 @@ import { Button } from 'reactstrap';
 import _ from 'lodash';
 import Img from './../utils/img/img';
 import { cartProductRemove } from '../cart/_actions/cartActions';
+import BillingForm from '../user/billing/form/billingForm';
+import ShippingForm from '../user/shipping/form/shippingForm';
 
 class CheckoutPage extends Component {
   columns() {
@@ -75,7 +77,8 @@ class CheckoutPage extends Component {
         <h1>Checkout</h1>
 
         {this.props.cart.totalCount ? this.table() : 'Empty cart'}
-
+        <ShippingForm />
+        <BillingForm />
       </div>
     );
   }
