@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
+import { Redirect } from 'react-router';
 import { productGetById } from './../_actions/productActions';
-import Pre from '../../utils/pre/pre';
 import Tabs from './../../utils/tabs/tabs';
 import ProductViewDetails from './productViewDetails';
 
@@ -30,7 +30,7 @@ class ProductView extends Component {
             {
               name: 'edit',
               label: 'Edit',
-              content: <Pre obj={this.props.productInfo} on />,
+              content: <Redirect to={`/product/edit/${this.props.productInfo._id}`} />,
             },
           ]}
         />

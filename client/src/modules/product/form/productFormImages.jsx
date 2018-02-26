@@ -6,19 +6,23 @@ import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'r
 import Img from '../../utils/img/img';
 import { rerangeImages } from '../_actions/productActions';
 
-const DragHandle = SortableHandle(() => <div className="svg-icon hamburger w30 h30 mr-4" />);
+const DragHandle = SortableHandle(() => (
+  <div>
+    <div className="svg-icon hamburger w30 h30 mr-4" />
+  </div>
+));
 
 const SortableItem = SortableElement(({ value }) => (
   <div className="d-flex align-items-center mb-2">
     <DragHandle />
     <Img pid={value.pid} h={50} className="border mr-4" />
     <input type="text" placeholder="Title" className="mr-4" />
-    <div className="btn text-danger" >Delete</div>
+    <div className="btn text-danger">Delete</div>
   </div>
 ));
 
 const SortableList = SortableContainer(({ items }) => (
-  <div className="mt-4">
+  <div>
     {items.map((value, index) => (
       <SortableItem key={`${value.pid}`} index={index} value={value} />
     ))}
