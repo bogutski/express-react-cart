@@ -1,4 +1,6 @@
 .svg-icon {
+  display: block;
+
   &.cart {
     background: transparent center/100% url('icons/shopping-cart.svg') no-repeat;
   }

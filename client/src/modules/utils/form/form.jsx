@@ -62,7 +62,6 @@ export const FileField = ({ input, type, meta: { touched, error, warning } }) =>
   return (
     <div>
       <label htmlFor={input.name}>
-        Choose File from your Computer
         <input {...input} type={type} multiple />
       </label>
     </div>

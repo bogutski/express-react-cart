@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Button, Form } from 'reactstrap';
+import { Button, Col, Form, Row } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
 import { FileField, Selectbox, TextField } from '../../utils/form/form';
@@ -9,6 +9,8 @@ import { number, required } from '../../utils/form/validators';
 import { productCreate, productGetById, productUpdate } from '../_actions/productActions';
 import Pre from '../../utils/pre/pre';
 import ProductFormImages from './productFormImages';
+import Tabs from '../../utils/tabs/tabs';
+import { Redirect } from 'react-router';
 
 class ProductForm extends Component {
   constructor(props) {
@@ -50,57 +52,87 @@ class ProductForm extends Component {
     } else {
       this.props.productCreate(formData);
     }
+
+    this.props.history.push(`/product/${productId}`);
   }
 
   render() {
+    console.log(this.props.productForm);
     return (
-      <Form onSubmit={this.formSubmit}>
-        <h1>Product</h1>
-
-        <Field
-          name="name"
-          type="text"
-          placeholder="Product name"
-          component={TextField}
-          validate={[required]}
+      <div>
+        <h1>{_.get(this.props, 'productForm.values.name', 'Product')}</h1>
+        <Tabs
+          tabs={[
+            {
+              name: 'view',
+              label: 'View',
+              content: <Redirect to={`/product/${this.props.productInfo._id}`} />,
+            },
+            {
+              name: 'edit',
+              label: 'Edit',
+              default: true,
+            },
+          ]}
         />
 
-        <Field
-          name="price"
-          type="text"
-          placeholder="Price"
-          component={TextField}
-          validate={[required, number]}
-        />
+        <Form onSubmit={this.formSubmit}>
+          <Row>
+            <Col xs="12" lg="6">
+              <Field
+                name="name"
+                type="text"
+                placeholder="Product name"
+                component={TextField}
+                validate={[required]}
+              />
 
-        <Field
-          name="catalog"
-          options={this.props.categoryList}
-          component={Selectbox}
-        />
+              <Field
+                name="price"
+                type="text"
+                placeholder="Price"
+                component={TextField}
+                validate={[required, number]}
+              />
 
-        <ProductFormImages />
+              <Field
+                name="catalog"
+                options={this.props.categoryList}
+                component={Selectbox}
+              />
 
-        <hr />
-        <Field name="file" type="file" component={FileField} multiple />
-        <hr />
+            </Col>
 
-        <Button
-          type="submit"
-          color="primary"
-          disabled={this.props.productForm && {}.hasOwnProperty.call(this.props.productForm, 'syncErrors')}
-        >Save
-        </Button>
+            <Col xs="12" lg="6" className="mt-4 mt-lg-0">
 
-        <Pre obj={_.get(this.props, 'productForm.values', {})} />
+              <ProductFormImages />
 
-      </Form>
+              <hr />
+              <Field name="file" type="file" component={FileField} multiple />
+              <hr />
+            </Col>
+
+            <Col xl="12">
+              <Button
+                type="submit"
+                color="primary"
+                disabled={this.props.productForm && {}.hasOwnProperty.call(this.props.productForm, 'syncErrors')}
+              >Save
+              </Button>
+
+              <Pre obj={_.get(this.props, 'productForm.values', {})} off />
+            </Col>
+
+          </Row>
+        </Form>
+      </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
   productForm: state.form.product,
+  productInfo: state.product.productInfo,
   categoryList: state.vocabular.categoryList,
 });
 
