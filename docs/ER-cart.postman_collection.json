@@ -435,14 +435,48 @@
 			"description": "",
 			"item": [
 				{
+					"name": "Shipping",
+					"description": "",
+					"item": [
+						{
+							"name": "Update shipping",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"default\": \"true\",\n    \"address\": \"123 S Bayview\",\n    \"zip\": \"123123\"\n}"
+								},
+								"url": {
+									"raw": "http://localhost:5000/user/shipping/5a4c98e5a053190a7d48e182",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"user",
+										"shipping",
+										"5a4c98e5a053190a7d48e182"
+									]
+								},
+								"description": ""
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
 					"name": "All Users",
 					"request": {
 						"method": "GET",
 						"header": [
-							{
-								"key": "Content-Type",
-								"value": "application/json"
-							},
 							{
 								"key": "Authorization",
 								"value": "Bearer {{_token}}"
@@ -480,7 +514,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:5000/user/5a468e2e420a121fe86a4a4a",
+							"raw": "http://localhost:5000/user/5a4c98e5a053190a7d48e182",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -488,7 +522,7 @@
 							"port": "5000",
 							"path": [
 								"user",
-								"5a468e2e420a121fe86a4a4a"
+								"5a4c98e5a053190a7d48e182"
 							]
 						},
 						"description": "Create User"
@@ -530,7 +564,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "234a0b1c-0db4-41b0-aec8-f1147fec440f",
+								"id": "dffb3181-7104-49b9-87d7-712d7f3d2b04",
 								"type": "text/javascript",
 								"exec": [
 									"var data = pm.response.json();",
@@ -549,7 +583,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"test20@test.com\",\n\t\"password\": \"pass\"\n}"
+							"raw": "{\n\t\"email\": \"qwe@qwe.qwe\",\n\t\"password\": \"qwe@qwe.qwe\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/user/login",
