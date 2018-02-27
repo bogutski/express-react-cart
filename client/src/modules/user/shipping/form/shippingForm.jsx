@@ -7,6 +7,7 @@ import _ from 'lodash';
 import { TextField } from '../../../utils/form/form';
 import { number, required } from '../../../utils/form/validators';
 import Pre from '../../../utils/pre/pre';
+import {updateShipping} from './../../_actions/profileActions';
 
 class ShippingForm extends Component {
   constructor(props) {
@@ -16,70 +17,70 @@ class ShippingForm extends Component {
 
   formSubmit(e) {
     e.preventDefault();
+
+    const data = {
+      ...this.props.shippingForm.values,
+    };
+    const userId = this.props.userInfo._id;
+
+    this.props.updateShipping(userId, data);
   }
 
   render() {
-    console.log(this.props.productForm);
     return (
-      <div>
-        <h2>Shipping</h2>
+      <Form onSubmit={this.formSubmit}>
+        <Row>
+          <Col xs="12" lg="6">
+            <Field
+              name="shippingAddress"
+              type="text"
+              placeholder="Shipping address"
+              component={TextField}
+              validate={[required]}
+            />
 
-        <Form onSubmit={this.formSubmit}>
-          <Row>
-            <Col xs="12" lg="6">
-              <Field
-                name="shippingAddress"
-                type="text"
-                placeholder="Shipping address"
-                component={TextField}
-                validate={[required]}
-              />
+            <Field
+              name="shippingZip"
+              type="text"
+              placeholder="ZIP"
+              component={TextField}
+              validate={[required, number]}
+            />
 
-              <Field
-                name="shippingZip"
-                type="text"
-                placeholder="ZIP"
-                component={TextField}
-                validate={[required, number]}
-              />
+          </Col>
 
-            </Col>
+          <Col xs="12" lg="6" className="mt-4 mt-lg-0">
+           Shipping List
+          </Col>
 
-            <Col xs="12" lg="6" className="mt-4 mt-lg-0">
-              -
-            </Col>
+          <Col xl="12">
+            <Button
+              type="submit"
+              color="primary"
+              disabled={this.props.productForm && {}.hasOwnProperty.call(this.props.productForm, 'syncErrors')}
+            >Save
+            </Button>
 
-            <Col xl="12">
-              <Button
-                type="submit"
-                color="primary"
-                disabled={this.props.productForm && {}.hasOwnProperty.call(this.props.productForm, 'syncErrors')}
-              >Save
-              </Button>
+            <Pre obj={_.get(this.props, 'shippingForm.values', {})} />
+          </Col>
 
-              <Pre obj={_.get(this.props, 'productForm.values', {})} off />
-            </Col>
-
-          </Row>
-        </Form>
-      </div>
+        </Row>
+      </Form>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  productForm: state.form.product,
-  productInfo: state.product.productInfo,
-  categoryList: state.vocabular.categoryList,
+  shippingForm: state.form.shipping,
+  userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = dispatch => ({
-  // productGetById: productId => dispatch(productGetById(productId)),
-  // productCreate: product => dispatch(productCreate(product)),
+   updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
   // productUpdate: (productId, data) => dispatch(productUpdate(productId, data)),
 });
 
 export default compose(
   connect(mapStateToProps, mapDispatchToProps),
-  reduxForm({ form: 'billing' }),
+  reduxForm({ form: 'shipping' }),
 )(ShippingForm);
