@@ -5,7 +5,7 @@ import Tabs from './../../utils/tabs/tabs';
 import UserProfileEdit from './form/userProfileEdit';
 import UserProfileView from './userProfileView';
 // import { userLogin } from './_actions/userActions';
-import ShippingForm from '../shipping/form/shippingForm';
+import ShippingPage from '../shipping/shippingPage';
 import BillingForm from '../billing/form/billingForm';
 
 class UserProfile extends Component {
@@ -35,7 +35,7 @@ class UserProfile extends Component {
             {
               name: 'shipping',
               label: 'Shipping',
-              content: <ShippingForm />,
+              content: <ShippingPage />,
             },
             {
               name: 'billing',
