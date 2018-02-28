@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { Button, Col, Form, Row } from 'reactstrap';
+import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
 import { TextField } from '../../../utils/form/form';
 import { number, required } from '../../../utils/form/validators';
 import Pre from '../../../utils/pre/pre';
-import {updateShipping} from './../../_actions/profileActions';
+import { updateShipping } from './../../_actions/profileActions';
 
 class ShippingForm extends Component {
   constructor(props) {
@@ -29,42 +29,31 @@ class ShippingForm extends Component {
   render() {
     return (
       <Form onSubmit={this.formSubmit}>
-        <Row>
-          <Col xs="12" lg="6">
-            <Field
-              name="shippingAddress"
-              type="text"
-              placeholder="Shipping address"
-              component={TextField}
-              validate={[required]}
-            />
+        <Field
+          name="shippingAddress"
+          type="text"
+          placeholder="Shipping address"
+          component={TextField}
+          validate={[required]}
+        />
 
-            <Field
-              name="shippingZip"
-              type="text"
-              placeholder="ZIP"
-              component={TextField}
-              validate={[required, number]}
-            />
+        <Field
+          name="shippingZip"
+          type="text"
+          placeholder="ZIP"
+          component={TextField}
+          validate={[required, number]}
+        />
 
-          </Col>
+        <Button
+          type="submit"
+          color="primary"
+          disabled={this.props.productForm && {}.hasOwnProperty.call(this.props.productForm, 'syncErrors')}
+        >Save
+        </Button>
 
-          <Col xs="12" lg="6" className="mt-4 mt-lg-0">
-           Shipping List
-          </Col>
+        <Pre obj={_.get(this.props, 'shippingForm.values', {})} />
 
-          <Col xl="12">
-            <Button
-              type="submit"
-              color="primary"
-              disabled={this.props.productForm && {}.hasOwnProperty.call(this.props.productForm, 'syncErrors')}
-            >Save
-            </Button>
-
-            <Pre obj={_.get(this.props, 'shippingForm.values', {})} />
-          </Col>
-
-        </Row>
       </Form>
     );
   }
@@ -76,7 +65,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-   updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
+  updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
   // productUpdate: (productId, data) => dispatch(productUpdate(productId, data)),
 });
 
