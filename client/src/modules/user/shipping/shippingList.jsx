@@ -3,34 +3,31 @@ import { connect } from 'react-redux';
 
 
 class ShippingList extends Component {
-  constructor(props) {
-    super(props);
-    this.formSubmit = this.formSubmit.bind(this);
-  }
-
-  formSubmit(e) {
-    e.preventDefault();
-
-    const data = {
-      ...this.props.shippingForm.values,
-    };
-    const userId = this.props.userInfo._id;
-
-    this.props.updateShipping(userId, data);
+  edit(e) {
+    console.log(e);
   }
 
   render() {
     return (
-      <div>
-        -
-      </div>
+      <ul>
+        {this.props.shippingList.map(el =>
+          (
+            <li key={el.zip}>
+              {el.address} {el.zip}
+              <span
+                className="btn btn-link text-danger"
+                onClick={() => this.edit(el.zip)}
+              >Edit
+              </span>
+            </li>
+          ))}
+      </ul>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  shippingForm: state.form.shipping,
-  userInfo: state.user.userInfo,
+  shippingList: state.shipping.shippingList,
 });
 
 const mapDispatchToProps = dispatch => ({

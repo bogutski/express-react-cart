@@ -13,7 +13,7 @@ const shipping = (state = initialState, action) => {
     case 'SHIPPING_LIST_ITEM_ADD':
       return {
         ...state,
-        shippingList: action.payload,
+        shippingList: [...state.shippingList, action.payload],
       };
 
     case 'SHIPPING_LIST_ITEM_REMOVE':

@@ -8,6 +8,14 @@ export function shippingListLoad() {
     });
 }
 
+export function shippingListItemAdd(form) {
+  return dispatch =>
+    dispatch({
+      type: 'SHIPPING_LIST_ITEM_ADD',
+      payload: form,
+    });
+}
+
 export function updateShipping(userId, data) {
   return () =>
     patch(

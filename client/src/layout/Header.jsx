@@ -3,7 +3,7 @@ import MainMenu from '../modules/navigation/mainMenu';
 import CatalogFirstLevelMenu from './../modules/catalog/catalogFirstLevelMenu';
 
 const Header = () => (
-  <div className='mb-4'>
+  <div className="mb-4">
     <div id="main-bar">
       <MainMenu />
     </div>

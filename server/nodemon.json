@@ -2,7 +2,7 @@
   "env": {
     "MONGO_ATLAS_PWD": "siteograf",
     "JWT_KEY": "secretKey",
-    "JWT_EXPIRES_IN": "2h",
+    "JWT_EXPIRES_IN": "2d",
 
     "CLOUDINARY_NAME": "bogutskii",
     "CLOUDINARY_KEY": "311181194684569",

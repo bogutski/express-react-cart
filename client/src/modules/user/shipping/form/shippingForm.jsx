@@ -7,7 +7,7 @@ import _ from 'lodash';
 import { TextField } from '../../../utils/form/form';
 import { number, required } from '../../../utils/form/validators';
 import Pre from '../../../utils/pre/pre';
-import { updateShipping } from './../../_actions/profileActions';
+import { shippingListItemAdd } from './../../_actions/profileActions';
 
 class ShippingForm extends Component {
   constructor(props) {
@@ -21,16 +21,17 @@ class ShippingForm extends Component {
     const data = {
       ...this.props.shippingForm.values,
     };
-    const userId = this.props.userInfo._id;
 
-    this.props.updateShipping(userId, data);
+    // const userId = this.props.userInfo._id;
+
+    this.props.shippingListItemAdd(data);
   }
 
   render() {
     return (
       <Form onSubmit={this.formSubmit}>
         <Field
-          name="shippingAddress"
+          name="address"
           type="text"
           placeholder="Shipping address"
           component={TextField}
@@ -38,7 +39,7 @@ class ShippingForm extends Component {
         />
 
         <Field
-          name="shippingZip"
+          name="zip"
           type="text"
           placeholder="ZIP"
           component={TextField}
@@ -48,7 +49,7 @@ class ShippingForm extends Component {
         <Button
           type="submit"
           color="primary"
-          disabled={this.props.productForm && {}.hasOwnProperty.call(this.props.productForm, 'syncErrors')}
+          disabled={this.props.shippingForm && {}.hasOwnProperty.call(this.props.shippingForm, 'syncErrors')}
         >Save
         </Button>
 
@@ -65,8 +66,8 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
-  // productUpdate: (productId, data) => dispatch(productUpdate(productId, data)),
+  // updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
+  shippingListItemAdd: form => dispatch(shippingListItemAdd(form)),
 });
 
 export default compose(
