@@ -1,3 +1,4 @@
+import { initialize } from 'redux-form';
 import { patch } from '../../utils/httpRequest/httpMethods';
 
 export function shippingListLoad() {
@@ -9,11 +10,23 @@ export function shippingListLoad() {
 }
 
 export function shippingListItemAdd(form) {
-  return dispatch =>
+  return (dispatch) => {
     dispatch({
       type: 'SHIPPING_LIST_ITEM_ADD',
       payload: form,
     });
+    dispatch(initialize('shipping', {})); // Clear form;
+  };
+}
+
+export function shippingListItemToEditForm(data) {
+  return (dispatch) => {
+    dispatch(initialize('shipping', data.data)); // Fill form
+    dispatch({
+      type: 'SHIPPING_LIST_ITEM_TO_EDIT_FORM',
+      payload: data,
+    });
+  };
 }
 
 export function updateShipping(userId, data) {
