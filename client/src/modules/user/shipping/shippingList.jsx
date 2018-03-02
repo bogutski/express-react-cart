@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import { shippingListItemToEditForm } from './../_actions/profileActions';
 
 class ShippingList extends Component {
-  edit(e) {
+  edit(el) {
+    console.log(el);
+    this.props.shippingListItemToEditForm(el);
+  }
+
+  delete(e) {
     console.log(e);
   }
 
@@ -12,12 +17,18 @@ class ShippingList extends Component {
       <ul>
         {this.props.shippingList.map(el =>
           (
-            <li key={el.zip}>
-              {el.address} {el.zip}
+            <li key={el.id}>
+              {el.data.address} {el.data.zip}
+              <span
+                className="btn btn-link"
+                onClick={() => this.edit(el)}
+              >Edit
+              </span>
+
               <span
                 className="btn btn-link text-danger"
-                onClick={() => this.edit(el.zip)}
-              >Edit
+                onClick={() => this.delete(el.data.zip)}
+              >Delete
               </span>
             </li>
           ))}
@@ -31,8 +42,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
-  // productUpdate: (productId, data) => dispatch(productUpdate(productId, data)),
+  shippingListItemToEditForm: data => dispatch(shippingListItemToEditForm(data)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShippingList);

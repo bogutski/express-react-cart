@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { Button, Form } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
+import shortid from 'shortid';
 import { TextField } from '../../../utils/form/form';
 import { number, required } from '../../../utils/form/validators';
 import Pre from '../../../utils/pre/pre';
@@ -22,9 +23,10 @@ class ShippingForm extends Component {
       ...this.props.shippingForm.values,
     };
 
-    // const userId = this.props.userInfo._id;
-
-    this.props.shippingListItemAdd(data);
+    this.props.shippingListItemAdd({
+      id: shortid.generate(),
+      data,
+    });
   }
 
   render() {
