@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { shippingListItemToEditForm } from './../_actions/profileActions';
 
 class ShippingList extends Component {
@@ -12,7 +13,7 @@ class ShippingList extends Component {
     console.log(e);
   }
 
-  render() {
+  list() {
     return (
       <ul>
         {this.props.shippingList.map(el =>
@@ -34,6 +35,14 @@ class ShippingList extends Component {
           ))}
       </ul>
     );
+  }
+
+  render() {
+    console.log(_.isEmpty(this.props.shippingList));
+    return (
+      <div>
+        {_.isEmpty(this.props.shippingList) ? 'No shipping' : this.list()}
+      </div>);
   }
 }
 

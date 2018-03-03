@@ -9,13 +9,15 @@ export function shippingListLoad() {
     });
 }
 
-export function shippingListItemAdd(form) {
+export function shippingListItemAdd(userId, form) {
   return (dispatch) => {
     dispatch({
       type: 'SHIPPING_LIST_ITEM_ADD',
       payload: form,
     });
+
     dispatch(initialize('shipping', {})); // Clear form;
+    dispatch(updateShipping(userId));
   };
 }
 
@@ -30,11 +32,13 @@ export function shippingListItemToEditForm(data) {
 }
 
 export function updateShipping(userId, data) {
-  return () =>
-    patch(
+  return (dispatch, getState) => {
+    console.log(getState().user.userInfo.shipping);
+    return patch(
       `/user/shipping/${userId}`,
-      data,
+      getState().user.userInfo.shipping,
     );
+  };
 }
 
 export function updateBilling(userId, data) {

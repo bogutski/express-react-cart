@@ -23,10 +23,13 @@ class ShippingForm extends Component {
       ...this.props.shippingForm.values,
     };
 
-    this.props.shippingListItemAdd({
-      id: shortid.generate(),
-      data,
-    });
+    this.props.shippingListItemAdd(
+      this.props.userInfo._id,
+      {
+        id: shortid.generate(),
+        data,
+      },
+    );
   }
 
   render() {
@@ -69,7 +72,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   // updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
-  shippingListItemAdd: form => dispatch(shippingListItemAdd(form)),
+  shippingListItemAdd: (userId, form) => dispatch(shippingListItemAdd(userId, form)),
 });
 
 export default compose(
