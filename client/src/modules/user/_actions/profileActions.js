@@ -33,7 +33,7 @@ export function shippingListItemToEditForm(data) {
 
 export function updateShipping(userId, data) {
   return (dispatch, getState) => {
-    console.log(getState().user.userInfo.shipping);
+    console.log(() => getState().user.userInfo.shipping);
     return patch(
       `/user/shipping/${userId}`,
       getState().user.userInfo.shipping,
