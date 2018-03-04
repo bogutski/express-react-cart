@@ -6,6 +6,7 @@ import CatalogProcuctArea from './catalogProcuctArea';
 import CatalogSecondLevelMenu from './catalogSecondLevelMenu';
 import Pre from '../utils/pre/pre';
 import CatalogSecondLevelCards from './catalogSecondLevelCards';
+import CatalogFirstLevelCards from './catalogFirstLevelCards';
 
 class Catalog extends Component {
   render() {
@@ -25,10 +26,12 @@ class Catalog extends Component {
 
           <CatalogSecondLevelCards />
 
+          { // Show only on catalog page
+            _.get(this.props, 'match.params.level') || <CatalogFirstLevelCards />
+          }
+
           { // Show products list only on sublevel
-            _.has(this.props, 'match.params.sublevel')
-              ? <CatalogProcuctArea />
-              : null
+            _.has(this.props, 'match.params.sublevel') || <CatalogProcuctArea />
           }
 
           <Pre obj={this.props.match} />
