@@ -60,7 +60,7 @@ class CartModal extends Component {
         isOpen={this.props.cartVisible}
         toggle={this.props.cartVisibleToggle}
       >
-        <ModalHeader toggle={this.props.cartVisibleToggle}>Cart title</ModalHeader>
+        <ModalHeader toggle={this.props.cartVisibleToggle}>Cart</ModalHeader>
         <ModalBody>
 
           <ReactTable
@@ -73,9 +73,11 @@ class CartModal extends Component {
             showPagination={this.props.cart.cart.length > 30}
           />
 
-          {this.props.cart.totalCount}{this.props.cart.totalCount > 1 ? ' items' : ' item'}
-          {' '}
-          ${this.props.cart.totalPrice}
+          <div className="text-right mt-2">
+            TOTAL: {this.props.cart.totalCount}{this.props.cart.totalCount > 1 ? ' items' : ' item'}
+            {' '}
+            ${this.props.cart.totalPrice}
+          </div>
 
         </ModalBody>
         <ModalFooter>
