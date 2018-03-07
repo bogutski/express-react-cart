@@ -31,7 +31,7 @@ class Catalog extends Component {
           }
 
           { // Show products list only on sublevel
-            _.has(this.props, 'match.params.sublevel') || <CatalogProcuctArea />
+            _.has(this.props, 'match.params.sublevel') && <CatalogProcuctArea />
           }
 
           <Pre obj={this.props.match} />
