@@ -8,7 +8,11 @@ import shortid from 'shortid';
 import { TextField } from '../../../utils/form/form';
 import { number, required } from '../../../utils/form/validators';
 import Pre from '../../../utils/pre/pre';
-import { shippingListItemAdd } from './../../_actions/profileActions';
+import {
+  shippingListItemAdd,
+  shippingListUpdated,
+  updateShipping,
+} from '../../_actions/shippingActions';
 
 class ShippingForm extends Component {
   constructor(props) {
@@ -16,12 +20,17 @@ class ShippingForm extends Component {
     this.formSubmit = this.formSubmit.bind(this);
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.isShippingListUpdated) {
+      this.props.updateShipping(this.props.userInfo._id, nextProps.shippingList);
+      this.props.shippingListUpdated(false);
+    }
+  }
+
   formSubmit(e) {
     e.preventDefault();
 
-    const data = {
-      ...this.props.shippingForm.values,
-    };
+    const data = { ...this.props.shippingForm.values };
 
     this.props.shippingListItemAdd(
       this.props.userInfo._id,
@@ -66,12 +75,15 @@ class ShippingForm extends Component {
 }
 
 const mapStateToProps = state => ({
+  isShippingListUpdated: state.shipping.isShippingListUpdated,
+  shippingList: state.shipping.shippingList,
   shippingForm: state.form.shipping,
   userInfo: state.user.userInfo,
 });
 
 const mapDispatchToProps = dispatch => ({
-  // updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
+  shippingListUpdated: bool => dispatch(shippingListUpdated(bool)),
+  updateShipping: (userId, data) => dispatch(updateShipping(userId, data)),
   shippingListItemAdd: (userId, form) => dispatch(shippingListItemAdd(userId, form)),
 });
 

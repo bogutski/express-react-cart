@@ -17,7 +17,17 @@ export function shippingListItemAdd(userId, form) {
     });
 
     dispatch(initialize('shipping', {})); // Clear form;
-    dispatch(updateShipping(userId));
+
+    dispatch(shippingListUpdated(true));
+  };
+}
+
+export function shippingListUpdated(bool) {
+  return (dispatch) => {
+    dispatch({
+      type: 'SHIPPING_LIST_UPDATED',
+      payload: bool,
+    });
   };
 }
 
@@ -32,12 +42,10 @@ export function shippingListItemToEditForm(data) {
 }
 
 export function updateShipping(userId, data) {
-  return (dispatch, getState) => {
-    return patch(
-      `/user/shipping/${userId}`,
-      getState().user.userInfo.shipping,
-    );
-  };
+  return () => patch(
+    `/user/shipping/${userId}`,
+    data,
+  );
 }
 
 export function updateBilling(userId, data) {

@@ -1,5 +1,6 @@
 const initialState = {
   shippingList: [], // Shipping list into profile
+  isShippingListUpdated: false,
 };
 
 const shipping = (state = initialState, action) => {
@@ -25,6 +26,12 @@ const shipping = (state = initialState, action) => {
     case 'SHIPPING_LIST_CLEAR':
       return {
         ...initialState,
+      };
+
+    case 'SHIPPING_LIST_UPDATED':
+      return {
+        ...state,
+        isShippingListUpdated: action.payload,
       };
 
     default:
