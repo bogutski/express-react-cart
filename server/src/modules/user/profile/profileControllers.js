@@ -3,7 +3,7 @@ import User from './../userModel';
 
 export async function updateShipping(req, res) {
   const id = req.params.userId;
-
+  console.log(req.body);
   User.update({ _id: id }, { $set: { shipping: req.body } })
     .exec()
     .then((doc) => {

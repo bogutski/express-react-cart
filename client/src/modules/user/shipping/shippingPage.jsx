@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Col, Row } from 'reactstrap';
 import ShippingForm from './form/shippingForm';
 import ShippingList from './shippingList';
-import { shippingListLoad } from './../_actions/profileActions';
+import { shippingListLoad } from '../_actions/shippingActions';
 
 class ShippingPage extends Component {
   componentDidMount() {
