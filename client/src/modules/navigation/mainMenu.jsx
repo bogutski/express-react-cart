@@ -3,6 +3,7 @@ import { Collapse, Navbar, NavbarBrand, NavbarToggler } from 'reactstrap';
 import SiteMenu from './siteMenu';
 import UserSection from '../user/userSection';
 import CartBlock from '../cart/cartBlock';
+import SearchField from '../search/searchField';
 
 class MainMenu extends Component {
   constructor(props) {
@@ -32,7 +33,10 @@ class MainMenu extends Component {
         </Collapse>
 
         <Collapse isOpen={this.state.isOpen} navbar>
-          <CartBlock />
+          <div className="mr-2">
+            <CartBlock />
+          </div>
+          <SearchField />
         </Collapse>
 
         <Collapse isOpen={this.state.isOpen} navbar id="user-section">
