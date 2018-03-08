@@ -9,7 +9,7 @@ class SearchField extends Component {
       <InputGroup>
         <Input />
         <InputGroupAddon addonType="append">
-          <Button color="secondary">S</Button>
+          <Button color="secondary">Search</Button>
         </InputGroupAddon>
       </InputGroup>
     );
