@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { Input, InputGroup } from 'reactstrap';
 
-class SearchField extends Component {
+class SearchResults extends Component {
   changeSearch(v) {
     const re = new RegExp(v, 'ig');
     const filtered = this.props.productList.filter(el => el.name.match(re));
@@ -12,17 +11,9 @@ class SearchField extends Component {
 
   render() {
     return (
-      <InputGroup>
-        <Input
-          onChange={e => this.changeSearch(e.target.value)}
-          placeholder="Search"
-        />
-        {/* <InputGroupAddon addonType="append"> */}
-        {/* <Button color="secondary">Search</Button> */}
-        {/* </InputGroupAddon> */}
-
-
-      </InputGroup>
+      <div>
+        Search Results
+      </div>
     );
   }
 }
@@ -35,4 +26,4 @@ const mapDispatchToProps = dispatch => ({
   // userGetById: userId => dispatch(userGetById(userId)),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchField));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchResults));
