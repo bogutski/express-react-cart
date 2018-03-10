@@ -3,11 +3,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
 class SearchResults extends Component {
-  changeSearch(v) {
-    const re = new RegExp(v, 'ig');
-    const filtered = this.props.productList.filter(el => el.name.match(re));
-    console.log(filtered);
-  }
+  // changeSearch(v) {
+  //   const re = new RegExp(v, 'ig');
+  //   const filtered = this.props.productList.filter(el => el.name.match(re));
+  //   console.log(filtered);
+  // }
+  //
+  // componentWillReceiveProps(nextProps) {
+  //   if (_.has(nextProps.searchField, 'values.search')) {
+  //     console.log(nextProps.searchField.values.search);
+  //   }
+  // }
 
   render() {
     return (
@@ -20,6 +26,7 @@ class SearchResults extends Component {
 
 const mapStateToProps = state => ({
   productList: state.product.productList,
+  searchField: state.form.search,
 });
 
 const mapDispatchToProps = dispatch => ({
