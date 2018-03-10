@@ -1,38 +1,32 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
-import { Input, InputGroup } from 'reactstrap';
+import { compose } from 'redux';
+import { Field, reduxForm } from 'redux-form';
+import { TextField } from '../utils/form/form';
 
 class SearchField extends Component {
-  changeSearch(v) {
-    const re = new RegExp(v, 'ig');
-    const filtered = this.props.productList.filter(el => el.name.match(re));
-    console.log(filtered);
-  }
-
   render() {
     return (
-      <InputGroup>
-        <Input
-          onChange={e => this.changeSearch(e.target.value)}
-          placeholder="Search"
-        />
-        {/* <InputGroupAddon addonType="append"> */}
-        {/* <Button color="secondary">Search</Button> */}
-        {/* </InputGroupAddon> */}
-
-
-      </InputGroup>
+      <Field
+        onChange={e => console.log(e.target.value)}
+        name="search"
+        type="text"
+        placeholder="Search"
+        component={TextField}
+      />
     );
   }
 }
 
 const mapStateToProps = state => ({
-  productList: state.product.productList,
+  // productForm: state.form.product,
 });
 
 const mapDispatchToProps = dispatch => ({
-  // userGetById: userId => dispatch(userGetById(userId)),
+  // productGetById: productId => dispatch(productGetById(productId)),
 });
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchField));
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),
+  reduxForm({ form: 'search' }),
+)(SearchField);
