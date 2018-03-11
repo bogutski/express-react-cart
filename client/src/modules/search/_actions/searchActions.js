@@ -9,10 +9,9 @@ export function searchInputValue(value) {
     });
 }
 
-export function sh(v) {
+export function searchProductListClear(v) {
   return dispatch =>
     dispatch({
-      type: '_',
-      payload: v,
+      type: 'SEARCH_PRODUCT_LIST_CLEAR',
     });
 }
