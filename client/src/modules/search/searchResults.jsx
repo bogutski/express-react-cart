@@ -14,6 +14,11 @@ class SearchResults extends Component {
   //     console.log(nextProps.searchField.values.search);
   //   }
   // }
+  // list() {
+  //     if (_.has(nextProps.searchField, 'values.search')) {
+  //       console.log(nextProps.searchField.values.search);
+  //     }
+  // }
 
   render() {
     return (
