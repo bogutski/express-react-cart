@@ -1,20 +1,26 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { Field, reduxForm } from 'redux-form';
-import { TextField } from '../utils/form/form';
-import { searchInputValue } from './_actions/searchActions';
+import { Input, InputGroup } from 'reactstrap';
+import { searchInputValue, searchProductListClear } from './_actions/searchActions';
 
 class SearchField extends Component {
+  search(v) {
+    const searchString = v.trim();
+    if (searchString.length > 2) {
+      this.props.searchInputValue(searchString);
+    } else {
+      this.props.searchProductListClear();
+    }
+  }
+
   render() {
     return (
-      <Field
-        onChange={e => this.props.searchInputValue(e.target.value)}
-        name="search"
-        type="text"
-        placeholder="Search"
-        component={TextField}
-      />
+      <InputGroup>
+        <Input
+          onChange={e => this.search(e.target.value)}
+          placeholder="Search"
+        />
+      </InputGroup>
     );
   }
 }
@@ -25,9 +31,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   searchInputValue: value => dispatch(searchInputValue(value)),
+  searchProductListClear: () => dispatch(searchProductListClear()),
 });
 
-export default compose(
-  connect(mapStateToProps, mapDispatchToProps),
-  reduxForm({ form: 'search' }),
-)(SearchField);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchField);
