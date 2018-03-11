@@ -3,12 +3,13 @@ import { connect } from 'react-redux';
 import { compose } from 'redux';
 import { Field, reduxForm } from 'redux-form';
 import { TextField } from '../utils/form/form';
+import { searchInputValue } from './_actions/searchActions';
 
 class SearchField extends Component {
   render() {
     return (
       <Field
-        onChange={e => console.log(e.target.value)}
+        onChange={e => this.props.searchInputValue(e.target.value)}
         name="search"
         type="text"
         placeholder="Search"
@@ -19,11 +20,11 @@ class SearchField extends Component {
 }
 
 const mapStateToProps = state => ({
-  // productForm: state.form.product,
+  productList: state.product.productList,
 });
 
 const mapDispatchToProps = dispatch => ({
-  // productGetById: productId => dispatch(productGetById(productId)),
+  searchInputValue: value => dispatch(searchInputValue(value)),
 });
 
 export default compose(
