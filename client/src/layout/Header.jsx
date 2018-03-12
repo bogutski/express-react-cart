@@ -7,9 +7,8 @@ const Header = () => (
   <div className="mb-4">
     <div id="main-bar">
       <MainMenu />
+      <SearchResults />
     </div>
-
-    <SearchResults />
 
     <div id="catalog-bar">
       <CatalogFirstLevelMenu />
