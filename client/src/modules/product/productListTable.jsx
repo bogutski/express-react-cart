@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import ReactTable from 'react-table';
 import { Button } from 'reactstrap';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { productDeleteById } from './_actions/productActions';
 import Img from './../utils/img/img';
 
@@ -24,9 +24,9 @@ class ProductListTable extends Component {
         id: 'image',
         // Check product without images
         accessor: el => (!_.isEmpty(el.image) ?
-          <Link to={`/product/${el._id}`}>
+          <NavLink to={`/product/${el._id}`}>
             <Img pid={el.image[0].pid} w={150} />
-          </Link> : ''),
+          </NavLink> : ''),
       },
       {
         Header: 'Id',

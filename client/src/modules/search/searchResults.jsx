@@ -5,6 +5,7 @@ import { Button, Collapse } from 'reactstrap';
 import ReactTable from 'react-table';
 import _ from 'lodash';
 import Img from './../utils/img/img';
+import { searchProductListClear } from './_actions/searchActions';
 
 class SearchResults extends Component {
   columns() {
@@ -74,7 +75,20 @@ class SearchResults extends Component {
       <Collapse isOpen={!_.isEmpty(this.props.searchProductList)}>
         <div className="col pb-1">
           <div className="alert alert-light">
-            <h3>Search results</h3>
+            <div className="row">
+
+              <div className="col">
+                <h3>Search results</h3>
+              </div>
+              <div className="col text-right">
+                <span
+                  onClick={() => this.props.searchProductListClear()}
+                  className="btn btn-outline-primary"
+                >Close
+                </span>
+              </div>
+            </div>
+
             {this.table()}
           </div>
         </div>
@@ -89,7 +103,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  // userGetById: userId => dispatch(userGetById(userId)),
+  searchProductListClear: () => dispatch(searchProductListClear()),
 });
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchResults));
