@@ -6,7 +6,7 @@ import { searchInputValue, searchProductListClear } from './_actions/searchActio
 class SearchField extends Component {
   search(v) {
     const searchString = v.trim();
-    if (searchString.length > 2) {
+    if (searchString.length > 1) {
       this.props.searchInputValue(searchString);
     } else {
       this.props.searchProductListClear();

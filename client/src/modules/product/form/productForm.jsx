@@ -53,7 +53,7 @@ class ProductForm extends Component {
       this.props.productCreate(formData);
     }
 
-    this.props.history.push(`/product/${productId}`);
+    // this.props.history.push(`/product/${productId}`);
   }
 
   render() {
