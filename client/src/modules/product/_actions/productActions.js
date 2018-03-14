@@ -4,7 +4,7 @@ import { del, get, patch, post } from '../../utils/httpRequest/httpMethods';
 import history from './../../../history';
 
 export function productCreate(formData) {
-  return () =>
+  return dispatch =>
     post(
       '/product',
       formData,
@@ -12,16 +12,21 @@ export function productCreate(formData) {
     )
       .then((res) => {
         history.push(`/product/${res.data.payload.productId}`);
+      })
+      .then(() => {
+        dispatch(productLoadAll());
       });
 }
 
 export function productUpdate(productId, data) {
-  return () =>
+  return dispatch =>
     patch(
       `/product/${productId}`,
       data,
       'multipart/form-data',
-    );
+    ).then(() => {
+      dispatch(productLoadAll());
+    });
 }
 
 export function productDeleteById(productId) {
@@ -33,6 +38,7 @@ export function productDeleteById(productId) {
 }
 
 export function productLoadAll() {
+  localStorage.removeItem('products');
   return dispatch =>
     get('/product')
       .then((res) => {
