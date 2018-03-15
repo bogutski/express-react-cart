@@ -1,4 +1,4 @@
-const globals = require('../../data/globals');
+const globals = require('../../bdd/data/globals');
 
 module.exports = {
   'Login form': (client) => {
