@@ -108,9 +108,8 @@ class App extends Component {
 
           </Row>
 
-          <Footer />
-
         </Container>
+        <Footer />
       </div>
     );
   }
