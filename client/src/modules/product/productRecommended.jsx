@@ -60,7 +60,7 @@ class ProductRecommended extends Component {
       <Row>
 
         {
-          this.props.productList.map(el =>
+          this.props.productList.slice(0, 8).map(el =>
             (
               <Col key={el.id} md={3}>
                 <NavLink to={`/product/${el._id}`}>
