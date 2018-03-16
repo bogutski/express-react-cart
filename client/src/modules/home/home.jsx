@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
+import ProductRecommended from '../product/productRecommended';
 
 class Home extends Component {
   render() {
     return (
       <div>
-        Home
+        <ProductRecommended />
       </div>
     );
   }
