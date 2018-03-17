@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Card, CardBody, CardImg, CardTitle, Col, Row } from 'reactstrap';
-
-import { Button } from 'reactstrap';
+import { Button, Col, Row } from 'reactstrap';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import Img from './../utils/img/img';
-
+import ProductViewCartButton from './view/productViewCartButton';
 class ProductRecommended extends Component {
   columns() {
     return [
@@ -60,15 +58,21 @@ class ProductRecommended extends Component {
       <Row>
 
         {
-          this.props.productList.slice(0, 8).map(el =>
-            (
-              <Col key={el.id} md={3}>
-                <NavLink to={`/product/${el._id}`}>
-                  <Img pid={el.image[0].pid} w={150} />
-                </NavLink>
-                {el.name}
-              </Col>
-            ))
+          this.props.productList.slice(0, 8)
+            .map(el =>
+              (
+                <Col key={el.id} md={4} lg={3} xs={12} className="d-flex align-items-stretch">
+                  <div className="my-3 p-3 bg-white rounded box-shadow w-100">
+                    <NavLink to={`/product/${el._id}`}>
+                      <Img pid={el.image[0].pid} w={150} />
+                    </NavLink>
+                    {el.name}
+                    <hr />
+                    {el.price}
+                    <ProductViewCartButton product={el} />
+                  </div>
+                </Col>
+              ))
         }
 
       </Row>
