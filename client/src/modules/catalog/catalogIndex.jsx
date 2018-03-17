@@ -34,7 +34,7 @@ class Catalog extends Component {
             _.has(this.props, 'match.params.sublevel') && <CatalogProcuctArea />
           }
 
-          <Pre obj={this.props.match} />
+          <Pre obj={this.props.match} off />
 
         </Col>
 

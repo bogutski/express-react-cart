@@ -10,7 +10,7 @@ const Header = () => (
       <SearchResults />
     </div>
 
-    <div id="catalog-bar">
+    <div id="catalog-bar" className="box-shadow">
       <CatalogFirstLevelMenu />
     </div>
   </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Collapse, Navbar, NavbarBrand, NavbarToggler } from 'reactstrap';
+import { NavLink } from 'react-router-dom';
 import SiteMenu from './siteMenu';
 import UserSection from '../user/userSection';
 import CartBlock from '../cart/cartBlock';
@@ -24,7 +25,10 @@ class MainMenu extends Component {
   render() {
     return (
       <Navbar color="faded" expand="md">
-        <NavbarBrand id="site-name">React Cart</NavbarBrand>
+
+        <NavLink to="/">
+          <NavbarBrand id="site-name">React Cart</NavbarBrand>
+        </NavLink>
 
         <NavbarToggler onClick={this.toggle} />
 

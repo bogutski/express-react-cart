@@ -56,7 +56,7 @@
     "start": "npm-run-all -p watch-css start-js",
     "build": "npm run build-css && react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "jest": "jest",
+    "jest": "jest --config ./jest.config.js",
     "eject": "react-scripts eject"
   },
   "proxy": "http://localhost:5000"
