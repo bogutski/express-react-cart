@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image } from 'cloudinary-react';
+import { Image, Transformation } from 'cloudinary-react';
 
 class Img extends Component {
   render() {
@@ -12,12 +12,16 @@ class Img extends Component {
       <Image
         cloudName={cloudName}
         publicId={publicId}
-        width={this.props.w}
-        height={this.props.h}
-        crop={this.props.crop}
         onClick={this.props.onClick}
         className={this.props.className}
-      />
+      >
+        <Transformation
+          width={this.props.w}
+          height={this.props.h}
+          crop={this.props.crop}
+          background={this.props.background}
+        />
+      </Image>
     );
   }
 }
@@ -26,6 +30,7 @@ Img.defaultProps = {
   w: null,
   h: null,
   crop: 'fit',
+  background: 'white',
 };
 
 export default Img;

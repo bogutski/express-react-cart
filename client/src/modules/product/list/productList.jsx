@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
 import ProductListTable from './productListTable';
-import ProductControls from './productControls';
+import ProductControls from '../productControls';
 
 class ProductList extends Component {
   render() {
