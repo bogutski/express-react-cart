@@ -5,6 +5,7 @@ import { Button, Col, Row } from 'reactstrap';
 import { Link, NavLink, withRouter } from 'react-router-dom';
 import Img from './../utils/img/img';
 import ProductViewCartButton from './view/productViewCartButton';
+
 class ProductRecommended extends Component {
   columns() {
     return [
@@ -61,7 +62,7 @@ class ProductRecommended extends Component {
           this.props.productList.slice(0, 8)
             .map(el =>
               (
-                <Col key={el.id} md={4} lg={3} xs={12} className="d-flex align-items-stretch">
+                <Col key={el._id} md={4} lg={3} xs={12} className="d-flex align-items-stretch">
                   <div className="my-3 p-3 bg-white rounded box-shadow w-100">
                     <NavLink to={`/product/${el._id}`}>
                       <Img pid={el.image[0].pid} w={150} />

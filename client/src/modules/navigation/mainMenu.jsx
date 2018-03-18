@@ -27,7 +27,7 @@ class MainMenu extends Component {
       <Navbar color="faded" expand="md">
 
         <NavLink to="/">
-          <NavbarBrand id="site-name">React Cart</NavbarBrand>
+          <span id="site-name">React Cart</span>
         </NavLink>
 
         <NavbarToggler onClick={this.toggle} />
