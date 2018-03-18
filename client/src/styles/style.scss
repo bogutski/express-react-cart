@@ -1,9 +1,11 @@
-@import "./variables.scss";
-@import "bootstrap/scss/bootstrap";
+@import './variables.scss';
+@import 'bootstrap/scss/bootstrap';
 @import 'react-select/dist/react-select';
+@import './../modules/utils/currentBreackpoint/style';
 @import './typography.scss';
+@import './product.scss';
 @import './navigation.scss';
-@import "./icons.scss";
+@import './icons.scss';
 @import './react-table.scss';
 @import './microrules.scss';
 @import './app.scss';
