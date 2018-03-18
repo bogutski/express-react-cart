@@ -63,6 +63,7 @@ class CatalogProductArea extends Component {
         accessor: el => (
           <div>
             <Link to={`/product/${el._id}`}>View</Link>{' '}
+            <Link className="btn btn-link btn-sm" to={`/product/edit/${el._id}`}>Edit</Link>
             <Button
               onClick={() => this.props.cartProductAdd(el, 1)}
               color="primary"

@@ -9,7 +9,7 @@ class ProductViewCartButton extends Component {
       <div>
 
         <Button
-          color="primary"
+          color="warning"
           onClick={() => this.props.cartProductAdd(this.props.product, 1)}
         >Add to cart
         </Button>

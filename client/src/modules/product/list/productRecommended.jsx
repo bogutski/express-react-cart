@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import _ from 'lodash';
 import { Button, Col, Row } from 'reactstrap';
 import { Link, NavLink, withRouter } from 'react-router-dom';
-import Img from './../utils/img/img';
-import ProductViewCartButton from './view/productViewCartButton';
+import Img from '../../utils/img/img';
+import ProductViewCartButton from '../view/productViewCartButton';
 
 class ProductRecommended extends Component {
   columns() {
@@ -59,18 +59,47 @@ class ProductRecommended extends Component {
       <Row>
 
         {
-          this.props.productList.slice(0, 8)
+          this.props.productList.slice(0, 16)
             .map(el =>
               (
-                <Col key={el._id} md={4} lg={3} xs={12} className="d-flex align-items-stretch">
-                  <div className="my-3 p-3 bg-white rounded box-shadow w-100">
-                    <NavLink to={`/product/${el._id}`}>
-                      <Img pid={el.image[0].pid} w={150} />
-                    </NavLink>
-                    {el.name}
+                <Col
+                  key={el._id}
+                  xs={12}
+                  md={4}
+                  lg={3}
+                  xl={2}
+                  className="d-flex align-items-stretch product-card"
+                >
+                  <div
+                    className="my-3 p-3 bg-white
+                     rounded d-flex align-items-start flex-column box-shadow w-100"
+                  >
+                    <Row>
+                      <Col className="image">
+                        <NavLink to={`/product/${el._id}`}>
+                          <Img pid={el.image[0].pid} crop="lpad" h={300} w={400} />
+                        </NavLink>
+                      </Col>
+                    </Row>
+
+                    <Row>
+                      <Col>
+                        <NavLink to={`/product/${el._id}`}>
+                          {el.name}
+                        </NavLink>
+                      </Col>
+                    </Row>
+
                     <hr />
-                    {el.price}
-                    <ProductViewCartButton product={el} />
+
+                    <Row className="mt-auto">
+                      <div className="d-flex">
+                        <Col md={6} className="d-flex align-items-center price">${el.price}</Col>
+                        <Col md={6}>
+                          <ProductViewCartButton product={el} />
+                        </Col>
+                      </div>
+                    </Row>
                   </div>
                 </Col>
               ))

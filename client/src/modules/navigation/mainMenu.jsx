@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Collapse, Navbar, NavbarBrand, NavbarToggler } from 'reactstrap';
+import { Collapse, Navbar, NavbarToggler } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import SiteMenu from './siteMenu';
 import UserSection from '../user/userSection';

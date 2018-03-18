@@ -24,9 +24,13 @@ export function productUpdate(productId, data) {
       `/product/${productId}`,
       data,
       'multipart/form-data',
-    ).then(() => {
-      dispatch(productLoadAll());
-    });
+    )
+      .then(() => {
+        dispatch(productGetById(productId));
+      })
+      .then(() => {
+        dispatch(productLoadAll());
+      });
 }
 
 export function productDeleteById(productId) {

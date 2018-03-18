@@ -4,8 +4,8 @@ import _ from 'lodash';
 import ReactTable from 'react-table';
 import { Button } from 'reactstrap';
 import { Link, NavLink, withRouter } from 'react-router-dom';
-import { productDeleteById } from './_actions/productActions';
-import Img from './../utils/img/img';
+import { productDeleteById } from '../_actions/productActions';
+import Img from '../../utils/img/img';
 
 class ProductListTable extends Component {
   constructor(props) {

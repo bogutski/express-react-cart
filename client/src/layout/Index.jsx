@@ -15,7 +15,7 @@ import UserProfile from '../modules/user/profile/userProfile';
 import ShippingPage from '../modules/user/shipping/shippingPage';
 import Home from './../modules/home/home';
 import Catalog from './../modules/catalog/catalogIndex';
-import ProductList from '../modules/product/productList';
+import ProductList from '../modules/product/list/productList';
 import ProductForm from '../modules/product/form/productForm';
 import ProductView from './../modules/product/view/productView';
 import CheckoutPage from './../modules/checkout/checkoutPage';
@@ -25,6 +25,7 @@ import VocabularForm from '../modules/vocabular/form/vocabularForm';
 import { vocabularFillCatalog } from './../modules/vocabular/_actions/vocabularActions';
 import { productsGet } from './../modules/product/_actions/productActions';
 import { cartFill } from './../modules/cart/_actions/cartActions';
+import CurrentBreakpoint from '../modules/utils/currentBreackpoint/currentBreakpoint';
 
 class App extends Component {
   constructor(props) {
@@ -110,6 +111,7 @@ class App extends Component {
 
         </Container>
         <Footer />
+        <CurrentBreakpoint />
       </div>
     );
   }
