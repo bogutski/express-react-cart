@@ -9,9 +9,10 @@ class ProductViewCartButton extends Component {
       <div>
 
         <Button
-          color="warning"
+          size={this.props.size}
+          color={this.props.color}
           onClick={() => this.props.cartProductAdd(this.props.product, 1)}
-        >Add to cart
+        >{this.props.text}
         </Button>
 
       </div>
@@ -24,5 +25,11 @@ const mapStateToProps = () => ({});
 const mapDispatchToProps = dispatch => ({
   cartProductAdd: (productId, qt) => dispatch(cartProductAdd(productId, qt)),
 });
+
+ProductViewCartButton.defaultProps = {
+  text: 'Add to cart',
+  size: null,
+  color: 'warning',
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductViewCartButton);

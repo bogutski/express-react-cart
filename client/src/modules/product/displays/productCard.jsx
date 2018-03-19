@@ -36,10 +36,10 @@ class ProductCard extends Component {
           </Row>
 
           <Row className="mt-auto">
-            <div className="d-flex">
+            <div className="d-flex mt-4">
               <Col md={4} className="d-flex align-items-center price">${product.price}</Col>
               <Col md={8} className="text-right">
-                <ProductViewCartButton product={product} />
+                <ProductViewCartButton size="sm" product={product} />
               </Col>
             </div>
           </Row>
