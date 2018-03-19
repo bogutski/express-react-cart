@@ -17,6 +17,7 @@ class SearchField extends Component {
     return (
       <InputGroup>
         <Input
+          className="search-field"
           onChange={e => this.search(e.target.value)}
           placeholder="Search"
         />

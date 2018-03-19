@@ -30,7 +30,7 @@ class CartBlock extends Component {
   render() {
     return this.props.cart.totalCount > 0
       ? this.notEmptyCart()
-      : <span className="text-muted">Empty cart</span>;
+      : <span className="text-muted">Empty&nbsp;cart</span>;
   }
 }
 
