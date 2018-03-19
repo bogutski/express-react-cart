@@ -7,6 +7,8 @@ import _ from 'lodash';
 import { productFilterByCategoryId } from '../product/_actions/productActions';
 import { cartProductAdd } from '../cart/_actions/cartActions';
 import Img from '../utils/img/img';
+import ProductViewCartButton from './../product/view/productViewCartButton';
+
 
 class CatalogProductArea extends Component {
   componentDidMount() {
@@ -36,7 +38,7 @@ class CatalogProductArea extends Component {
   columns() {
     return [
       {
-        Header: 'Image',
+
         id: 'image',
         accessor: el => (!_.isEmpty(el.image) ?
           <Link to={`/product/${el._id}`}>
@@ -44,32 +46,20 @@ class CatalogProductArea extends Component {
           </Link> : ''),
       },
       {
-        Header: 'Name',
         id: 'name',
         accessor: el => (
-          <Link to={`/product/${el._id}`}>{el.name}</Link>),
+          <div>
+            <Link to={`/product/${el._id}`}>{el.name}</Link>
+            <Link className="btn btn-link btn-sm" to={`/product/edit/${el._id}`}>Edit</Link>
+          </div>
+        ),
       },
       {
-        Header: 'Catalog',
-        accessor: 'catalog',
-      },
-      {
-        Header: 'Price',
-        accessor: 'price',
-      },
-      {
-        Header: 'Actions',
         id: 'act',
         accessor: el => (
           <div>
-            <Link to={`/product/${el._id}`}>View</Link>{' '}
-            <Link className="btn btn-link btn-sm" to={`/product/edit/${el._id}`}>Edit</Link>
-            <Button
-              onClick={() => this.props.cartProductAdd(el, 1)}
-              color="primary"
-              size="sm"
-            >Add to cart
-            </Button>
+            <span>${el.price}</span>
+            <ProductViewCartButton product={el} />
           </div>
         ),
       },

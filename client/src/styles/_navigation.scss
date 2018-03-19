@@ -8,6 +8,13 @@
     color: #a7a3ce;
 
     &:focus {
+      &::-webkit-input-placeholder {
+        text-indent: -999px
+      }
+      &::-moz-placeholder {
+        text-indent: -999px
+      }
+
       border-color: #ce93cd;
     }
   }
