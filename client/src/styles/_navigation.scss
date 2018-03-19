@@ -1,6 +1,16 @@
 // NAVBAR
 #main-bar {
   background: radial-gradient(circle at 0 0, $color1, #644073);
+
+  .search-field {
+    background-color: #503864;
+    border-color: #a7a3ce;
+    color: #a7a3ce;
+
+    &:focus {
+      border-color: #ce93cd;
+    }
+  }
 }
 
 // CATALOG
