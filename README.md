@@ -1,20 +1,41 @@
 # Express React Cart
 
+### Features
+* React/Redux, React router
+* Express JS on ES6, Babel
+* TDD / BDD tests
+* Cloud database Mongo Atlas
+* Cloud storage for files Cloudinary 
+* JWT authorisation
+* Save state for cart and product list after reloading
+* Responsive (Bootstrap 4)
+* Configurable catalog tree
+
+### TODO
+* Product parameters 
+* Server side rendering
+* Connect `Twilio` for SMS notifications
+* Connect `Braintree` for payments 
+* Facebook authorization
+* Billing and shipping list in profile
+* Faceted search by parameters 
+* SEO configuration
+
+![Express React Cart](docs/img/front-page.png?raw=true)
+
 ## Server side
-* Express JS, Mongo Atlas, JWT
 * Folder `server`
 * Initial install `npm i`
 * `npm run dev`
 
 ## Client side
-* React/Redux, React router
 * Folder `client`
 * Initial install `npm i`
 * `npm start`
 
 ### Testing
 * Selenium web driver (Chromedriver) + Nigntwatch.js
-* upload to `testing/lib` files: `chromedriver` and `selenium-server-standalone-3.8.1.jar` 
+* upload to `testing/bdd_nightwatch/lib` files: `chromedriver` and `selenium-server-standalone-3.8.1.jar` 
 * Folder `testing`
 * Initial install `npm i`
 * Run `npm run test`
@@ -38,7 +59,7 @@ import Pre from './modules/pre/pre';
 ```
 
 ###Routing
-Aslo rap component to `withRouter`
+Also wrap component to `withRouter`
 
 ```javascript
 this.props.history.push('/destination');

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './style.scss';
+// import './currentBreakpoint.scss';
 
 class CurrentBreakpoint extends Component {
   render() {
