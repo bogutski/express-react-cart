@@ -22,11 +22,12 @@ class ProductListTable extends Component {
       {
         Header: 'Image',
         id: 'image',
-        // Check product without images
+        width: 200,
         accessor: el => (!_.isEmpty(el.image) ?
           <NavLink to={`/product/${el._id}`}>
             <Img pid={el.image[0].pid} w={150} />
           </NavLink> : ''),
+        // Check product without images
       },
       {
         Header: 'Id',

@@ -111,7 +111,7 @@ class App extends Component {
 
         </Container>
         <Footer />
-        <CurrentBreakpoint />
+
       </div>
     );
   }

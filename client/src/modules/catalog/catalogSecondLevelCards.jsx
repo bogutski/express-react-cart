@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Row } from 'reactstrap';
-import { NavLink, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import _ from 'lodash';
 import CatalogCard from './catalogCard';
@@ -25,6 +25,7 @@ class CatalogSecondLevelCards extends Component {
         {this.getSubcategories()
           .map(el => (
             <CatalogCard
+              key={el.id}
               link={`/catalog/${this.props.match.params.level}/${el.path}`}
               catalog={el}
             />

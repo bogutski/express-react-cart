@@ -11,6 +11,7 @@ class CatalogFirstLevelCards extends Component {
         {
           this.props.catalog.map(el =>
             (<CatalogCard
+              key={el.id}
               link={`/catalog/${el.path}`}
               catalog={el}
             />))

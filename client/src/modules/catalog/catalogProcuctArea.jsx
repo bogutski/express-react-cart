@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Button } from 'reactstrap';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import ReactTable from 'react-table';
@@ -8,7 +7,6 @@ import { productFilterByCategoryId } from '../product/_actions/productActions';
 import { cartProductAdd } from '../cart/_actions/cartActions';
 import Img from '../utils/img/img';
 import ProductViewCartButton from './../product/view/productViewCartButton';
-
 
 class CatalogProductArea extends Component {
   componentDidMount() {
