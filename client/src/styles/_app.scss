@@ -1,11 +1,3 @@
-@import "./variables.scss";
-
-@each $color, $value in $colors {
-  .bc-#{$color} {
-    background-color: $value;
-  }
-}
-
 body {
   background-color: $color3;
 }
@@ -16,6 +8,11 @@ img {
 
 .card {
   margin-bottom: 1rem;
+}
+
+.plate {
+  @extend .box-shadow;
+  background-color: white;
 }
 
 footer {

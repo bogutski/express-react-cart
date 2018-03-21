@@ -9,7 +9,7 @@ import ProductViewCartButton from './productViewCartButton';
 class ProductViewMain extends Component {
   render() {
     return (
-      <Row>
+      <Row className="product-view">
 
         <Col lg={6}>
           <ProductViewImage image={this.props.productInfo.image} />

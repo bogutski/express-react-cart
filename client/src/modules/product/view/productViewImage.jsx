@@ -37,6 +37,7 @@ class ProductViewImage extends Component {
                 className={[
                   'mr-2 mb-2',
                   'border',
+                  'pointer',
                   !this.state.mainImagePid && i === 0 && 'border-dark',
                   el.pid === this.state.mainImagePid && 'border-dark',
                 ].join(' ')}

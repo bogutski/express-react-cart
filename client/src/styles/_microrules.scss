@@ -1,0 +1,21 @@
+.w30 {
+  width: 30px;
+}
+
+.h30 {
+  height: 30px;
+}
+
+.box-shadow {
+  box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, .05);
+}
+
+@each $color, $value in $colors {
+  .bc-#{$color} {
+    background-color: $value;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
