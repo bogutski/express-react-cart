@@ -17,7 +17,7 @@ class ProductCard extends Component {
         className="d-flex align-items-stretch product-card"
       >
         <div className="my-3 p-3 bg-white
-                        rounded d-flex align-items-start flex-column box-shadow w-100"
+                        rounded d-flex align-items-start flex-column plate w-100"
         >
           <Row>
             <Col className="image">

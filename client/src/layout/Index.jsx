@@ -108,10 +108,10 @@ class App extends Component {
             </Col>
 
           </Row>
-
         </Container>
         <Footer />
 
+        <CurrentBreakpoint />
       </div>
     );
   }

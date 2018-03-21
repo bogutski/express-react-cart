@@ -3,9 +3,7 @@ import React, { Component } from 'react';
 class ProductViewPrice extends Component {
   render() {
     return (
-      <div>
-        <span>{this.props.price}</span>
-      </div>
+      <span className="price">${this.props.price}</span>
     );
   }
 }

@@ -10,8 +10,10 @@
 * Save state for cart and product list after reloading
 * Responsive (Bootstrap 4)
 * Configurable catalog tree
+* Search
 
 ### TODO
+* Import / Export products
 * Product parameters 
 * Server side rendering
 * Connect `Twilio` for SMS notifications
@@ -47,7 +49,7 @@
 
 ---
 
-##React components
+### React components
 
 ### Pre
 
