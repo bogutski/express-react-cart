@@ -5,6 +5,7 @@ import { productGetById } from './../_actions/productActions';
 import ProductViewPrice from './productViewPrice';
 import ProductViewImage from './productViewImage';
 import ProductViewCartButton from './productViewCartButton';
+import ProductSimilar from './../list/productSimilar';
 
 class ProductViewMain extends Component {
   render() {
@@ -19,6 +20,10 @@ class ProductViewMain extends Component {
           <ProductViewPrice price={this.props.productInfo.price} />
 
           <ProductViewCartButton product={this.props.productInfo} />
+        </Col>
+
+        <Col lg={12}>
+          <ProductSimilar limit={6} catalogId={this.props.productInfo.catalog} />
         </Col>
 
       </Row>
