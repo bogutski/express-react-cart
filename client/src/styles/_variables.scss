@@ -1,4 +1,4 @@
-$color1: #2b284a;
+$color1: #5c336e;
 $color2: #cae40f;
 $color3: #f8f9fa;
 $color4: #ffffff;
@@ -9,6 +9,15 @@ $colors: (
         "c3": $color3,
         "c4": $color4,
 );
+
+//$grad: (
+//        "90": $color1,
+//        "80": $color2,
+//        "70": $color3,
+//        "60": $color4,
+//);
+
+//lighten($color1, 70%)
 
 $yellow: #ffec00 !default;
 $primary: #644073 !default;

@@ -8,7 +8,7 @@ import ProductCard from '../displays/productCard';
 class ProductRecommended extends Component {
   grid() {
     return (
-      <Row className="bc-c3">
+      <Row className="bc-c3 wr-tb-1">
         <Col md={12}>
           <h1>Hottest deals</h1>
         </Col>
