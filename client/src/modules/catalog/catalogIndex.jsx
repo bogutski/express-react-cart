@@ -17,7 +17,7 @@ class Catalog extends Component {
           <title>Catalog</title>
         </Helmet>
 
-        <Col md={2}>
+        <Col md={2} className="wr-tb-1">
           <CatalogSecondLevelMenu />
         </Col>
 
