@@ -48,15 +48,18 @@
 
 #catalog-second-level {
   .nav-link {
-    color: $color1;
+    color: lighten($color1, 20%);
+    padding: 0.2rem 0 0.2rem 0;
+    margin-bottom: 0.5rem;
+    border-bottom: 1px solid $color4;
 
     &:hover {
-      background-color: $color3;
+      border-bottom: 1px solid lighten($color1, 40%);
     }
 
     &.active {
-      background-color: lighten($color1, 20%);
-      color: lighten($color1, 70%);
+      border-bottom: 1px solid lighten($color1, 20%);
+      // color: lighten($color1, 70%);
     }
   }
 }
