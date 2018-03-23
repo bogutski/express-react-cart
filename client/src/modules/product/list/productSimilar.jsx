@@ -8,9 +8,9 @@ import ProductCard from '../displays/productCard';
 class ProductSimilar extends Component {
   grid() {
     return (
-      <Row className="bc-c3">
+      <Row className="bc-c3 wr-tb-1">
         <Col md={12}>
-          <h3>Similar</h3>
+          <h3 className="nom">Similar</h3>
         </Col>
         {
           this.props.productList

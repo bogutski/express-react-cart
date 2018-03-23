@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { Redirect } from 'react-router';
+import { NavLink } from 'react-router-dom';
 import { productGetById } from './../_actions/productActions';
-import Tabs from './../../utils/tabs/tabs';
 import ProductViewDetails from './productViewDetails';
 
 class ProductView extends Component {
@@ -17,23 +16,18 @@ class ProductView extends Component {
 
   component() {
     return (
-      <div>
+      <div className="wr-tb-1">
         <h1>{this.props.productInfo.name}</h1>
-        <Tabs
-          tabs={[
-            {
-              name: 'view',
-              label: 'View',
-              content: <ProductViewDetails />,
-              default: true,
-            },
-            {
-              name: 'edit',
-              label: 'Edit',
-              content: <Redirect to={`/product/edit/${this.props.productInfo._id}`} />,
-            },
-          ]}
-        />
+
+        <ProductViewDetails />
+
+        <NavLink
+          to={`/product/edit/${this.props.productInfo._id}`}
+          activeClassName="active"
+          className="nav-link"
+        >Edit
+        </NavLink>
+
       </div>
     );
   }

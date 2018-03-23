@@ -10,23 +10,25 @@ import ProductSimilar from './../list/productSimilar';
 class ProductViewMain extends Component {
   render() {
     return (
-      <Row className="product-view">
+      <div>
+        <Row className="product-view wr-tb-1">
+          <Col lg={6}>
+            <ProductViewImage image={this.props.productInfo.image} />
+          </Col>
 
-        <Col lg={6}>
-          <ProductViewImage image={this.props.productInfo.image} />
-        </Col>
+          <Col lg={6}>
+            <ProductViewPrice price={this.props.productInfo.price} />
+            <ProductViewCartButton product={this.props.productInfo} />
+          </Col>
+        </Row>
 
-        <Col lg={6}>
-          <ProductViewPrice price={this.props.productInfo.price} />
+        <Row className="">
+          <Col lg={12}>
+            <ProductSimilar limit={6} catalogId={this.props.productInfo.catalog} />
+          </Col>
+        </Row>
 
-          <ProductViewCartButton product={this.props.productInfo} />
-        </Col>
-
-        <Col lg={12}>
-          <ProductSimilar limit={6} catalogId={this.props.productInfo.catalog} />
-        </Col>
-
-      </Row>
+      </div>
     );
   }
 }

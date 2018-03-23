@@ -23,17 +23,25 @@
 // CATALOG
 #catalog-bar {
   background: $color4;
+  border-bottom: 1px solid lighten($color1, 60%);
+
+  .nav {
+    margin-bottom: -1px;
+  }
+
   .nav-link {
     color: $color1;
+    padding-bottom: 8px;
+    border-bottom: 1px solid lighten($color1, 60%);
 
     &:hover {
       color: lighten($color1, 20%);
+      border-bottom: 1px solid lighten($color1, 40%);
     }
 
     &.active {
-      border-bottom: 3px solid lighten($color1, 20%);
+      border-bottom: 1px solid lighten($color1, 20%);
       color: lighten($color1, 20%);
-      padding-bottom: 5px;
     }
   }
 }
@@ -84,4 +92,9 @@
       color: lighten($color1, 70%);
     }
   }
+}
+
+footer {
+  // background-color: lighten($color1, 60%);
+  color: $color1;
 }

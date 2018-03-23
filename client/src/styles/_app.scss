@@ -1,5 +1,5 @@
 body {
-  background-color: $color3;
+  background-color: $color4;
 }
 
 img {
@@ -13,9 +13,4 @@ img {
 .plate {
   @extend .box-shadow;
   background-color: white;
-}
-
-footer {
-  background: radial-gradient(circle at 0 0, $color1, #644073);
-  color: $color4;
 }
