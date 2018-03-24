@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { Button, Col, Form, Row } from 'reactstrap';
 import { Field, reduxForm } from 'redux-form';
 import _ from 'lodash';
+import { Redirect } from 'react-router';
 import { FileField, Selectbox, TextField } from '../../utils/form/form';
 import { number, required } from '../../utils/form/validators';
 import { productCreate, productGetById, productUpdate } from '../_actions/productActions';
-import Pre from '../../utils/pre/pre';
 import ProductFormImages from './productFormImages';
+import Pre from '../../utils/pre/pre';
 import Tabs from '../../utils/tabs/tabs';
-import { Redirect } from 'react-router';
 
 class ProductForm extends Component {
   constructor(props) {

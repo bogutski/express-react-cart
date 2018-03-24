@@ -14,7 +14,7 @@ class ProductRecommended extends Component {
         </Col>
         {
           this.props.productList.slice(0, 16)
-            .map(el => <ProductCard product={el} />)
+            .map(el => <ProductCard key={el._id} product={el} />)
         }
       </Row>
     );
