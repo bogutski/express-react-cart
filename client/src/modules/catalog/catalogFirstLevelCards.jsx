@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { Row } from 'reactstrap';
+import _ from 'lodash';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import CatalogCard from './catalogCard';
 
 class CatalogFirstLevelCards extends Component {
-  render() {
+  component() {
     return (
       <Row>
         {
@@ -18,6 +19,11 @@ class CatalogFirstLevelCards extends Component {
         }
       </Row>
     );
+  }
+
+  render() {
+    // Show only on catalog page
+    return _.get(this.props, 'match.params.level') ? null : this.component();
   }
 }
 

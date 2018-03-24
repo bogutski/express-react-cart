@@ -26,9 +26,7 @@ class Catalog extends Component {
 
           <CatalogSecondLevelCards />
 
-          { // Show only on catalog page
-            _.get(this.props, 'match.params.level') || <CatalogFirstLevelCards />
-          }
+          <CatalogFirstLevelCards />
 
           { // Show products list only on sublevel
             _.has(this.props, 'match.params.sublevel') && <CatalogProcuctArea />

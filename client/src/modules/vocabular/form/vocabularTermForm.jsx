@@ -6,7 +6,7 @@ import { Button, Form } from 'reactstrap';
 import _ from 'lodash';
 import shortid from 'shortid';
 import { required } from '../../utils/form/validators';
-import { Checkbox, TextField } from '../../utils/form/form';
+import { Checkbox, FileField, TextField } from '../../utils/form/form';
 import Pre from '../../utils/pre/pre';
 import {
   vocabularTermAddToRoot, vocabularTermCancelEdit, vocabularTermGeneratePath,
@@ -96,6 +96,8 @@ class VocabularTermForm extends Component {
           component={TextField}
           validate={[required]}
         />
+
+        <Field name="file" type="file" component={FileField} multiple />
 
         <div>
 
