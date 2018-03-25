@@ -11,6 +11,7 @@
 * Responsive (Bootstrap 4)
 * Configurable catalog tree
 * Search
+* MongoDB dump/restore
 
 ### TODO
 * Import / Export products

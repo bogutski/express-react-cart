@@ -1,7 +1,7 @@
 {
 	"info": {
-		"name": "ER-cart",
 		"_postman_id": "6fae9221-3904-a569-965d-6e3238cf121d",
+		"name": "ER-cart",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -65,8 +65,7 @@
 								"product",
 								"5a4465a37b6f217bb522d500"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -92,8 +91,7 @@
 								"id",
 								"Skt82Zkrz"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -184,8 +182,7 @@
 								"product",
 								"5a58f1b17c33425f3ff13cca"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -211,8 +208,7 @@
 								"product",
 								"5a3ea45726c7bf17e4c320cd"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -277,8 +273,7 @@
 								"vocabular",
 								"5a5d9e37b28cc2c60f5f1678"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -307,8 +302,7 @@
 								"vocabular",
 								"params"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -374,8 +368,7 @@
 								"vocabular",
 								"5a5306d794f996198f844cae"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				},
@@ -391,7 +384,7 @@
 						],
 						"body": {},
 						"url": {
-							"raw": "http://localhost:5000/vocabular/5a3ea45726c7bf17e4c320cd",
+							"raw": "http://localhost:5000/vocabular/5aa9b9529f8dfe086dc46bb8",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -399,10 +392,9 @@
 							"port": "5000",
 							"path": [
 								"vocabular",
-								"5a3ea45726c7bf17e4c320cd"
+								"5aa9b9529f8dfe086dc46bb8"
 							]
-						},
-						"description": ""
+						}
 					},
 					"response": []
 				}
@@ -450,7 +442,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"default\": \"true\",\n    \"address\": \"123 S Bayview\",\n    \"zip\": \"123123\"\n}"
+									"raw": "{\n    \"id\": \"123\",\n    \"data\": {\n      \"address\": \"123 S Bayview\",\n      \"zip\": \"123123\"\n    }\n}"
 								},
 								"url": {
 									"raw": "http://localhost:5000/user/shipping/5a4c98e5a053190a7d48e182",
@@ -464,8 +456,7 @@
 										"shipping",
 										"5a4c98e5a053190a7d48e182"
 									]
-								},
-								"description": ""
+								}
 							},
 							"response": []
 						}
@@ -583,7 +574,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"qwe@qwe.qwe\",\n\t\"password\": \"qwe@qwe.qwe\"\n}"
+							"raw": "{\n  \"email\": \"qwe@qwe.qwe\",\n  \"password\": \"qwe@qwe.qwe\"\n}"
 						},
 						"url": {
 							"raw": "http://localhost:5000/user/login",
@@ -635,6 +626,54 @@
 			]
 		},
 		{
+			"name": "BACKUP",
+			"description": "",
+			"item": [
+				{
+					"name": "http://localhost:5000/backup/dump",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/backup/dump",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"backup",
+								"dump"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:5000/backup/restore",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/backup/restore",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"backup",
+								"restore"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Options",
 			"request": {
 				"method": "OPTIONS",
@@ -647,8 +686,7 @@
 						"localhost"
 					],
 					"port": "5000"
-				},
-				"description": ""
+				}
 			},
 			"response": []
 		}

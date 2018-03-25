@@ -5,6 +5,7 @@ import mongoose from 'mongoose';
 import userRouter from './modules/user/userRoutes';
 import productRouter from './modules/product/productRoutes';
 import vocabularRouter from './modules/vocabular/vocabularRoutes';
+import backupRouter from './modules/backup/backupRoutes';
 
 import message from './modules/messages/messages';
 
@@ -54,6 +55,7 @@ app.use((req, res, next) => { // eslint-disable-line consistent-return
 app.use('/user', userRouter);
 app.use('/product', productRouter);
 app.use('/vocabular', vocabularRouter);
+app.use('/backup', backupRouter);
 
 // ===== ERROR HANDLING =====
 app.use((req, res, next) => res.status(404).json(message.error('API not found'))); // eslint-disable-line no-unused-vars
