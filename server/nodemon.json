@@ -1,6 +1,12 @@
 {
   "env": {
     "MONGO_ATLAS_PWD": "siteograf",
+    "MONGO_ATLAS_USER": "siteograf",
+    "MONGO_ATLAS_REPLICA_SET": "ReactShop-shard-0",
+    "MONGO_ATLAS_NODE_0": "reactshop-shard-00-00-wjryo.mongodb.net:27017",
+    "MONGO_ATLAS_NODE_1": "reactshop-shard-00-01-wjryo.mongodb.net:27017",
+    "MONGO_ATLAS_NODE_2": "reactshop-shard-00-02-wjryo.mongodb.net:27017",
+
     "JWT_KEY": "secretKey",
     "JWT_EXPIRES_IN": "2d",
 
