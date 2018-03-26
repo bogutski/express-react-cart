@@ -9,7 +9,9 @@ import { required } from '../../utils/form/validators';
 import { Checkbox, FileField, TextField } from '../../utils/form/form';
 import Pre from '../../utils/pre/pre';
 import {
-  vocabularTermAddToRoot, vocabularTermCancelEdit, vocabularTermGeneratePath,
+  vocabularTermAddToRoot,
+  vocabularTermCancelEdit,
+  vocabularTermGeneratePath,
   vocabularTermUpdate,
 } from '../_actions/vocabularActions';
 
@@ -56,8 +58,17 @@ class VocabularTermForm extends Component {
       ...this.props.termForm.values,
     };
 
+    const formData = new FormData();
+
+    Object.keys(term)
+      .forEach((el) => {
+        formData.append(el, term[el]);
+      });
+
+    formData.append('image', term.file[0]);
+
     if (_.isEmpty(this.props.editedTerm)) {
-      this.props.vocabularTermAddToRoot(term);
+      this.props.vocabularTermAddToRoot(formData);
     } else {
       this.props.vocabularTermUpdate(node, term, this.props.editedTerm.path);
     }
@@ -97,7 +108,13 @@ class VocabularTermForm extends Component {
           validate={[required]}
         />
 
-        <Field name="file" type="file" component={FileField} multiple />
+        <Field
+          name="file"
+          type="file"
+          onChange={() => console.log('CH')}
+          component={FileField}
+          multiple
+        />
 
         <div>
 
@@ -127,7 +144,6 @@ class VocabularTermForm extends Component {
     );
   }
 }
-
 
 const mapStateToProps = state => ({
   termForm: state.form.term,

@@ -8,7 +8,12 @@ import VocabularTree from './vocabularTree';
 import VocabularTermForm from './vocabularTermForm';
 import { required } from '../../utils/form/validators';
 import { TextField } from '../../utils/form/form';
-import { vocabularGetById, vocabularCreate, vocabularUpdate, vocabularClearForm } from '../_actions/vocabularActions';
+import {
+  vocabularClearForm,
+  vocabularCreate,
+  vocabularGetById,
+  vocabularUpdate,
+} from '../_actions/vocabularActions';
 
 class VocabularForm extends Component {
   constructor(props) {
@@ -46,7 +51,10 @@ class VocabularForm extends Component {
     return (
       <Row>
         <Col md="12">
-          <h1>Vocabular {_.has(this.props, 'vocabularForm.values.name') ? this.props.vocabularForm.values.name : null }</h1>
+          <h1>Vocabular {_.has(this.props, 'vocabularForm.values.name')
+            ? this.props.vocabularForm.values.name
+            : null}
+          </h1>
 
           <Form onSubmit={this.formSubmit}>
             <Field
