@@ -14,6 +14,7 @@ import {
   vocabularTermGeneratePath,
   vocabularTermUpdate,
 } from '../_actions/vocabularActions';
+import ImageUpload from '../../utils/imageUpload/imageUpload';
 
 class VocabularTermForm extends Component {
   constructor(props) {
@@ -82,6 +83,8 @@ class VocabularTermForm extends Component {
     return (
       <Form onSubmit={this.formSubmit}>
         <h1>Term</h1>
+
+        <ImageUpload onUpload={v => console.log(v)} />
 
         <Field
           name="name"
