@@ -6,6 +6,7 @@ import userRouter from './modules/user/userRoutes';
 import productRouter from './modules/product/productRoutes';
 import vocabularRouter from './modules/vocabular/vocabularRoutes';
 import backupRouter from './modules/backup/backupRoutes';
+import fileRouter from './modules/file/fileRoutes';
 
 import message from './modules/messages/messages';
 
@@ -55,6 +56,7 @@ app.use((req, res, next) => { // eslint-disable-line consistent-return
 app.use('/user', userRouter);
 app.use('/product', productRouter);
 app.use('/vocabular', vocabularRouter);
+app.use('/file', fileRouter);
 app.use('/backup', backupRouter);
 
 // ===== ERROR HANDLING =====

@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 import _ from 'lodash';
 import Product from './productModel';
 import message from './../messages/messages';
-import cloudMultiUpload from './../fileUpload/cloudinaryFileUpload';
+import cloudMultiUpload from '../file/cloudinaryFileUpload';
 
 export const productLoadAll = (req, res) => {
   Product.find()
