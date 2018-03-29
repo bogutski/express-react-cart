@@ -4,7 +4,6 @@ import cloudMultiUpload from './cloudinaryFileUpload';
 
 export const uploadFile = async (req, res) => {
   let images = [];
-  console.log(req);
 
   if (!_.isEmpty(req.files)) {
     // Paths to local upload folder

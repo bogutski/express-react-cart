@@ -1,35 +1,33 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
-import _ from 'lodash';
+import { connect } from 'react-redux';
 import { FileField } from '../../utils/form/form';
+import { fileUpload } from './_actions/imageUploadActions';
 
 class ImageUpload extends Component {
-  upload() {
-    // const formData = new FormData();
-    //
-    // Object.keys(data)
-    //   .forEach((el) => {
-    //     formData.append(el, data[el]);
-    //   });
-    //
-    // const countFiles = Object.keys(_.get(data, 'file', {})).length;
-    // for (let i = 0; i < countFiles; i++) {
-    //   formData.append('image', data.file[i]);
-    // }
+  upload(event) {
+    const formData = new FormData();
+    const files = event.target.files;
+    for (let i = 0; i < files.length; i++) {
+      formData.append('file', files[i]);
+    }
+    this.props.fileUpload(formData);
+
+    console.log([...formData]);
   }
 
   render() {
     return (
-      <div>
+      <form>
         <Field
           name="file"
           type="file"
-          onChange={() => this.props.onUpload(123)}
+          onChange={e => this.upload(e)}
           component={FileField}
           multiple={this.props.multiple}
         />
         --List--
-      </div>
+      </form>
     );
   }
 }
@@ -41,4 +39,10 @@ ImageUpload.defaultProps = {
   multiple: true,
 };
 
-export default ImageUpload;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+  fileUpload: formData => dispatch(fileUpload(formData)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageUpload);
