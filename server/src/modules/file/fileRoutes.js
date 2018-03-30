@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import { uploadFile, deleteFile } from './fileControllers';
-import upload from './fileUpload';
+import upload from './fileLocalUpload';
 
 const router = Router();
 

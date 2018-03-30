@@ -8,17 +8,21 @@ class ImageUpload extends Component {
   upload(event) {
     const formData = new FormData();
     const files = event.target.files;
+
     for (let i = 0; i < files.length; i++) {
       formData.append('file', files[i]);
     }
-    this.props.fileUpload(formData);
 
-    console.log([...formData]);
+    this.props.fileUpload(formData)
+      .then((res) => {
+        console.log(res.data);
+        this.props.onUpload(res.data);
+      });
   }
 
   render() {
     return (
-      <form>
+      <div>
         <Field
           name="file"
           type="file"
@@ -26,8 +30,10 @@ class ImageUpload extends Component {
           component={FileField}
           multiple={this.props.multiple}
         />
-        --List--
-      </form>
+        <ul>
+          {this.props.initialFiles.map(el => <li>{el.pid}</li>)}
+        </ul>
+      </div>
     );
   }
 }
@@ -35,7 +41,9 @@ class ImageUpload extends Component {
 ImageUpload.defaultProps = {
   onUpload() {
     console.log('No upload action');
+    return null;
   },
+  initialFiles: [],
   multiple: true,
 };
 

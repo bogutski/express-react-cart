@@ -16,10 +16,8 @@ export const uploadFile = async (req, res) => {
     }));
   }
 
-  console.log('IMAGES', images);
-
   res.status(200)
-    .json(message.success('ok', images));
+    .json(images);
 };
 
 export const deleteFile = (req, res) => {

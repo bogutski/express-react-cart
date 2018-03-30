@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import upload from '../file/fileUpload';
+import upload from '../file/fileLocalUpload';
 
 import {
   productCreate,
