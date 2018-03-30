@@ -14,7 +14,7 @@ import {
   vocabularTermGeneratePath,
   vocabularTermUpdate,
 } from '../_actions/vocabularActions';
-import ImageUpload from '../../utils/imageUpload/imageUpload';
+import ImageUpload from '../../utils/fileUpload/fileUpload';
 
 class VocabularTermForm extends Component {
   constructor(props) {

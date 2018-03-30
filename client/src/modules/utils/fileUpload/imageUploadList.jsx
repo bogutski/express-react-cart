@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import _ from 'lodash';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
-import Img from '../../utils/img/img';
-import { rerangeImages } from '../_actions/productActions';
+import Img from '../img/img';
 
 const DragHandle = SortableHandle(() => (
   <div>
@@ -16,7 +12,6 @@ const SortableItem = SortableElement(({ value }) => (
   <div className="d-flex align-items-center mb-2">
     <DragHandle />
     <Img pid={value.pid} h={50} className="border mr-4" />
-    <input type="text" placeholder="Title" className="mr-4" />
     <div className="btn text-danger">Delete</div>
   </div>
 ));
@@ -33,30 +28,37 @@ class ImageUploadList extends Component {
   constructor(props) {
     super(props);
     this.onSortEnd = this.onSortEnd.bind(this);
+
+    this.state = {
+      images: [],
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.images !== this.props.images) {
+      this.setState({ images: nextProps.images });
+    }
   }
 
   onSortEnd({ oldIndex, newIndex }) {
-    const rerangedImages = arrayMove(this.props.productForm.values.image, oldIndex, newIndex);
-    this.props.rerangeImages(rerangedImages);
+    this.setState({
+      images: arrayMove(this.state.images, oldIndex, newIndex),
+    });
+
+    this.props.onChange(this.state.images);
   }
 
   render() {
     return (
-      <SortableList
-        items={_.get(this.props, 'productForm.values.image', [])}
-        onSortEnd={this.onSortEnd}
-        useDragHandle
-      />
+      <div>
+        <SortableList
+          items={this.state.images}
+          onSortEnd={this.onSortEnd}
+          useDragHandle
+        />
+      </div>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  productForm: state.form.product,
-});
-
-const mapDispatchToProps = dispatch => ({
-  rerangeImages: images => dispatch(rerangeImages(images)),
-});
-
-export default compose(connect(mapStateToProps, mapDispatchToProps))(ImageUploadList);
+export default ImageUploadList;
