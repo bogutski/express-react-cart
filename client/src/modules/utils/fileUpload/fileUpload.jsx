@@ -3,8 +3,13 @@ import { Field } from 'redux-form';
 import { connect } from 'react-redux';
 import { FileField } from '../../utils/form/form';
 import { fileUpload } from './_actions/imageUploadActions';
+import ImageUploadList from './imageUploadList';
 
-class ImageUpload extends Component {
+class FileUpload extends Component {
+  onChange(v) {
+    this.props.onUpload(v);
+  }
+
   upload(event) {
     const formData = new FormData();
     const files = event.target.files;
@@ -15,7 +20,6 @@ class ImageUpload extends Component {
 
     this.props.fileUpload(formData)
       .then((res) => {
-        console.log(res.data);
         this.props.onUpload(res.data);
       });
   }
@@ -30,21 +34,30 @@ class ImageUpload extends Component {
           component={FileField}
           multiple={this.props.multiple}
         />
-        <ul>
-          {this.props.initialFiles.map(el => <li>{el.pid}</li>)}
-        </ul>
+
+        {this.props.view === 'images' &&
+        <ImageUploadList
+          onChange={v => this.onChange(v)}
+          images={this.props.initialFiles}
+        />}
+
       </div>
     );
   }
 }
 
-ImageUpload.defaultProps = {
+FileUpload.defaultProps = {
   onUpload() {
     console.log('No upload action');
     return null;
   },
+  onChange() {
+    console.log('No onChange action');
+    return null;
+  },
   initialFiles: [],
   multiple: true,
+  view: 'images',
 };
 
 const mapStateToProps = () => ({});
@@ -53,4 +66,4 @@ const mapDispatchToProps = dispatch => ({
   fileUpload: formData => dispatch(fileUpload(formData)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageUpload);
+export default connect(mapStateToProps, mapDispatchToProps)(FileUpload);
