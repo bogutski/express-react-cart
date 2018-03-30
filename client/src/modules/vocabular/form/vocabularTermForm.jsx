@@ -23,6 +23,10 @@ class VocabularTermForm extends Component {
     this.vocabularTermCancelEdit = this.vocabularTermCancelEdit.bind(this);
     this.changeName = this.changeName.bind(this);
     this.changeAutopath = this.changeAutopath.bind(this);
+
+    this.state = {
+      files: [],
+    };
   }
 
   changeName(e) {
@@ -57,19 +61,11 @@ class VocabularTermForm extends Component {
     const term = {
       id: shortid.generate(), // Create id. If exist next string will override to prev value
       ...this.props.termForm.values,
+      files: this.state.files,
     };
 
-    const formData = new FormData();
-
-    Object.keys(term)
-      .forEach((el) => {
-        formData.append(el, term[el]);
-      });
-
-    formData.append('image', term.file[0]);
-
     if (_.isEmpty(this.props.editedTerm)) {
-      this.props.vocabularTermAddToRoot(formData);
+      this.props.vocabularTermAddToRoot(term);
     } else {
       this.props.vocabularTermUpdate(node, term, this.props.editedTerm.path);
     }
@@ -84,7 +80,10 @@ class VocabularTermForm extends Component {
       <Form onSubmit={this.formSubmit}>
         <h1>Term</h1>
 
-        <ImageUpload onUpload={v => console.log(v)} />
+        <ImageUpload
+          initialFiles={_.get(this.props, 'editedTerm.node.files', [])}
+          onUpload={files => this.setState({ files })}
+        />
 
         <Field
           name="name"
@@ -111,16 +110,7 @@ class VocabularTermForm extends Component {
           validate={[required]}
         />
 
-        <Field
-          name="file"
-          type="file"
-          onChange={() => console.log('CH')}
-          component={FileField}
-          multiple
-        />
-
         <div>
-
           <Button
             type="submit"
             color="primary"
