@@ -31,6 +31,11 @@ mongoose.connection.on('error', () => {
   throw new Error('Unable to connect to database');
 });
 
+// When the connection is disconnected
+mongoose.connection.on('disconnected', () => {
+  console.log('Mongoose default connection disconnected');
+});
+
 // ===== LOGGER =====
 app.use(morgan('dev'));
 

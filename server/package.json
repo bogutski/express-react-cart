@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist/",
     "build": "npm run clear && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log,bin --copy-files",
-    "dev": "nodemon --exec DEBUG=node* node_modules/babel-cli/bin/babel-node.js src",
+    "dev": "nodemon --inspect -r babel-register src",
     "start": "npm run build && node dist"
   },
   "repository": {
