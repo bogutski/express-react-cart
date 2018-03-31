@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import { Col, Row } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 import Img from './../utils/img/img';
@@ -21,7 +22,9 @@ class CatalogCard extends Component {
           <Row>
             <Col className="image">
               <NavLink to={this.props.link}>
-                {/* <Img pid={el.image[0].pid} crop="lpad" h={300} w={400} /> */}
+                {_.has(el, 'files[0].pid') &&
+                <Img pid={el.files[0].pid} crop="lpad" h={300} w={400} />
+                }
               </NavLink>
             </Col>
           </Row>
@@ -33,7 +36,6 @@ class CatalogCard extends Component {
               </NavLink>
             </Col>
           </Row>
-
 
         </div>
       </Col>
