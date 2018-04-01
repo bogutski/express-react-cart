@@ -6,7 +6,15 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export default function cloudMultiUpload(localFileUrlArr) {
+export function cloudMultiUpload(localFileUrlArr) {
   return Promise.all(localFileUrlArr
     .map(el => cloudinary.uploader.upload(el, result => result)));
+}
+
+export function cloudDelete(pid) {
+  return cloudinary.v2.uploader.destroy(
+    pid,
+    { invalidate: true },
+    result => result
+  );
 }
