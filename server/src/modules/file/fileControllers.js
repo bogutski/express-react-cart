@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import message from '../messages/messages';
-import cloudMultiUpload from './cloudinaryFileUpload';
+import { cloudMultiUpload, cloudDelete } from './cloudinaryFileUpload';
 
 export const uploadFile = async (req, res) => {
   let images = [];
@@ -20,7 +20,13 @@ export const uploadFile = async (req, res) => {
     .json(images);
 };
 
-export const deleteFile = (req, res) => {
-  res.status(200)
-    .json(message.success());
+export const deleteFile = async (req, res) => {
+  const deleteResult = await cloudDelete(req.body.pid);
+  if (deleteResult.result === 'ok') {
+    res.status(200)
+      .json(message.success('File was deleted'));
+  } else {
+    res.status(500)
+      .json(message.error(deleteResult.result));
+  }
 };

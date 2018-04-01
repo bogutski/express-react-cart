@@ -16,9 +16,7 @@ class CatalogCard extends Component {
         xl={2}
         className="d-flex align-items-stretch el-card"
       >
-        <div className="my-3 p-3 bg-white
-                        rounded d-flex align-items-start flex-column box-shadow w-100"
-        >
+        <div className="my-3 p-3 bg-white text-center d-flex flex-column rounded box-shadow w-100">
           <Row>
             <Col className="image">
               <NavLink to={this.props.link}>
@@ -29,7 +27,7 @@ class CatalogCard extends Component {
             </Col>
           </Row>
 
-          <Row>
+          <Row className="mt-3">
             <Col>
               <NavLink to={this.props.link}>
                 {el.name}
