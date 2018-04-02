@@ -8,13 +8,22 @@ const DragHandle = SortableHandle(() => (
   </div>
 ));
 
-const SortableItem = SortableElement(({ value }) => (
-  <div className="d-flex align-items-center mb-2">
-    <DragHandle />
-    <Img pid={value.pid} h={50} className="border mr-4" />
-    <div className="btn text-danger">Delete</div>
-  </div>
-));
+const SortableItem = SortableElement(({ value }) => {
+  const deleteClick = (pid) => {
+    console.log('Delete: ', pid);
+  };
+
+  return (
+    <div className="d-flex align-items-center mb-2">
+      <DragHandle />
+      <Img pid={value.pid} h={50} className="border mr-4" />
+      <div
+        className="btn text-danger"
+        onClick={() => deleteClick(value.pid)}
+      >Delete
+      </div>
+    </div>);
+});
 
 const SortableList = SortableContainer(({ items }) => (
   <div>
