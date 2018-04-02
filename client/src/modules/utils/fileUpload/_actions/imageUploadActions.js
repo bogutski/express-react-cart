@@ -1,4 +1,4 @@
-import { post } from '../../../utils/httpRequest/httpMethods';
+import { post, del } from '../../../utils/httpRequest/httpMethods';
 
 export function fileUpload(formData) {
   return () =>
@@ -9,6 +9,10 @@ export function fileUpload(formData) {
     );
 }
 
-export function fileDeleteById() {
-  return () => {};
+export function fileDeleteById(pid) {
+  return () =>
+    del(
+      '/file',
+      pid,
+    );
 }
