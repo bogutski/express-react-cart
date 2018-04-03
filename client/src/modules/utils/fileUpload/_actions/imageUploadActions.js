@@ -13,6 +13,6 @@ export function fileDeleteById(pid) {
   return () =>
     del(
       '/file',
-      pid,
+      { pid },
     );
 }

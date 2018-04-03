@@ -19,7 +19,8 @@ const SortableItem = SortableElement(({ value, deletedItem }) => (
       onClick={() => deletedItem(value.pid)}
     >Delete
     </div>
-  </div>));
+  </div>
+));
 
 const SortableList = SortableContainer(({ items, deletedItem }) => (
   <div>
@@ -51,10 +52,6 @@ class ImageUploadList extends Component {
     });
 
     this.props.onChange(this.state.images);
-  }
-
-  deletedItem(v) {
-    console.log('Main del', v);
   }
 
   render() {
