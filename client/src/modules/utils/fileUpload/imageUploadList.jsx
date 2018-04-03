@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import Img from '../img/img';
+import { fileDeleteById } from './_actions/imageUploadActions';
 
 const DragHandle = SortableHandle(() => (
   <div>
@@ -8,27 +10,21 @@ const DragHandle = SortableHandle(() => (
   </div>
 ));
 
-const SortableItem = SortableElement(({ value }) => {
-  const deleteClick = (pid) => {
-    console.log('Delete: ', pid);
-  };
+const SortableItem = SortableElement(({ value, deletedItem }) => (
+  <div className="d-flex align-items-center mb-2">
+    <DragHandle />
+    <Img pid={value.pid} h={50} className="border mr-4" />
+    <div
+      className="btn text-danger"
+      onClick={() => deletedItem(value.pid)}
+    >Delete
+    </div>
+  </div>));
 
-  return (
-    <div className="d-flex align-items-center mb-2">
-      <DragHandle />
-      <Img pid={value.pid} h={50} className="border mr-4" />
-      <div
-        className="btn text-danger"
-        onClick={() => deleteClick(value.pid)}
-      >Delete
-      </div>
-    </div>);
-});
-
-const SortableList = SortableContainer(({ items }) => (
+const SortableList = SortableContainer(({ items, deletedItem }) => (
   <div>
     {items.map((value, index) => (
-      <SortableItem key={`${value.pid}`} index={index} value={value} />
+      <SortableItem key={`${value.pid}`} index={index} value={value} deletedItem={deletedItem} />
     ))}
   </div>
 ));
@@ -57,6 +53,10 @@ class ImageUploadList extends Component {
     this.props.onChange(this.state.images);
   }
 
+  deletedItem(v) {
+    console.log('Main del', v);
+  }
+
   render() {
     return (
       <div>
@@ -64,10 +64,17 @@ class ImageUploadList extends Component {
           items={this.state.images}
           onSortEnd={this.onSortEnd}
           useDragHandle
+          deletedItem={this.props.fileDeleteById}
         />
       </div>
     );
   }
 }
 
-export default ImageUploadList;
+const mapStateToProps = () => ({});
+
+const mapDispatchToProps = dispatch => ({
+  fileDeleteById: pid => dispatch(fileDeleteById(pid)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(ImageUploadList);
