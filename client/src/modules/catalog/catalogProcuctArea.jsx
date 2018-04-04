@@ -7,7 +7,6 @@ import { productFilterByCategoryId } from '../product/_actions/productActions';
 import { cartProductAdd } from '../cart/_actions/cartActions';
 import Img from '../utils/img/img';
 import ProductViewCartButton from './../product/view/productViewCartButton';
-import Pre from '../utils/pre/pre';
 
 class CatalogProductArea extends Component {
   componentDidMount() {
