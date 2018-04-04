@@ -10,13 +10,13 @@ class ProductSimilar extends Component {
     return (
       <Row className="bc-c3 wr-tb-1">
         <Col md={12}>
-          <h3 className="nom">Similar</h3>
+          <h3 className="nom">Similar products</h3>
         </Col>
         {
           this.props.productList
             .filter(el => el.catalog === this.props.catalogId)
             .slice(0, this.props.limit)
-            .map(el => <ProductCard product={el} />)
+            .map(el => <ProductCard key={el._id} product={el} />)
         }
       </Row>
     );
