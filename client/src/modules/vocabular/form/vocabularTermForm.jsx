@@ -6,7 +6,7 @@ import { Button, Form } from 'reactstrap';
 import _ from 'lodash';
 import shortid from 'shortid';
 import { required } from '../../utils/form/validators';
-import { Checkbox, FileField, TextField } from '../../utils/form/form';
+import { Checkbox, TextField } from '../../utils/form/form';
 import Pre from '../../utils/pre/pre';
 import {
   vocabularTermAddToRoot,
