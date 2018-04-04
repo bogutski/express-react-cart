@@ -15,6 +15,6 @@ export function cloudDelete(pid) {
   return cloudinary.v2.uploader.destroy(
     pid,
     { invalidate: true },
-    result => result
+    result => result,
   );
 }

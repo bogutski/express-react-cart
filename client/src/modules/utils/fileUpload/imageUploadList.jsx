@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { arrayMove, SortableContainer, SortableElement, SortableHandle } from 'react-sortable-hoc';
 import Img from '../img/img';
 import { fileDeleteById } from './_actions/imageUploadActions';
@@ -41,7 +42,7 @@ class ImageUploadList extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.images !== this.props.images) {
+    if (!_.isEqual(nextProps.images, this.props.images)) {
       this.setState({ images: nextProps.images });
     }
   }
@@ -58,7 +59,7 @@ class ImageUploadList extends Component {
     return (
       <div>
         <SortableList
-          items={this.state.images}
+          items={this.state.images || this.props.images || []}
           onSortEnd={this.onSortEnd}
           useDragHandle
           deletedItem={this.props.fileDeleteById}

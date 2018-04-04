@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 import { Field } from 'redux-form';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import { FileField } from '../../utils/form/form';
 import { fileUpload } from './_actions/imageUploadActions';
 import ImageUploadList from './imageUploadList';
 
 class FileUpload extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      filelist: [],
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (!_.isEmpty(nextProps.initialFiles)) {
+      this.setState({ filelist: nextProps.filelist });
+    }
+  }
+
   onChange(v) {
     this.props.onUpload(v);
   }
@@ -21,6 +35,7 @@ class FileUpload extends Component {
     this.props.fileUpload(formData)
       .then((res) => {
         this.props.onUpload(res.data);
+        console.log(res.data);
       });
   }
 
@@ -38,9 +53,8 @@ class FileUpload extends Component {
         {this.props.view === 'images' &&
         <ImageUploadList
           onChange={v => this.onChange(v)}
-          images={this.props.initialFiles}
+          images={this.state.filelist}
         />}
-
       </div>
     );
   }

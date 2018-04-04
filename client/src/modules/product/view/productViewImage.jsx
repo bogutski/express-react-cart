@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import _ from 'lodash';
 import Img from './../../utils/img/img';
 
 class ProductViewImage extends Component {
@@ -19,11 +20,13 @@ class ProductViewImage extends Component {
       <div>
 
         <div className="d-block">
-          <Img
-            className="border"
-            pid={this.state.mainImagePid || this.props.image[0].pid}
-            h={400}
-          />
+          {(_.has(this.props, 'image[0].pid')) ?
+            <Img
+              className="border"
+              pid={this.state.mainImagePid || this.props.image[0].pid}
+              h={400}
+            /> : null
+          }
         </div>
 
         <div className="d-block mt-4">
