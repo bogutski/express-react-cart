@@ -81,7 +81,7 @@ class VocabularTermForm extends Component {
         <h1>Term</h1>
 
         <ImageUpload
-          initialFiles={_.get(this.props, 'editedTerm.node.files', [])}
+          files={_.get(this.props, 'editedTerm.node.files', [])}
           onUpload={files => this.setState({ files })}
         />
 
