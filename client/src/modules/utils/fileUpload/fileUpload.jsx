@@ -10,13 +10,13 @@ class FileUpload extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      filelist: [],
+      files: [],
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (!_.isEmpty(nextProps.initialFiles)) {
-      this.setState({ filelist: nextProps.filelist });
+    if (!_.isEmpty(nextProps.files)) {
+      this.setState({ files: nextProps.files });
     }
   }
 
@@ -35,7 +35,7 @@ class FileUpload extends Component {
     this.props.fileUpload(formData)
       .then((res) => {
         this.props.onUpload(res.data);
-        console.log(res.data);
+        this.setState({ files: res.data });
       });
   }
 
@@ -53,7 +53,7 @@ class FileUpload extends Component {
         {this.props.view === 'images' &&
         <ImageUploadList
           onChange={v => this.onChange(v)}
-          images={this.state.filelist}
+          images={this.state.files}
         />}
       </div>
     );
@@ -69,7 +69,7 @@ FileUpload.defaultProps = {
     console.log('No onChange action');
     return null;
   },
-  initialFiles: [],
+  files: [],
   multiple: true,
   view: 'images',
 };
