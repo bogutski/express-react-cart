@@ -57,6 +57,7 @@ export const Selectbox = props => (
 
 export const TextArea = '';
 
+// Use common component to load files
 export const FileField = ({ input, type, meta: { touched, error, warning } }) => {
   delete input.value;
   return (
