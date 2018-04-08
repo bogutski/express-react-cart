@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import { Field } from 'redux-form';
 import { connect } from 'react-redux';
 import _ from 'lodash';
-import { FileField } from '../../utils/form/form';
 import { fileUpload } from './_actions/imageUploadActions';
 import ImageUploadList from './imageUploadList';
 
@@ -11,6 +9,14 @@ class FileUpload extends Component {
     super(props);
     this.state = {
       files: [],
+    };
+
+    this.fileUploader = null;
+    this.fileUploaderRef = (element) => {
+      this.fileUploader = element;
+    };
+    this.clickFileUploader = () => {
+      if (this.fileUploader) this.fileUploader.click();
     };
   }
 
@@ -42,11 +48,18 @@ class FileUpload extends Component {
   render() {
     return (
       <div>
-        <Field
-          name="file"
+        <button
+          onClick={this.clickFileUploader}
+          className="mb-2"
+        >Upload files
+        </button>
+
+        <input
           type="file"
+          id="file"
+          ref={this.fileUploaderRef}
+          style={{ display: 'none' }}
           onChange={e => this.upload(e)}
-          component={FileField}
           multiple={this.props.multiple}
         />
 
