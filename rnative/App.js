@@ -28,7 +28,7 @@ export default class App extends Component<Props> {
          ER Cart
         </Text>
         <Text style={styles.instructions}>
-          To get started, edit App.js
+          --==--
         </Text>
         <Text style={styles.instructions}>
           {instructions}
