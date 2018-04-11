@@ -5,7 +5,7 @@
 * Express JS on ES6, Babel
 * TDD / BDD tests
 * Cloud database Mongo Atlas
-* Cloud storage for files Cloudinary 
+* Cloud storage for files Cloudinary
 * JWT authorisation
 * Save state for cart and product list after reloading
 * Responsive (Bootstrap 4)
@@ -15,21 +15,19 @@
 
 ### TODO
 * Import / Export products
-* Product parameters 
+* Product parameters
 * Server side rendering
 * Connect `Twilio` for SMS notifications
-* Connect `Braintree` for payments 
+* Connect `Braintree` for payments
 * Facebook authorization
 * Billing and shipping list in profile
-* Faceted search by parameters 
+* Faceted search by parameters
 * SEO configuration
 
 ![Express React Cart](docs/img/front-page.png?raw=true)
 
 ## Server side
-* Folder `server`
-* Initial install `npm i`
-* `npm run dev`
+Moved to https://github.com/bogutski/ERC-server
 
 ## Client side
 * Folder `client`
@@ -38,7 +36,7 @@
 
 ### Testing
 * Selenium web driver (Chromedriver) + Nigntwatch.js
-* upload to `testing/bdd_nightwatch/lib` files: `chromedriver` and `selenium-server-standalone-3.8.1.jar` 
+* upload to `testing/bdd_nightwatch/lib` files: `chromedriver` and `selenium-server-standalone-3.8.1.jar`
 * Folder `testing`
 * Initial install `npm i`
 * Run `npm run test`
@@ -54,14 +52,14 @@
 
 ### Pre
 
-Put `object` in props. Props `on` turn on 
+Put `object` in props. Props `on` turn on
 ```javascript
 import Pre from './modules/pre/pre';
 
 <Pre obj={anyObject} on />
 ```
 
-###Routing
+### Routing
 Also wrap component to `withRouter`
 
 ```javascript
