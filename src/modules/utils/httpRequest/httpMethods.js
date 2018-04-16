@@ -13,9 +13,10 @@ function getHeaders(type) {
 }
 
 function httpMethod(method, url, data, type = 'application/json') {
+  console.log(process.env.REACT_APP_API_SERVER);
   return axios({
     method,
-    url,
+    url: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_SERVER : url,
     data,
     headers: getHeaders(type),
   })
