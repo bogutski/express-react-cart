@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "6fae9221-3904-a569-965d-6e3238cf121d",
+		"_postman_id": "cb1bd607-3dbe-4b9d-9be7-c682d39a7056",
 		"name": "ER-cart",
 		"description": "# Introduction\nWhat does your API do?\n\n# Overview\nThings that the developers should know about\n\n# Authentication\nWhat is the preferred way of using the API?\n\n# Error Codes\nWhat errors and status codes can a user expect?\n\n# Rate limit\nIs there a limit to the number of requests an user can send?",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
@@ -8,7 +8,7 @@
 	"item": [
 		{
 			"name": "PRODUCT",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "All products",
@@ -119,25 +119,21 @@
 								{
 									"key": "name",
 									"value": "Product {{$timestamp}}",
-									"description": "",
 									"type": "text"
 								},
 								{
 									"key": "price",
 									"value": "10",
-									"description": "",
 									"type": "text"
 								},
 								{
 									"key": "catalog",
 									"value": "Hy5jp2YEz",
-									"description": "",
 									"type": "text"
 								},
 								{
 									"key": "image",
 									"value": "",
-									"description": "",
 									"type": "file"
 								}
 							]
@@ -196,7 +192,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:5000/product/5a3ea45726c7bf17e4c320cd",
 							"protocol": "http",
@@ -216,7 +215,7 @@
 		},
 		{
 			"name": "VOCABULAR",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "All vocabulars",
@@ -382,7 +381,10 @@
 								"value": "application/json"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:5000/vocabular/5aa9b9529f8dfe086dc46bb8",
 							"protocol": "http",
@@ -424,11 +426,11 @@
 		},
 		{
 			"name": "USER",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Shipping",
-					"description": "",
+					"description": null,
 					"item": [
 						{
 							"name": "Update shipping",
@@ -473,7 +475,10 @@
 								"value": "Bearer {{_token}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:5000/user",
 							"protocol": "http",
@@ -503,7 +508,10 @@
 								"value": "Bearer {{_token}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:5000/user/5a4c98e5a053190a7d48e182",
 							"protocol": "http",
@@ -606,7 +614,10 @@
 								"value": "Bearer {{_token}}"
 							}
 						],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:5000/user/5a45eb39cca02415c5ebd103",
 							"protocol": "http",
@@ -627,14 +638,17 @@
 		},
 		{
 			"name": "BACKUP",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "http://localhost:5000/backup/dump",
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:5000/backup/dump",
 							"protocol": "http",
@@ -655,7 +669,10 @@
 					"request": {
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
 						"url": {
 							"raw": "http://localhost:5000/backup/restore",
 							"protocol": "http",
@@ -675,7 +692,7 @@
 		},
 		{
 			"name": "FILES",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Upload file",
@@ -701,7 +718,6 @@
 								{
 									"key": "file",
 									"value": "",
-									"description": "",
 									"type": "file"
 								}
 							]
@@ -756,11 +772,156 @@
 			]
 		},
 		{
+			"name": "OFFER",
+			"description": "",
+			"item": [
+				{
+					"name": "Offer Import CSV",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:5000/offer/import/csv",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"offer",
+								"import",
+								"csv"
+							]
+						},
+						"description": "index"
+					},
+					"response": []
+				},
+				{
+					"name": "Offer Import JSON",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"title\" : \"Task 1\",\n\t\"description\": \"Descr 1 descr\",\n\t\"status\" : \"New\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/offer/import/json",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"offer",
+								"import",
+								"json"
+							]
+						},
+						"description": "index"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete all offers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:5000/import/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"import",
+								"all"
+							]
+						},
+						"description": "index"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all offers",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "image",
+									"type": "file"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/offer/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"offer",
+								"all"
+							]
+						},
+						"description": "index"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Options",
 			"request": {
 				"method": "OPTIONS",
 				"header": [],
-				"body": {},
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
 				"url": {
 					"raw": "http://localhost:5000",
 					"protocol": "http",
