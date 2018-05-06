@@ -73,7 +73,8 @@ export function vocabularFillCatalog() {
           type: 'VOCABULAR_CATALOG_FLAT',
           payload: res[0].terms,
         });
-      });
+      })
+      .catch(err => console.log(err));
   };
 }
 
