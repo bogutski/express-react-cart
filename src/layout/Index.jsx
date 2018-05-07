@@ -14,6 +14,7 @@ import UserList from './../modules/user/userList';
 import UserProfile from '../modules/user/profile/userProfile';
 import ShippingPage from '../modules/user/shipping/shippingPage';
 import Home from './../modules/home/home';
+import Warning from '../modules/utils/warning/warning';
 import Catalog from './../modules/catalog/catalogIndex';
 import ProductList from '../modules/product/list/productList';
 import ProductForm from '../modules/product/form/productForm';
@@ -48,6 +49,7 @@ class App extends Component {
       this.props.userGetById(localStorage.getItem('userId'));
     }
 
+    // Fill catalog from server
     if (_.isEmpty(this.props.catalog)) {
       this.props.vocabularFillCatalog();
     }
@@ -81,6 +83,7 @@ class App extends Component {
             <Col>
               <Switch>
                 <Route exact path="/" component={Home} />
+                <Route exact path="/error" component={Warning} />
 
                 <Route exact path="/catalog" component={Catalog} />
                 <Route exact path="/catalog/:level" component={Catalog} />
@@ -117,11 +120,13 @@ class App extends Component {
   }
 
   render() {
-    return (
-      _.isEmpty(this.props.productList) || _.isEmpty(this.props.catalog)
-        ? <span>... Loading</span>
-        : this.component()
-    );
+    if (this.props.warnings.length) return <Warning />;
+
+    if (_.isEmpty(this.props.productList) || _.isEmpty(this.props.catalog)) {
+      return <span>... Loading</span>;
+    }
+
+    return (this.component());
   }
 }
 
@@ -131,6 +136,7 @@ const mapStateToProps = state => ({
   productList: state.product.productList,
   router: state.router.location,
   cart: state.cart,
+  warnings: state.warning.warnings,
 });
 
 const mapDispatchToProps = dispatch => ({

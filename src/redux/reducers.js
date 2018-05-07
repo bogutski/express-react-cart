@@ -8,6 +8,7 @@ import vocabular from './../modules/vocabular/_reducers/vocabularReducers';
 import cart from './../modules/cart/_reducers/cartReducers';
 import shipping from '../modules/user/_reducers/sippingReducers';
 import search from '../modules/search/_reducers/searchReducers';
+import warning from '../modules/utils/warning/_reducers/warningReducers';
 
 // Combine Reducers
 const reducers = combineReducers({
@@ -18,6 +19,7 @@ const reducers = combineReducers({
   shipping,
   search,
   notifications,
+  warning,
   form: formReducer,
   router: routerReducer,
 });

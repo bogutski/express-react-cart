@@ -3,6 +3,8 @@ import _ from 'lodash';
 import Notifications from 'react-notification-system-redux';
 import store from '../../../redux/store';
 
+import { warningAdd, warningRemove } from './../warning/_actions/warningActions';
+
 function getHeaders(type) {
   return {
     Authorization: _.isEmpty(localStorage.getItem('token'))
@@ -13,7 +15,6 @@ function getHeaders(type) {
 }
 
 function httpMethod(method, url, data, type = 'application/json') {
-  console.log(process.env.REACT_APP_API_SERVER);
   return axios({
     method,
     url: process.env.NODE_ENV === 'production' ? process.env.REACT_APP_API_SERVER : url,
@@ -28,6 +29,11 @@ function httpMethod(method, url, data, type = 'application/json') {
           title: res.data.message.text,
           autoDismiss: 0,
         }));
+      }
+
+      // Remove warning 500
+      if (res.status === 200) {
+        store.dispatch(warningRemove('500'));
       }
 
       return res;
@@ -47,6 +53,9 @@ function httpMethod(method, url, data, type = 'application/json') {
             title: error.response.data.error.message,
             autoDismiss: 0,
           }));
+          // Add warning 500
+        } else if (error.response.status === 500) {
+          store.dispatch(warningAdd('500'));
         } else {
           console.log('ERROR RESPONSE', error.response);
         }
