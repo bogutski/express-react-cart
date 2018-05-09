@@ -13,6 +13,12 @@ const warning = (state = initialState, action) => {
         ],
       };
 
+    case 'WARNING_REMOVE':
+      return {
+        ...state,
+        warnings: state.warnings.filter(el => el !== action.payload),
+      };
+
     default:
       return state;
   }
