@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import { Route, Switch } from 'react-router';
 import { Helmet } from 'react-helmet';
 import _ from 'lodash';
+
 import Header from './Header';
 import Footer from './Footer';
 import Alert from '../modules/utils/alert/alert';
@@ -12,21 +13,26 @@ import UserRegisterForm from '../modules/user/userRegisterForm';
 import UserLoginForm from '../modules/user/userLoginForm';
 import UserList from './../modules/user/userList';
 import UserProfile from '../modules/user/profile/userProfile';
+import CheckoutPage from './../modules/checkout/checkoutPage';
 import ShippingPage from '../modules/user/shipping/shippingPage';
 import Home from './../modules/home/home';
 import Warning from '../modules/utils/warning/warning';
 import Catalog from './../modules/catalog/catalogIndex';
+
 import ProductList from '../modules/product/list/productList';
 import ProductForm from '../modules/product/form/productForm';
 import ProductView from './../modules/product/view/productView';
-import CheckoutPage from './../modules/checkout/checkoutPage';
-import { userGetById } from '../modules/user/_actions/userActions';
+
+import OfferList from '../modules/offer/list/offerList';
+
 import Vocabular from '../modules/vocabular/vocabularIndex';
 import VocabularForm from '../modules/vocabular/form/vocabularForm';
+
+import CurrentBreakpoint from '../modules/utils/currentBreackpoint/currentBreakpoint';
+import { userGetById } from '../modules/user/_actions/userActions';
 import { vocabularFillCatalog } from './../modules/vocabular/_actions/vocabularActions';
 import { productsGet } from './../modules/product/_actions/productActions';
 import { cartFill } from './../modules/cart/_actions/cartActions';
-import CurrentBreakpoint from '../modules/utils/currentBreackpoint/currentBreakpoint';
 
 class App extends Component {
   constructor(props) {
@@ -98,6 +104,8 @@ class App extends Component {
                 <Route exact path="/product/add" component={ProductForm} />
                 <Route exact path="/product/:id" component={ProductView} />
                 <Route exact path="/product/edit/:id" component={ProductForm} />
+
+                <Route exact path="/offer/list" component={OfferList} />
 
                 <Route exact path="/checkout" component={CheckoutPage} />
 

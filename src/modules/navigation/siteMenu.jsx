@@ -32,6 +32,15 @@ class SiteMenu extends Component {
           >Products
           </NavLink>
         </NavItem>
+
+        <NavItem>
+          <NavLink
+            to="/offers/list"
+            activeClassName="active"
+            className="nav-link"
+          >Offers
+          </NavLink>
+        </NavItem>
       </Nav>
     );
   }

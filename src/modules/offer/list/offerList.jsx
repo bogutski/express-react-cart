@@ -13,8 +13,8 @@ class OfferList extends Component {
         </Helmet>
 
         <h1>Offers</h1>
-        <OfferControls />
-        <OfferListTable />
+        {/*<OfferControls />*/}
+        {/*<OfferListTable />*/}
       </div>
     );
   }
