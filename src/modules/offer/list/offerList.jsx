@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Helmet } from 'react-helmet';
-import OfferListTable from './offerListTable';
-import OfferControls from '../offerControls';
+// import OfferListTable from './offerListTable';
+// import OfferControls from '../offerControls';
 
 class OfferList extends Component {
   render() {
